@@ -1,0 +1,183 @@
+@media (max-width: 768px) {
+
+    .login-card {
+        width: 100%;
+        padding: 1.5rem;
+    }
+
+    .btn-primary {
+        width: 100%;
+        margin-left: 0;
+    }
+
+    .col-form-label {
+        font-size: 15px;
+    }
+
+    h2 {
+        font-size: 28px;
+    }
+}
+
+
+
+@media (max-width: 576px) {
+
+    .login-card {
+        width: 95%;
+        padding: 1.25rem;
+        border-radius: 12px;
+    }
+
+    .row {
+        display: block;
+        margin-bottom: 1rem;
+    }
+
+    .col-3,
+    .col-9 {
+        width: 100%;
+        max-width: 100%;
+    }
+
+    .col-form-label {
+        display: block;
+        margin-bottom: 8px;
+        font-size: 14px;
+    }
+
+    .form-control {
+        height: 42px;
+        font-size: 14px;
+    }
+
+    .btn-primary {
+        width: 100%;
+        margin-left: 0;
+        margin-top: 10px;
+    }
+
+    h2 {
+        font-size: 24px;
+    }
+
+    .eye-icon {
+        right: 10px;
+        font-size: 18px;
+    }
+
+    .toast {
+        min-width: 90%;
+    }
+}
+
+
+
+@media (max-width: 400px) {
+
+    .login-card {
+        padding: 1rem;
+    }
+
+    h2 {
+        font-size: 22px;
+    }
+
+    .col-form-label {
+        font-size: 13px;
+    }
+
+    .form-control {
+        font-size: 13px;
+    }
+
+    .btn-primary {
+        font-size: 14px;
+    }
+}
+
+/* login page styling */
+.container-fluid{
+    background: linear-gradient(138deg, rgb(160, 136, 219) ,rgb(75, 26, 107));
+    
+}
+.login-card{
+
+    width:500px;
+    border-radius:15px;
+    padding: 2rem;
+    
+    
+    
+}
+h2{
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+.col-form-label{
+    font-weight: 600;
+    font-family:Verdana, Geneva, Tahoma, sans-serif;
+}
+.eye-btn{
+    width: 50px;
+}
+
+
+
+.input-group .btn{
+    border: none;
+    min-width: 48px;
+    height: 40px;
+}
+
+.btn-primary {
+    display: block;
+    width: 120px;
+    margin: 20px auto 0;
+}
+.form-control{
+    height: 45px;
+}
+
+.form-control.ng-invalid.ng-submitted{
+
+    border:2px solid red;
+
+}
+
+.form-control.ng-valid.ng-submitted{
+
+    border:2px solid green;
+
+}
+
+.toast-container{
+    position: fixed;
+}
+.toast{
+
+    min-width:280px;
+
+}
+.password-box{
+    position: relative;
+}
+
+.eye-icon{
+    position: absolute;
+    right: 12px;
+    top: 50%;
+    transform: translateY(-50%);
+    cursor: pointer;
+    color: #6c757d;
+}
+
+.eye-icon:hover{
+    color: #000;
+}
+
+
+.form-control.is-invalid,
+.form-control.is-valid {
+    background-image: none !important;
+    padding-right: 0.75rem;
+}

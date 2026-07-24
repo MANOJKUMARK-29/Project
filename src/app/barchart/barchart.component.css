@@ -1,0 +1,70 @@
+.charts-layout {
+  display: flex;
+  flex-direction: row;
+  gap: 20px;
+  align-items: stretch;
+  width: 100%;
+}
+
+.chart-card {
+  min-width: 0;
+}
+
+.bar-chart {
+  width: 100% !important;
+  height: 100% !important;
+  padding: 20px;
+}
+
+.chart-background {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex: 0 0 70%;
+  min-height: 680px;
+  padding: 18px;
+  border-radius: 12px;
+  background-color: #ffffff;
+  box-shadow: 0 3px 12px rgba(0, 0, 0, 0.12);
+}
+
+.piechart-background {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex: 0 0 30%;
+  min-height: 680px;
+  padding: 18px;
+  border-radius: 12px;
+  background-color: #ffffff;
+  box-shadow: 0 3px 12px rgba(0, 0, 0, 0.12);
+}
+
+.chart-container,
+.pie-chart-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  width: 100%;
+  height: 640px;
+  padding: 20px;
+}
+
+.pie-chart {
+  width: min(100%, 600px) !important;
+  height: auto !important;
+  max-height: 100%;
+}
+
+@media (max-width: 900px) {
+  .charts-layout {
+    flex-direction: column;
+  }
+
+  .chart-background,
+  .piechart-background {
+    flex-basis: 100%;
+  }
+}
+

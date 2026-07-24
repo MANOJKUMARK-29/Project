@@ -1,0 +1,23 @@
+<div class="charts-layout">
+  <div class="chart-background chart-card">
+    <div class="chart-container">
+      <canvas class="bar-chart"
+        baseChart
+        [data]="myData"
+        [options]="myOptions"
+        [type]="'bar'">
+      </canvas>
+    </div>
+  </div>
+
+  <div class="piechart-background chart-card">
+    <div class="chart-container pie-chart-container">
+      <canvas class="pie-chart"
+        baseChart
+        [data]="pieChartData"
+        [options]="pieChartOptions"
+        [type]="pieChartType">
+      </canvas>
+    </div>
+  </div>
+</div>

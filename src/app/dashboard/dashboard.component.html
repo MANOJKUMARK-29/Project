@@ -1,0 +1,141 @@
+<div class="dashboard-shell" [class.sidebar-expanded]="sidebar">
+
+  <!-- Main content -->
+  <main class="main-content">
+    <header class="user-header" *ngIf="currentUser">
+      <select class="domain-select">
+        <option>{{ currentUser.domain }}</option>
+        <option disabled>SMS</option>
+        <option disabled>TVS</option>
+      </select>
+
+      <div class="user-details">
+        <p class="user-name">{{ currentUser.name }}</p>
+        <p class="user-email">{{ currentUser.email }}</p>
+      </div>
+    </header>
+
+    <section class="page-content">
+      <app-barchart></app-barchart>
+    </section>
+  </main>
+
+  <!-- Left sidebar -->
+  <aside class="sidebar" [class.expanded]="sidebar">
+
+    <!-- Sidebar heading -->
+    <div class="sidebar-header">
+  <button
+    type="button"
+    class="sidebar-toggle-button"
+    (click)="expand()"
+   
+  >
+    <i
+      class="bi"
+      [class.bi-list]="!sidebar"
+      [class.bi-x-lg]="sidebar"
+    ></i>
+  </button>
+
+  <span class="sidebar-title">APP</span>
+</div>
+
+    <!-- Pure CSS menu -->
+    <nav class="pure-menu" aria-label="Main navigation">
+      <ul class="pure-menu-list">
+
+        <!-- Reports menu -->
+        <li
+          class="pure-menu-item
+                 pure-menu-has-children
+                 pure-menu-allow-hover"
+        >
+          <div class="pure-menu-link menu-parent-link">
+            <i class="bi bi-book menu-icon"></i>
+            <span class="menu-text">Reports</span>
+            <i class="bi bi-chevron-right menu-arrow"></i>
+          </div>
+
+          <!-- Reports children -->
+          <ul class="pure-menu-children">
+
+            <li class="pure-menu-item">
+              <a href="#" class="pure-menu-link">
+                Report 1
+              </a>
+            </li>
+
+            <li class="pure-menu-item">
+              <a href="#" class="pure-menu-link">
+                Report 2
+              </a>
+            </li>
+
+            <!-- Report 3 menu -->
+            <li
+              class="pure-menu-item
+                     pure-menu-has-children
+                     pure-menu-allow-hover"
+            >
+              <div class="pure-menu-link">
+                <span>Report 3</span>
+                <i class="bi bi-chevron-right menu-arrow"></i>
+              </div>
+
+              <!-- Report 3.1 child -->
+              <ul class="pure-menu-children">
+                <li class="pure-menu-item">
+                  <a href="#" class="pure-menu-link">
+                    Report 3.1
+                  </a>
+                </li>
+              </ul>
+            </li>
+
+            <!-- Domain menus -->
+            <li
+              class="pure-menu-item"
+              *ngIf="showdomainreport('Voltas')"
+            >
+              <a href="#" class="pure-menu-link">
+                Voltas
+              </a>
+            </li>
+
+            <li
+              class="pure-menu-item"
+              *ngIf="showdomainreport('Sms')"
+            >
+              <a href="#" class="pure-menu-link">
+                SMS
+              </a>
+            </li>
+
+            <li
+              class="pure-menu-item"
+              *ngIf="showdomainreport('Tvs')"
+            >
+              <a href="#" class="pure-menu-link">
+                TVS
+              </a>
+            </li>
+
+          </ul>
+        </li>
+
+      </ul>
+    </nav>
+
+    <!-- Fixed bottom logout -->
+    <button
+      type="button"
+      class="logout-button"
+      (click)="logout()"
+    >
+      <i class="bi bi-box-arrow-right"></i>
+      <span class="menu-text">Logout</span>
+    </button>
+
+  </aside>
+</div>
