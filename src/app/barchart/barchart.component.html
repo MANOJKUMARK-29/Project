@@ -1,5 +1,5 @@
-<div class="charts-layout">
-  <div class="chart-background chart-card">
+<div class="charts-mainpage">
+  <div class="chart-card">
     <div class="chart-container">
       <canvas class="bar-chart"
         baseChart
@@ -10,8 +10,8 @@
     </div>
   </div>
 
-  <div class="piechart-background chart-card">
-    <div class="chart-container pie-chart-container">
+  <div class="piechart-card">
+    <div class="piechart-container">
       <canvas class="pie-chart"
         baseChart
         [data]="pieChartData"
@@ -20,4 +20,39 @@
       </canvas>
     </div>
   </div>
+</div>
+<div class="table-charts-layout">
+<div class="attendance-table">
+  <p-table class="table"
+    [value]="tableData"
+    [tableStyle]="{'min-width':'60rem'}"
+    responsiveLayout="scroll"
+    stripedRows="true"
+    showGridlines="true"
+  >
+    <ng-template pTemplate="header">
+      <tr>
+        <th>S.I</th>
+        <th>Location</th>
+        <th>Machine ON</th>
+        <th>Machine OFF</th>
+        <th>Present</th>
+        <th>Absent</th>
+        <th>Total Employees</th>
+      </tr>
+    </ng-template>
+
+    <ng-template pTemplate="body" let-row>
+      <tr>
+        <td>{{ row.sNo }}</td>
+        <td>{{ row.Location }}</td>
+        <td>{{ row.MachineOn }}</td>
+        <td>{{ row.MachineOff }}</td>
+        <td>{{ row.present }}</td>
+        <td>{{ row.absent }}</td>
+        <td>{{ row.totalEmployees }}</td>
+      </tr>
+    </ng-template>
+  </p-table>
+</div>
 </div>

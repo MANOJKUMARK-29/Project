@@ -2,11 +2,11 @@ import { CommonModule } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { BarchartComponent } from '../barchart/barchart.component';
-
+import { TableModule } from 'primeng/table';
 @Component({
   selector: 'app-dashboard',
   standalone: true,
-  imports: [CommonModule, BarchartComponent],
+  imports: [CommonModule, BarchartComponent, TableModule],
   templateUrl: './dashboard.component.html',
   styleUrl: './dashboard.component.css',
 })
