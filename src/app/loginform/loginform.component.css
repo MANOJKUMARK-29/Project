@@ -96,19 +96,27 @@
     }
 }
 
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus,
+input:-webkit-autofill:active {
+  -webkit-box-shadow: 0 0 0 1000px white inset !important;
+  transition: background-color 9999s ease-in-out 0s;
+  -webkit-text-fill-color: #050404 !important;
+}
+
 /* login page styling */
 .container-fluid{
-    background: linear-gradient(138deg, rgb(160, 136, 219) ,rgb(75, 26, 107));
-    
+  background: linear-gradient(90deg, rgba(21, 10, 48, 0.98), rgba(9, 6, 22, 0.98));
 }
 .login-card{
 
     width:500px;
     border-radius:15px;
     padding: 2rem;
-    
-    
-    
+
+
+
 }
 h2{
     font-family: Verdana, Geneva, Tahoma, sans-serif;
@@ -180,4 +188,17 @@ h2{
 .form-control.is-valid {
     background-image: none !important;
     padding-right: 0.75rem;
+}
+
+.login-card input.form-control,
+.login-card input {
+    background-color: #ffffff;
+    color: #000000;
+    border: 1px solid rgba(0, 0, 0, 0.16);
+    box-shadow: inset 0 1px 4px rgba(0, 0, 0, 0.08);
+}
+
+.login-card input.form-control::placeholder,
+.login-card input::placeholder {
+    color: #777;
 }

@@ -1,111 +1,589 @@
-@media (max-width: 900px) {
-  .charts-mainpage{
-    flex-direction: column;
-  }
-
-  .chart-card,
-  .piechart-card {
-    flex-basis: 100%;
-  }
-}
-
-.charts-mainpage{
-  display: flex;
-  flex-direction: row;
-  gap: 20px;
-  align-items: stretch;
+:host {
+  display: block;
   width: 100%;
+  padding: 20px;
+  background: #f4f7fc;
+  box-sizing: border-box;
 }
 
-.bar-chart {
-  width: 100% !important;
-  height: 100% !important;
-  padding: 20px;
+/* ==============================
+        DASHBOARD LAYOUT
+============================== */
+
+.charts-mainpage {
+  display: flex;
+  gap: 24px;
+  width: 100%;
+  margin-bottom: 24px;
+  align-items: stretch;
 }
 
 .chart-card {
-  display: flex;
-  align-items: center;
-  justify-content: center;
   flex: 0 0 70%;
-  min-height: 680px;
-  padding: 18px;
-  border-radius: 12px;
-  background-color: #ffffff;
-  box-shadow: 0 3px 12px rgba(0, 0, 0, 0.12);
+  display: flex;
 }
 
 .piechart-card {
+  flex: 0 0 calc(30% - 24px);
   display: flex;
-  align-items: center;
-  justify-content: center;
-  flex: 0 0 30%;
-  min-height: 680px;
-  padding: 18px;
-  border-radius: 12px;
-  background-color: #ffffff;
-  box-shadow: 0 3px 12px rgba(0, 0, 0, 0.12);
+}
+
+/* ==============================
+        CARDS
+============================== */
+
+.chart-card,
+.piechart-card,
+.table-charts-layout {
+
+  background: #ffffff;
+
+  border-radius: 18px;
+
+  overflow: hidden;
+
+  border: 1px solid #e6eaf2;
+
+  box-shadow:
+      0 6px 20px rgba(0,0,0,.06);
+
+  transition: .25s ease;
+
+
+}
+
+.chart-card:hover,
+.piechart-card:hover,
+.table-charts-layout:hover{
+
+    transform: translateY(-3px);
+
+    box-shadow:
+        0 10px 28px rgba(0,0,0,.10);
+
+}
+
+/* ==============================
+      HEADER BARS
+============================== */
+
+.export-buttons-bar,
+.export-buttons-pie,
+.export-buttons-table{
+
+    height:64px !important;
+    width: 100% !important;
+    display:flex;
+
+    align-items:center;
+
+    justify-content:space-between;
+
+    padding:0 22px !important;
+
+    background:
+      linear-gradient(
+      90deg,
+      #162447,
+      #1f4068
+      );
+
+    color:white;
+
+}
+
+.export-buttons-bar h2,
+.export-buttons-pie h2,
+.export-buttons-table h2{
+
+    margin:0;
+
+    font-size:22px !important;
+
+    font-weight:600 !important;
+
+    letter-spacing:.5px !important;
+
+}
+
+/* ==============================
+      ACTION BUTTONS
+============================== */
+
+.export-buttons-bar button,
+.export-buttons-pie button,
+.export-buttons-table button{
+
+    width: 35px;
+
+    height:40px;
+
+    border-radius:10px;
+
+    border:none;
+
+    transition:.25s;
+
+}
+
+.export-buttons-bar button:hover,
+.export-buttons-pie button:hover,
+.export-buttons-table button:hover{
+
+    transform:scale(1.08);
+
+}
+
+/* ==============================
+      CHART AREA
+============================== */
+
+.chart-container,
+.piechart-container{
+
+    width:100%;
+
+    padding:24px !important;
+
+    display:flex;
+
+    flex-direction:column;
+
+    justify-content:flex-start;
+
+}
+
+.bar-chart{
+
+    width:100%!important;
+
+    height:430px!important;
+
+}
+
+.pie-chart{
+
+    width:100%!important;
+
+    max-width:360px;
+
+    height:360px!important;
+
+    margin:auto;
+
+}
+
+/* ==============================
+      TABLE CARD
+============================== */
+
+.table-charts-layout{
+
+    width:100%;
+
+    padding-bottom:20px;
+
+}
+
+.table-action-buttons{
+
+    display:flex;
+
+    gap:10px;
+
+}
+
+#tableXl{
+
+    padding:20px;
+
+}
+/* =====================================
+            PRIMENG TABLE
+===================================== */
+
+:host ::ng-deep .p-datatable{
+
+    width:100%;
+
+    border-radius:12px;
+
+    overflow:hidden;
+
+}
+
+:host ::ng-deep .p-datatable-table{
+
+    width:100%;
+
+    border-collapse:collapse;
+
+}
+
+:host ::ng-deep .p-datatable-thead>tr>th{
+
+    background:#2f3e5d!important;
+
+    color:#fff!important;
+
+    font-weight:600;
+
+    text-align:center;
+
+    border:1px solid #dfe5ef;
+
+    padding:14px;
+
+    position:relative;
+
+}
+
+:host ::ng-deep .p-datatable-thead>tr>th .p-sortable-column-icon{
+
+    margin-left:8px;
+
+    color:#fff!important;
+
+}
+
+:host ::ng-deep .p-datatable-tbody>tr>td{
+
+    text-align:center;
+
+    padding:14px;
+
+    border:1px solid #edf1f7;
+
+    transition:.25s;
+
+}
+
+:host ::ng-deep .p-datatable-tbody>tr:nth-child(even)>td{
+
+    background:#fafbfd;
+
+}
+
+:host ::ng-deep .p-datatable-tbody>tr:hover>td{
+
+    background:#eef5ff!important;
+
+}
+
+/* =====================================
+            SEARCH BOXES
+===================================== */
+
+:host ::ng-deep input[pInputText]{
+
+    width:100%;
+
+    border:1px solid #d7dde7;
+
+    border-radius:8px;
+
+    padding:8px 10px;
+
+    transition:.2s;
+
+}
+
+:host ::ng-deep input[pInputText]:focus{
+
+    border-color:#2563eb;
+
+    box-shadow:0 0 0 3px rgba(37,99,235,.15);
+
+    outline:none;
+
+}
+
+/* =====================================
+            SCROLLBAR
+===================================== */
+
+::-webkit-scrollbar{
+
+    width:10px;
+
+    height:10px;
+
+}
+
+::-webkit-scrollbar-thumb{
+
+    background:#bcc8d9;
+
+    border-radius:20px;
+
+}
+
+::-webkit-scrollbar-thumb:hover{
+
+    background:#8ea4c4;
+
+}
+
+/* =====================================
+            TABLE ANIMATION
+===================================== */
+
+.table-charts-layout{
+
+    animation:fadeUp .4s ease;
+
+}
+
+.chart-card{
+
+    animation:fadeLeft .5s ease;
+
+}
+
+.piechart-card{
+
+    animation:fadeRight .5s ease;
+
+}
+
+@keyframes fadeLeft{
+
+from{
+
+opacity:0;
+
+transform:translateX(-20px);
+
+}
+
+to{
+
+opacity:1;
+
+transform:translateX(0);
+
+}
+
+}
+
+@keyframes fadeRight{
+
+from{
+
+opacity:0;
+
+transform:translateX(20px);
+
+}
+
+to{
+
+opacity:1;
+
+transform:translateX(0);
+
+}
+
+}
+
+@keyframes fadeUp{
+
+from{
+
+opacity:0;
+
+transform:translateY(20px);
+
+}
+
+to{
+
+opacity:1;
+
+transform:translateY(0);
+
+}
+
+}
+
+/* =====================================
+            RESPONSIVE
+===================================== */
+
+@media(max-width:1200px){
+
+.chart-card{
+
+flex:0 0 65%;
+
+}
+
+.piechart-card{
+
+flex:0 0 calc(35% - 24px);
+
+}
+
+.bar-chart{
+
+height:380px!important;
+
+}
+
+}
+
+@media(max-width:992px){
+
+.charts-mainpage{
+
+flex-direction:column;
+
+}
+
+.chart-card,
+
+.piechart-card{
+
+flex:1 1 100%;
+
 }
 
 .chart-container,
-.piechart-container {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  position: relative;
-  width: 100%;
-  height: 640px;
-  padding: 20px;
+
+.piechart-container{
+
+padding:20px;
+
 }
 
-.pie-chart {
-  width: min(100%, 600px) !important;
-  height: auto !important;
-  max-height: 100%;
+.pie-chart{
+
+max-width:300px;
+
+height:300px!important;
+
 }
 
-:host ::ng-deep .p-datatable {
-  background: #ffffff !important;
-  color: #000 !important;
-  padding: 20px;
-}
-:host ::ng-deep .attendance-table {
-  display: flex;
-  position: relative;
-  align-items: center;
-  justify-content: center;
-  top: 20px;
-}
-:host {
-  top: 200px;
-}
-:host ::ng-deep .p-datatable table {
-  background: #ffffff !important;
+.bar-chart{
+
+height:340px!important;
+
 }
 
-:host ::ng-deep .p-datatable-thead > tr > th {
-  background: #ffffff !important;
-  color: #000 !important;
-  border: 1px solid #dcdcdc;
-  font-weight: 600;
 }
 
-:host ::ng-deep .p-datatable-tbody > tr > td {
-  background: #ffffff !important;
-  color: #000 !important;
-  border: 1px solid #e5e5e5;
+@media(max-width:768px){
+
+:host{
+
+padding:15px;
+
 }
 
-:host ::ng-deep .p-datatable-tbody > tr:nth-child(even) td {
-  background: #f8f9fa !important;
+.export-buttons-bar,
+
+.export-buttons-pie,
+
+.export-buttons-table{
+
+padding:0 15px;
+
+height:58px;
+
 }
-.table-charts-layout{
-  align-items: center;
-  justify-content: center;
-  margin-top: 30px;
-  min-height: 400px;
-  padding: 18px;
-  border-radius: 12px;
-  background-color: #ffffff;
-  box-shadow: 0 3px 12px rgba(0, 0, 0, 0.12);
+
+.export-buttons-bar h2,
+
+.export-buttons-pie h2,
+
+.export-buttons-table h2{
+
+font-size:18px;
+
+}
+
+.table-action-buttons{
+
+gap:8px;
+
+}
+
+.bar-chart{
+
+height:300px!important;
+
+}
+
+.pie-chart{
+
+max-width:260px;
+
+height:260px!important;
+
+}
+
+}
+
+@media(max-width:576px){
+
+:host{
+
+padding:10px;
+
+}
+
+.chart-container,
+
+.piechart-container{
+
+padding:15px;
+
+}
+
+.export-buttons-bar h2,
+
+.export-buttons-pie h2,
+
+.export-buttons-table h2{
+
+font-size:16px;
+
+}
+
+.export-buttons-bar button,
+
+.export-buttons-pie button,
+
+.export-buttons-table button{
+
+width:38px;
+
+height:38px;
+
+}
+
+.bar-chart{
+
+height:260px!important;
+
+}
+
+.pie-chart{
+
+max-width:220px;
+
+height:220px!important;
+
+}
+
+:host ::ng-deep .p-datatable-thead>tr>th,
+
+:host ::ng-deep .p-datatable-tbody>tr>td{
+
+padding:10px;
+
+font-size:13px;
+
+}
+
 }

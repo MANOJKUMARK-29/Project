@@ -1,0 +1,163 @@
+<main>
+  <div class="task-container">
+    <div class="page-header">
+      <div>
+        <h2>Task Editor</h2>
+      </div>
+      <div class="toolbar">
+        <button
+          pButton
+          label="Edit"
+          icon="pi pi-pencil"
+          class="p-button-primary"
+          (click)="editEmployee()"
+          [disabled]="!selectedEmployee"
+        ></button>
+        <button
+          pButton
+          label="Delete"
+          icon="pi pi-times"
+          class="p-button-danger"
+          (click)="deleteEmployee()"
+          [disabled]="!selectedEmployee"
+        ></button>
+      </div>
+    </div>
+
+    <p-table
+      #dt
+      responsiveLayout="scroll"
+      stripedRows="true"
+      showGridlines="true"
+      sortMode="multiple"
+      [(selection)]="selectedEmployee"
+      dataKey="id"
+      [value]="filteredEmployees"
+      [tableStyle]="{ 'min-width': '100%' }"
+    >
+      <ng-template pTemplate="header">
+        <tr>
+          <th>Select</th>
+
+          <th>
+            <div class="labelsearch">
+              <span>Employee</span>
+              <input
+                pInputText
+                type="text"
+                style="width: 20px"
+                placeholder="Search Employee"
+                (input)="
+                  dt.filter($any($event.target).value, 'employee', 'contains')
+                "
+              />
+            </div>
+          </th>
+          <th>Domain</th>
+          <th>Assigned Tasks</th>
+        </tr></ng-template
+      >
+
+      <ng-template pTemplate="body" let-emp>
+        <tr
+          (click)="selectEmployee(emp)"
+          [class.selected-row]="selectedEmployee?.id === emp.id"
+        >
+          <td style="width: 50px; text-align: center">
+            <p-tableRadioButton [value]="emp"></p-tableRadioButton>
+          </td>
+          <td>
+            <div class="employee-name">
+              {{ emp.employee }}
+
+            </div>
+          </td>
+
+          <td>
+            <span class="domain-badge">
+              {{ emp.domain }}
+            </span>
+          </td>
+
+          <td>
+            <div class="task-chip-container">
+              <div class="task-chip" *ngFor="let task of emp.tasks">
+                {{ task }}
+                              <button    pButton
+    icon="pi pi-times"
+    class="taskbtn"
+     severity="secondary"
+    [text]="true"
+      [rounded]="true"
+      (click) = "removetask()"
+    >
+    </button>
+              </div>
+            </div>
+          </td>
+        </tr>
+      </ng-template>
+    </p-table>
+  </div>
+
+  <p-drawer [(visible)]="visible" position="right" [style]="{ width: '520px' }">
+    <div class="drawer-title">
+      <h2>Edit Employee Tasks</h2>
+    </div>
+
+    <!-- Employee Information -->
+
+    <div class="employee-grid">
+      <div class="field">
+        <label>Employee</label>
+
+        <input
+          pInputText
+          [value]="selectedEmployee?.employee"
+          style="height: 40px"
+          readonly
+        />
+      </div>
+
+      <div class="field">
+        <label>Domain</label>
+
+        <input
+          pInputText
+          [value]="selectedEmployee?.domain"
+          style="height: 40px"
+          readonly
+        />
+      </div>
+    </div>
+
+    <h3 class="task-heading">Available Tasks</h3>
+
+    <div class="task-grid">
+      <div
+        *ngFor="let task of availableTasks"
+        class="task-card"
+        [class.active]="isSelected(task)"
+        (click)="toggleTask(task)"
+      >
+        {{ task }}
+      </div>
+    </div>
+
+    <div class="drawer-footer">
+      <button
+        pButton
+        label="Cancel"
+          severity="secondary"
+        (click)="visible = false"
+      ></button>
+
+      <button
+        pButton
+        label="Save"
+        icon="pi pi-check"
+        (click)="saveTasks()"
+      ></button>
+    </div>
+  </p-drawer>
+</main>

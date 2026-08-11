@@ -1,8 +1,9 @@
 import { CommonModule } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
 import { BarchartComponent } from '../barchart/barchart.component';
 import { TableModule } from 'primeng/table';
+import { Router } from '@angular/router';
+import { BarchartdataservicesService } from '../services/barchartdataservices.service';
 @Component({
   selector: 'app-dashboard',
   standalone: true,
@@ -11,35 +12,15 @@ import { TableModule } from 'primeng/table';
   styleUrl: './dashboard.component.css',
 })
 export class DashboardComponent implements OnInit {
-  currentUser: any;
-  sidebar = false;
 
-  constructor(private router: Router) {}
+
+  constructor(private router: Router, private barchartDataService: BarchartdataservicesService) {}
 
   ngOnInit(): void {
+    console.log("Dashboard Domain:", this.barchartDataService.selectedDomain);
     const user = localStorage.getItem('currentUser');
-    if (user) {
-      this.currentUser = JSON.parse(user);
-    } else {
+    if (!user) {
       this.router.navigate(['/loginform']);
     }
-  }
-  // -----------remove-user-from-localstorage-and-log's-out------ 
-  logout() {
-    localStorage.removeItem('currentUser');
-    this.router.navigate(['/loginform']);
-  }
-
-  // -----------expand-the-side-bar-when-menu-button-clicked---
-  expand() {
-    this.sidebar = !this.sidebar;
-  }
-  // -----------shoe-the-corressponding-report-in-list0based-on-user-domain----
-  showdomainreport(domainname: string): boolean {
-    if (!this.currentUser) return false;
-
-    return (
-      this.currentUser.domain.toLowerCase() === domainname.toLocaleLowerCase()
-    );
   }
 }

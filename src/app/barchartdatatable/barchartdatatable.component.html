@@ -1,0 +1,261 @@
+<main class="main-content">
+  <div class="header">
+    <h2>{{ selectedDomain }} Attendance Report</h2>
+
+    <div class="summary-cards">
+      <div class="card">
+        <h5>Total Employees</h5>
+        <h3>{{ totalEmployees }}</h3>
+      </div>
+
+      <div class="card present">
+        <h5>Present</h5>
+        <h3>{{ presentEmployees }}</h3>
+      </div>
+
+      <div class="card absent">
+        <h5>Absent</h5>
+        <h3>{{ absentEmployees }}</h3>
+      </div>
+
+      <div class="card on">
+        <h5>Machine ON</h5>
+        <h3>{{ machineOnCount }}</h3>
+      </div>
+
+      <div class="card off">
+        <h5>Machine OFF</h5>
+        <h3>{{ machineOffCount }}</h3>
+      </div>
+    </div>
+  </div>
+
+  <section class="table-layout">
+    <div class="toolbar">
+      <div class="filters">
+        <div class="filter-box">
+          <label>Location</label>
+          <p-multiSelect
+            [options]="locationOptions"
+            [(ngModel)]="selectedLocations"
+            optionLabel="label"
+            optionValue="value"
+            defaultLabel="Select Locations"
+            filter="false"
+            [showToggleAll]="false"
+            display="chip"
+            [maxSelectedLabels]="100"
+
+          >
+            <ng-template pTemplate="header">
+
+              <div class="custom-header">
+                <p-checkbox
+                  [(ngModel)]="allSelected"
+                  binary="true"
+                  (onChange)="toggleSelectAll()"
+                >
+                </p-checkbox>
+
+                <label class="ms-2" > Select All </label>
+              </div>
+            </ng-template>
+          </p-multiSelect>
+        </div>
+
+        <div class="filter-box">
+          <label>Status</label>
+
+          <select
+            class="form-select"
+            [(ngModel)]="selectedStatus"
+            (change)="filterEmployees()"
+          >
+            <option value="All">All</option>
+
+            <option value="Present">Present</option>
+
+            <option value="Absent">Absent</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="action-buttons">
+        <button class="btn btn-success" (click)="downloadExcel()">
+          <i class="bi bi-file-earmark-excel"></i>
+        </button>
+
+        <button class="btn btn-danger" (click)="downloadPdf()">
+          <i class="bi bi-file-earmark-pdf"></i>
+        </button>
+
+        <button class="btn btn-secondary" (click)="back()">Back</button>
+      </div>
+    </div>
+
+    <div id="AttendanceTable" class="attendance-table">
+      <p-table
+        #dt
+        [value]="filteredEmployees"
+        [tableStyle]="{ 'min-width': '70rem' }"
+        responsiveLayout="scroll"
+        stripedRows="true"
+        showGridlines="true"
+        sortMode="multiple"
+      >
+        <ng-template pTemplate="header">
+          <tr>
+            <th pSortableColumn="id">
+              ID
+
+              <p-sortIcon field="id"></p-sortIcon>
+            </th>
+
+            <th pSortableColumn="name">
+              Name
+
+              <p-sortIcon field="name"></p-sortIcon>
+            </th>
+
+            <th pSortableColumn="domain">
+              Domain
+
+              <p-sortIcon field="domain"></p-sortIcon>
+            </th>
+
+            <th pSortableColumn="location">
+              Location
+
+              <p-sortIcon field="location"></p-sortIcon>
+            </th>
+
+            <th pSortableColumn="machineStatus">
+              Machine
+
+              <p-sortIcon field="machineStatus"></p-sortIcon>
+            </th>
+
+            <th pSortableColumn="status">
+              Attendance
+
+              <p-sortIcon field="status"></p-sortIcon>
+            </th>
+          </tr>
+
+          <tr>
+            <td>
+              <input
+                pInputText
+                type="text"
+                placeholder="Search ID"
+                (input)="dt.filter($any($event.target).value, 'id', 'contains')"
+              />
+            </td>
+
+            <td>
+              <input
+                pInputText
+                type="text"
+                placeholder="Search Name"
+                (input)="
+                  dt.filter($any($event.target).value, 'name', 'contains')
+                "
+              />
+            </td>
+            <td>
+              <input
+                pInputText
+                type="text"
+                placeholder="Search Domain"
+                (input)="
+                  dt.filter($any($event.target).value, 'domain', 'contains')
+                "
+              />
+            </td>
+
+            <td>
+              <input
+                pInputText
+                type="text"
+                placeholder="Search Location"
+                (input)="
+                  dt.filter($any($event.target).value, 'location', 'contains')
+                "
+              />
+            </td>
+
+            <td>
+              <input
+                pInputText
+                type="text"
+                placeholder="Search Machine"
+                (input)="
+                  dt.filter(
+                    $any($event.target).value,
+                    'machineStatus',
+                    'contains'
+                  )
+                "
+              />
+            </td>
+
+            <td>
+              <input
+                pInputText
+                type="text"
+                placeholder="Search Status"
+                (input)="
+                  dt.filter($any($event.target).value, 'status', 'contains')
+                "
+              />
+            </td>
+          </tr>
+        </ng-template>
+
+        <ng-template pTemplate="body" let-employee>
+          <tr>
+            <td>
+              {{ employee.id }}
+            </td>
+
+            <td>
+              {{ employee.name }}
+            </td>
+
+            <td>
+              {{ employee.domain }}
+            </td>
+
+            <td>
+              {{ employee.location }}
+            </td>
+
+            <td>
+              <span
+                [class.text-success]="employee.machineStatus === 'ON'"
+                [class.text-danger]="employee.machineStatus === 'OFF'"
+              >
+                {{ employee.machineStatus }}
+              </span>
+            </td>
+
+            <td>
+              <span
+                [class.text-success]="employee.status === 'Present'"
+                [class.text-danger]="employee.status === 'Absent'"
+              >
+                {{ employee.status }}
+              </span>
+            </td>
+          </tr>
+        </ng-template>
+
+        <ng-template pTemplate="emptymessage">
+          <tr>
+            <td colspan="6" class="text-center">No Employees Found</td>
+          </tr>
+        </ng-template>
+      </p-table>
+    </div>
+  </section>
+</main>

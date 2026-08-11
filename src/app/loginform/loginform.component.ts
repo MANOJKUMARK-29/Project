@@ -3,6 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { Router, RouterModule } from '@angular/router';
 import { CommonModule } from '@angular/common';
+import { RouterOutlet } from '@angular/router';
 
 @Component({
   selector: 'app-loginform',
@@ -16,26 +17,41 @@ export class LoginformComponent implements OnInit {
   email: any = '';
   password: any = '';
   showtoast: boolean = false;
-  users = [
-    {
-      email: 'manojmj029@gmail.com',
-      password: 'Manoj123',
-      uname: 'MANOJKUMAR',
-      domain: 'VOLTAS',
-    },
-    {
-      email: 'manoj199929@gmail.com',
-      password: 'SRIMACK',
-      uname: 'manoj2',
-      domain: 'SMS',
-    },
-    {
-      email: 'manoj.mailbox.29@gmail.com',
-      password: 'Manoj345',
-      uname: 'VICKY',
-      domain: 'TVS',
-    },
-  ];
+  users=[
+
+{
+email:'admin@gmail.com',
+password:'Admin123',
+uname:'ADMIN',
+role:'ADMIN',
+domain:'ALL'
+},
+
+{
+email:'manojmj029@gmail.com',
+password:'Manoj123',
+uname:'MANOJKUMAR',
+role:'USER',
+domain:'Voltas'
+},
+
+{
+email:'manoj199929@gmail.com',
+password:'SRIMACK',
+uname:'MANOJ2',
+role:'USER',
+domain:'Sms'
+},
+
+{
+email:'manoj.mailbox.29@gmail.com',
+password:'Manoj345',
+uname:'VICKY',
+role:'USER',
+domain:'Tvs'
+}
+
+];
   constructor(private router: Router) {}
   ngOnInit(): void {
     const currentUser = localStorage.getItem('currentUser');
@@ -47,8 +63,8 @@ export class LoginformComponent implements OnInit {
   }
 
   login(form: any): void {
-   
-  
+
+
     if (form.invalid) {
       return;
     }
@@ -56,14 +72,16 @@ export class LoginformComponent implements OnInit {
       (u) => u.email === this.email && u.password === this.password,
     );
     if (user) {
-      localStorage.setItem(
-        'currentUser',
-        JSON.stringify({
-          name: user.uname,
-          email: user.email,
-          domain: user.domain,
-        }),
-      );
+     localStorage.setItem(
+'currentUser',
+JSON.stringify({
+
+name:user.uname,
+email:user.email,
+domain:user.domain,
+role:user.role
+
+}));
       this.showtoast = true;
 
       this.router.navigate(['/dashboard']);
