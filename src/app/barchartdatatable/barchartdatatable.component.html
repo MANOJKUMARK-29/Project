@@ -81,6 +81,14 @@
       </div>
 
       <div class="action-buttons">
+        <input
+          pInputText
+          type="text"
+          [(ngModel)]="searchTerm"
+          placeholder="Search employees..."
+          (input)="filterEmployees()"
+          class="search-input"
+        />
         <button class="btn btn-success" (click)="downloadExcel()">
           <i class="bi bi-file-earmark-excel"></i>
         </button>

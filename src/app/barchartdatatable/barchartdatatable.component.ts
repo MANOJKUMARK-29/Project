@@ -42,6 +42,8 @@ export class BarchartdatatableComponent implements OnInit {
 
   selectedDomain = '';
 
+  searchTerm = '';
+
   locationOptions = [
     { label: 'Medavakkam', value: 'Medavakkam' },
     { label: 'shozinganallur', value: 'shozinganallur' },
@@ -92,7 +94,7 @@ export class BarchartdatatableComponent implements OnInit {
       }
     });
 
-    this.filteredEmployees = this.employees.filter((emp) => {
+    const locationStatusFiltered = this.employees.filter((emp) => {
       const locationMatch =
         this.selectedLocations.length === 0 ||
         this.selectedLocations.includes(emp.location);
@@ -102,6 +104,19 @@ export class BarchartdatatableComponent implements OnInit {
 
       return locationMatch && statusMatch;
     });
+
+    this.filteredEmployees = this.searchTerm.length < 3
+      ? locationStatusFiltered
+      : locationStatusFiltered.filter((emp) => {
+          return (
+            emp.id.toString().toLowerCase().includes(this.searchTerm.toLowerCase()) ||
+            emp.name.toLowerCase().includes(this.searchTerm.toLowerCase()) ||
+            emp.domain.toLowerCase().includes(this.searchTerm.toLowerCase()) ||
+            emp.location.toLowerCase().includes(this.searchTerm.toLowerCase()) ||
+            emp.machineStatus.toLowerCase().includes(this.searchTerm.toLowerCase()) ||
+            emp.status.toLowerCase().includes(this.searchTerm.toLowerCase())
+          );
+        });
   }
 
   refresh(): void {
@@ -144,27 +159,52 @@ export class BarchartdatatableComponent implements OnInit {
     });
   }
   get totalEmployees(): number {
-    return this.filteredEmployees.length;
+    return this.employees.filter((emp) => {
+      const locationMatch =
+        this.selectedLocations.length === 0 ||
+        this.selectedLocations.includes(emp.location);
+      const statusMatch =
+        this.selectedStatus === 'All' || emp.status === this.selectedStatus;
+      return locationMatch && statusMatch;
+    }).length;
   }
 
   get presentEmployees(): number {
-    return this.filteredEmployees.filter((emp) => emp.status === 'Present')
-      .length;
+    return this.employees.filter((emp) => {
+      const locationMatch =
+        this.selectedLocations.length === 0 ||
+        this.selectedLocations.includes(emp.location);
+      const statusMatch = emp.status === 'Present';
+      return locationMatch && statusMatch;
+    }).length;
   }
 
   get absentEmployees(): number {
-    return this.filteredEmployees.filter((emp) => emp.status === 'Absent')
-      .length;
+    return this.employees.filter((emp) => {
+      const locationMatch =
+        this.selectedLocations.length === 0 ||
+        this.selectedLocations.includes(emp.location);
+      const statusMatch = emp.status === 'Absent';
+      return locationMatch && statusMatch;
+    }).length;
   }
 
   get machineOnCount(): number {
-    return this.filteredEmployees.filter((emp) => emp.machineStatus === 'ON')
-      .length;
+    return this.employees.filter((emp) => {
+      const locationMatch =
+        this.selectedLocations.length === 0 ||
+        this.selectedLocations.includes(emp.location);
+      return locationMatch && emp.machineStatus === 'ON';
+    }).length;
   }
 
   get machineOffCount(): number {
-    return this.filteredEmployees.filter((emp) => emp.machineStatus === 'OFF')
-      .length;
+    return this.employees.filter((emp) => {
+      const locationMatch =
+        this.selectedLocations.length === 0 ||
+        this.selectedLocations.includes(emp.location);
+      return locationMatch && emp.machineStatus === 'OFF';
+    }).length;
   }
 
   exportCurrentData(): void {

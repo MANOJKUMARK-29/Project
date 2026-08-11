@@ -4,6 +4,7 @@
     background: #f4f6fb;
 }
 
+
 .main-content {
     padding: 24px;
 }
@@ -166,13 +167,51 @@
 
     gap:10px;
 
-    flex-wrap:wrap;
+    flex-wrap:nowrap;
+
+    align-items:center;
+
+    justify-content:flex-end;
+
+}
+
+.search-input{
+
+    height:42px;
+
+    width:220px;
+
+    padding:0 12px;
+
+    border:1px solid #ccc;
+
+    border-radius:8px;
+
+    font-size:14px;
+
+    outline:none;
+
+    transition:border-color 0.3s;
+
+    flex-shrink:0;
+
+}
+
+.search-input:focus{
+
+    border-color:#3a3f58;
+
+    box-shadow:0 0 0 2px rgba(58,63,88,0.15);
 
 }
 
 .action-buttons button{
 
     min-width:90px;
+
+    height:42px;
+
+    flex-shrink:0;
 
 }
 
