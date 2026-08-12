@@ -14,7 +14,7 @@ export interface EmployeeData {
   providedIn: 'root'
 })
 export class BarchartdataservicesService {
-  selectedDomain = 'Voltas';
+  selectedDomain = '';
   selectedstatus: 'Present' | 'Absent' = 'Present';
   employees: EmployeeData[] = [];
   constructor(private router: Router) {

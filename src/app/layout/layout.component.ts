@@ -59,4 +59,14 @@ if (!this.barchartDataService.selectedDomain) {
  taskeditOpen(){
   this.router.navigate(['/taskedit']);
  }
+ Home(): void {
+  if (this.currentUser.role === 'ADMIN') {
+      this.barchartDataService.selectedDomain = 'All';
+    } else {
+      this.barchartDataService.selectedDomain = this.currentUser.domain;
+    }
+    this.router.navigateByUrl('/', { skipLocationChange: true }).then(() => {
+      this.router.navigate(['/dashboard']);
+    });
+  }
 }

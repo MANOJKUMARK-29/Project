@@ -129,6 +129,24 @@ export class BarchartComponent implements OnInit {
   // ------------OPTIONS----------------
  public myOptions: ChartConfiguration<'bar'>['options'] = {
     responsive: true,
+    animation: {
+      duration: 1000,
+      easing: 'easeOutQuart',
+    },
+    animations: {
+      // `y` and `base` are pixel values. `from: 0` = canvas TOP (bars drop down).
+      // Instead, start from the BOTTOM pixel of the chart so bars truly grow up.
+      y: {
+        from: (ctx: any) => ctx.chart.scales.y.getPixelForValue(0),
+        duration: 1000,
+        easing: 'easeOutQuart',
+      },
+      base: {
+        from: (ctx: any) => ctx.chart.scales.y.getPixelForValue(0),
+        duration: 1000,
+        easing: 'easeOutQuart',
+      },
+    },
     layout: {
 
     },

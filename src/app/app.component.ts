@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 import { LoginformComponent } from './loginform/loginform.component';
+import { LoadingService } from './services/loading.service';
 
 @Component({
   selector: 'app-root',
@@ -11,4 +12,13 @@ import { LoginformComponent } from './loginform/loginform.component';
 })
 export class AppComponent {
   title = 'project1';
+  loading = false;
+  constructor( private loadingService: LoadingService) {
 }
+ngOnInit() : void {
+  this.loadingService.show();
+  setTimeout(() =>{
+    this.loadingService.hide();
+  }, 1000);
+
+}}
