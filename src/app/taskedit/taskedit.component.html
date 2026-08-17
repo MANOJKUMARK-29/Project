@@ -1,10 +1,21 @@
+<!-- ============================================================================
+     TASK EDIT COMPONENT TEMPLATE
+     ============================================================================
+     Employee task management interface with:
+     - Searchable/sortable employee table with radio selection
+     - Right-side drawer for editing task assignments
+     - Toolbar with Edit/Delete actions
+     ============================================================================ -->
+
 <main>
   <div class="task-container">
+    <!-- Page Header with Toolbar -->
     <div class="page-header">
       <div>
         <h2>Task Editor</h2>
       </div>
       <div class="toolbar">
+        <!-- Edit Button - Opens drawer for selected employee -->
         <button
           pButton
           label="Edit"
@@ -13,6 +24,7 @@
           (click)="editEmployee()"
           [disabled]="!selectedEmployee"
         ></button>
+        <!-- Delete Button - Removes selected employee after confirmation -->
         <button
           pButton
           label="Delete"
@@ -24,6 +36,7 @@
       </div>
     </div>
 
+    <!-- Employee Table with Search and Selection -->
     <p-table
       #dt
       responsiveLayout="scroll"
@@ -35,6 +48,7 @@
       [value]="filteredEmployees"
       [tableStyle]="{ 'min-width': '100%' }"
     >
+      <!-- Table Header with Search Input -->
       <ng-template pTemplate="header">
         <tr>
           <th>Select</th>
@@ -42,6 +56,7 @@
           <th>
             <div class="labelsearch">
               <span>Employee</span>
+              <!-- Search input filters table by employee name -->
               <input
                 pInputText
                 type="text"
@@ -58,14 +73,17 @@
         </tr></ng-template
       >
 
+      <!-- Table Body - Click row to select employee -->
       <ng-template pTemplate="body" let-emp>
         <tr
           (click)="selectEmployee(emp)"
           [class.selected-row]="selectedEmployee?.id === emp.id"
         >
+          <!-- Radio button for single selection -->
           <td style="width: 50px; text-align: center">
             <p-tableRadioButton [value]="emp"></p-tableRadioButton>
           </td>
+          <!-- Employee Name -->
           <td>
             <div class="employee-name">
               {{ emp.employee }}
@@ -73,17 +91,20 @@
             </div>
           </td>
 
+          <!-- Domain Badge -->
           <td>
             <span class="domain-badge">
               {{ emp.domain }}
             </span>
           </td>
 
+          <!-- Assigned Tasks as Chips -->
           <td>
             <div class="task-chip-container">
               <div class="task-chip" *ngFor="let task of emp.tasks">
                 {{ task }}
-                              <button    pButton
+                <!-- Remove task button -->
+                <button    pButton
     icon="pi pi-times"
     class="taskbtn"
      severity="secondary"
@@ -100,11 +121,13 @@
     </p-table>
   </div>
 
+  <!-- Right-side Drawer for Task Editing -->
   <p-drawer [(visible)]="visible" position="right" [style]="{ width: '520px' }">
     <div class="drawer-title">
       <h2>Edit Employee Tasks</h2>
     </div>
 
+    <!-- Employee Information (Read-only) -->
     <!-- Employee Information -->
 
     <div class="employee-grid">
@@ -131,6 +154,7 @@
       </div>
     </div>
 
+    <!-- Available Tasks Grid - Click to toggle selection -->
     <h3 class="task-heading">Available Tasks</h3>
 
     <div class="task-grid">
@@ -144,6 +168,7 @@
       </div>
     </div>
 
+    <!-- Drawer Footer Actions -->
     <div class="drawer-footer">
       <button
         pButton

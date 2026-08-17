@@ -32,6 +32,7 @@
     "jspdf-autotable": "^5.0.8",
     "ng-multiselect-dropdown": "^1.0.0",
     "ng2-charts": "^6.0.1",
+    "ngx-spinner": "^18.0.0",
     "primeflex": "^4.0.0",
     "primeicons": "^8.0.0",
     "primeng": "^18.0.2",

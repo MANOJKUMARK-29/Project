@@ -1,107 +1,172 @@
-<div class="charts-mainpage">
-  <div class="chart-card">
+<!-- ============================================================================
+     BARCHART COMPONENT TEMPLATE
+     ============================================================================
+     Attendance dashboard with:
+     - Bar chart (Machine ON/OFF status by location)
+     - Pie chart (Present/Absent status)
+     - Data table with PDF/Excel export
+     ============================================================================ -->
 
-
-    <div class="chart-container" >
-      <div class="export-buttons-bar">
-        <h2>Machine Status</h2>
-        <button type="button" class="btn btn-danger"  title="Download PDF" id="barchart" (click)="downloadBarPdf()">
-          <i class="bi bi-file-earmark-pdf"></i>
-        </button>
-    </div>
-      <canvas id="barChart" class="bar-chart" baseChart [data]="myData" [options]="myOptions" [type]="'bar'">
-      </canvas>
-    </div>
-  </div>
-
-  <div class="piechart-card">
-
-    <div class="piechart-container" >
-      <div class="export-buttons-pie">
-        <h2>Attendance Status</h2>
-        <button type="button" class="btn btn-danger"  title="Download PDF" (click)="downloadPiePdf()">
-          <i class="bi bi-file-earmark-pdf"></i>
-
-        </button>
-    </div>
-
-      <canvas id="pieChart" class="pie-chart" baseChart [data]="pieChartData" [options]="pieChartOptions" [plugins]="pieChartPlugins"
-        [type]="pieChartType" (chartClick)="onPiechartClick($event)">
-      </canvas>
-
-    </div>
-  </div>
-</div>
-<div class="table-charts-layout">
-  <!-- <div class="attendance-table" id="table"> -->
-    <div class="export-buttons-table">
-      <h2 class="table-head">Machine Status Data</h2>
-      <div class="table-action-buttons">
-        <button type="button" class="btn btn-danger" title="Download PDF" (click)="downloadTabPdf()">
-          <i class="bi bi-file-earmark-pdf"></i>
-        </button>
-        <button type="button" class="btn btn-success" title="Download xls" (click)="downloadTableExcel()">
-          <i class="bi bi-file-earmark-excel"></i>
-        </button>
+<div class="dashboard-content">
+  <div class="charts-mainpage">
+    <!-- Bar Chart Card - Machine Status by Location -->
+    <div class="chart-card">
+      <!-- Spinner shown while bar chart loads -->
+      <div class="chart-loader" *ngIf="isBarChartLoading">
+        <div class="chart-spinner"></div>
+      </div>
+      <!-- Bar Chart content shown after loading -->
+      <div class="chart-container" *ngIf="!isBarChartLoading">
+        <div class="export-buttons-bar">
+          <h2>Machine Status</h2>
+          <!-- PDF Export Button with Loading Tooltip -->
+          <div class="pdf-button-wrapper" #barPdfButtonWrapper>
+            <button type="button" class="btn btn-danger" (click)="downloadBarPdf()" [disabled]="isGeneratingBarPdf" id="barchart">
+              <i *ngIf="!isGeneratingBarPdf" class="bi bi-file-earmark-pdf"></i>
+              <i *ngIf="isGeneratingBarPdf" class="pi pi-spin pi-spinner"></i>
+            </button>
+            <!-- "Generating PDF..." Tooltip - Position based on screen size -->
+            <div class="pdf-tooltip" *ngIf="isGeneratingBarPdf" [class.tooltip-top]="tooltipPosition === 'top'" [class.tooltip-bottom]="tooltipPosition === 'bottom'">
+              Generating PDF...
+            </div>
+          </div>
+      </div>
+        <!-- Bar Chart Canvas -->
+        <canvas  id="barChart" class="bar-chart" baseChart [data]="myData" [options]="myOptions" [type]="'bar'">
+        </canvas>
       </div>
     </div>
-    <div id="tableXl">
-    <p-table class="table" #tbl [value]="tableData" [tableStyle]="{'min-width':'60rem'}" responsiveLayout="scroll"
-      stripedRows="true" showGridlines="true">
-      <ng-template pTemplate="header">
-        <tr>
-          <th pSortableColumn="SNo">S.No<p-sortIcon field="SNo"></p-sortIcon></th>
-          <th pSortableColumn="Location">Location<p-sortIcon field="Location"></p-sortIcon></th>
-          <th pSortableColumn="MachineOn">Machine ON<p-sortIcon field="MachineOn"></p-sortIcon></th>
-          <th pSortableColumn="MachineOff">Machine OFF<p-sortIcon field="MachineOff"></p-sortIcon></th>
-          <th pSortableColumn="PresentEmployees">Present<p-sortIcon field="PresentEmployees"></p-sortIcon></th>
-          <th pSortableColumn="AbsentEmployees">Absent<p-sortIcon field="AbsentEmployees"></p-sortIcon></th>
-          <th pSortableColumn="totalEmployees">Total Employees<p-sortIcon field="totalEmployees"></p-sortIcon></th>
-        </tr>
-        <tr>
-              <td><input pInputText
-               type="text"
-               (input)="tbl.filter($any($event.target).value,'SNo','equals')"
-               placeholder="Search SNo"></td>
-               <td><input pInputText
-               type="text"
-               (input)="tbl.filter($any($event.target).value,'Location','contains')"
-               placeholder="Search Location"></td>
-               <td><input pInputText
-               type="text"
-               (input)="tbl.filter($any($event.target).value,'MachineOn','equals')"
-               placeholder="Search MachineOn"></td>
-               <td><input pInputText
-               type="text"
-               (input)="tbl.filter($any($event.target).value,'MachineOff','equals')"
-               placeholder="Search MachineOff"></td>
-               <td><input pInputText
-               type="text"
-               (input)="tbl.filter($any($event.target).value,'PresentEmployees','equals')"
-               placeholder="Search PresentEmployees"></td>
-               <td><input pInputText
-               type="text"
-               (input)="tbl.filter($any($event.target).value,'AbsentEmployees','equals')"
-               placeholder="Search AbsentEmployees"></td>
-               <td><input pInputText
-               type="text"
-               (input)="tbl.filter($any($event.target).value,'totalEmployees','equals')"
-               placeholder="Search totalEmployees"></td>
+
+    <!-- Pie Chart Card - Attendance Status -->
+    <div class="piechart-card">
+      <!-- Spinner shown while pie chart loads -->
+      <div class="chart-loader" *ngIf="isPieChartLoading">
+        <div class="chart-spinner"></div>
+      </div>
+      <!-- Pie Chart content shown after loading -->
+      <div class="piechart-container" *ngIf="!isPieChartLoading">
+        <div class="export-buttons-pie">
+          <h2>Attendance Status</h2>
+          <!-- PDF Export Button with Loading Tooltip -->
+          <div class="pdf-button-wrapper" #piePdfButtonWrapper>
+            <button type="button" class="btn btn-danger" (click)="downloadPiePdf()" [disabled]="isGeneratingPiePdf">
+              <i *ngIf="!isGeneratingPiePdf" class="bi bi-file-earmark-pdf"></i>
+              <i *ngIf="isGeneratingPiePdf" class="pi pi-spin pi-spinner"></i>
+            </button>
+            <!-- "Generating PDF..." Tooltip - Position based on screen size -->
+            <div class="pdf-tooltip" *ngIf="isGeneratingPiePdf" [class.tooltip-top]="tooltipPosition === 'top'" [class.tooltip-bottom]="tooltipPosition === 'bottom'">
+              Generating PDF...
+            </div>
+          </div>
+      </div>
+        <!-- Pie Chart Canvas - Click navigates to attendance details -->
+        <canvas id="pieChart" class="pie-chart" baseChart [data]="pieChartData" [options]="pieChartOptions" [plugins]="pieChartPlugins"
+          [type]="pieChartType" (chartClick)="onPiechartClick($event)">
+        </canvas>
+      </div>
+    </div>
+  </div>
+
+  <!-- Data Table Section -->
+  <div class="table-charts-layout">
+    <!-- Spinner shown while table loads -->
+    <div class="chart-loader" *ngIf="isTableLoading">
+      <div class="chart-spinner"></div>
+    </div>
+    <!-- Table content shown after loading -->
+    <div *ngIf="!isTableLoading">
+      <!-- Table Header with Export Buttons -->
+        <div class="export-buttons-table">
+          <h2 class="table-head">Machine Status Data</h2>
+          <div class="table-action-buttons">
+            <!-- PDF Export Button with Loading Tooltip -->
+            <div class="pdf-button-wrapper" #tabPdfButtonWrapper>
+              <button type="button" class="btn btn-danger" (click)="downloadTabPdf()" [disabled]="isGeneratingTabPdf">
+                <i *ngIf="!isGeneratingTabPdf" class="bi bi-file-earmark-pdf"></i>
+                <i *ngIf="isGeneratingTabPdf" class="pi pi-spin pi-spinner"></i>
+              </button>
+              <!-- "Generating PDF..." Tooltip - Position based on screen size -->
+              <div class="pdf-tooltip" *ngIf="isGeneratingTabPdf" [class.tooltip-top]="tooltipPosition === 'top'" [class.tooltip-bottom]="tooltipPosition === 'bottom'">
+                Generating PDF...
+              </div>
+            </div>
+            <!-- Excel Export Button with Loading Tooltip -->
+            <div class="excel-button-wrapper" #excelButtonWrapper>
+              <button type="button" class="btn btn-success" (click)="downloadTableExcel()" [disabled]="isGeneratingExcel">
+                <i *ngIf="!isGeneratingExcel" class="bi bi-file-earmark-excel"></i>
+                <i *ngIf="isGeneratingExcel" class="pi pi-spin pi-spinner"></i>
+              </button>
+              <!-- "Generating Excel..." Tooltip - Position based on screen size -->
+              <div class="excel-tooltip" *ngIf="isGeneratingExcel" [class.tooltip-top]="tooltipPosition === 'top'" [class.tooltip-bottom]="tooltipPosition === 'bottom'">
+                Generating Excel...
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Attendance Data Table -->
+        <div id="tableXl">
+        <p-table class="table" #tbl [value]="tableData" [tableStyle]="{'min-width':'60rem'}" responsiveLayout="scroll"
+          stripedRows="true" showGridlines="true">
+          <!-- Table Header with Sortable Columns and Search Inputs -->
+          <ng-template pTemplate="header">
+            <tr>
+              <th pSortableColumn="SNo">S.No<p-sortIcon field="SNo"></p-sortIcon></th>
+              <th pSortableColumn="Location">Location<p-sortIcon field="Location"></p-sortIcon></th>
+              <th pSortableColumn="MachineOn">Machine ON<p-sortIcon field="MachineOn"></p-sortIcon></th>
+              <th pSortableColumn="MachineOff">Machine OFF<p-sortIcon field="MachineOff"></p-sortIcon></th>
+              <th pSortableColumn="PresentEmployees">Present<p-sortIcon field="PresentEmployees"></p-sortIcon></th>
+              <th pSortableColumn="AbsentEmployees">Absent<p-sortIcon field="AbsentEmployees"></p-sortIcon></th>
+              <th pSortableColumn="totalEmployees">Total Employees<p-sortIcon field="totalEmployees"></p-sortIcon></th>
             </tr>
-      </ng-template>
+            <!-- Search Filter Row -->
+            <tr>
+                  <td><input pInputText
+                   type="text"
+                   (input)="tbl.filter($any($event.target).value,'SNo','equals')"
+                   placeholder="Search SNo"></td>
+                   <td><input pInputText
+                   type="text"
+                   (input)="tbl.filter($any($event.target).value,'Location','contains')"
+                   placeholder="Search Location"></td>
+                   <td><input pInputText
+                   type="text"
+                   (input)="tbl.filter($any($event.target).value,'MachineOn','equals')"
+                   placeholder="Search MachineOn"></td>
+                   <td><input pInputText
+                   type="text"
+                   (input)="tbl.filter($any($event.target).value,'MachineOff','equals')"
+                   placeholder="Search MachineOff"></td>
+                   <td><input pInputText
+                   type="text"
+                   (input)="tbl.filter($any($event.target).value,'PresentEmployees','equals')"
+                   placeholder="Search PresentEmployees"></td>
+                   <td><input pInputText
+                   type="text"
+                   (input)="tbl.filter($any($event.target).value,'AbsentEmployees','equals')"
+                   placeholder="Search AbsentEmployees"></td>
+                   <td><input pInputText
+                   type="text"
+                   (input)="tbl.filter($any($event.target).value,'totalEmployees','equals')"
+                   placeholder="Search totalEmployees"></td>
+                </tr>
+          </ng-template>
 
-      <ng-template pTemplate="body" let-row>
-        <tr>
-          <td>{{ row.SNo }}</td>
-          <td>{{ row.Location }}</td>
-          <td>{{ row.MachineOn }}</td>
-          <td>{{ row.MachineOff }}</td>
-          <td>{{ row.PresentEmployees }}</td>
-          <td>{{ row.AbsentEmployees }}</td>
-          <td>{{ row.totalEmployees }}</td>
-        </tr>
-      </ng-template>
-    </p-table>
+          <!-- Table Body - Data Rows -->
+          <ng-template pTemplate="body" let-row>
+            <tr>
+              <td>{{ row.SNo }}</td>
+              <td>{{ row.Location }}</td>
+              <td>{{ row.MachineOn }}</td>
+              <td>{{ row.MachineOff }}</td>
+              <td>{{ row.PresentEmployees }}</td>
+              <td>{{ row.AbsentEmployees }}</td>
+              <td>{{ row.totalEmployees }}</td>
+            </tr>
+          </ng-template>
+        </p-table>
 
+      </div>
+    </div>
   </div>
 </div>

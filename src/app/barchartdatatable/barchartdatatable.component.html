@@ -1,7 +1,9 @@
 <main class="main-content">
+  <!-- Page Header with Summary Cards -->
   <div class="header">
     <h2>{{ selectedDomain }} Attendance Report</h2>
 
+    <!-- Summary Cards - Quick Statistics -->
     <div class="summary-cards">
       <div class="card">
         <h5>Total Employees</h5>
@@ -31,8 +33,10 @@
   </div>
 
   <section class="table-layout">
+    <!-- Toolbar with Filters and Export Buttons -->
     <div class="toolbar">
       <div class="filters">
+        <!-- Location Multi-Select Filter -->
         <div class="filter-box">
           <label>Location</label>
           <p-multiSelect
@@ -47,6 +51,7 @@
             [maxSelectedLabels]="100"
 
           >
+            <!-- Select All Header -->
             <ng-template pTemplate="header">
 
               <div class="custom-header">
@@ -63,6 +68,7 @@
           </p-multiSelect>
         </div>
 
+        <!-- Status Dropdown Filter -->
         <div class="filter-box">
           <label>Status</label>
 
@@ -80,7 +86,9 @@
         </div>
       </div>
 
+      <!-- Action Buttons - Search and Export -->
       <div class="action-buttons">
+        <!-- Global Search Input -->
         <input
           pInputText
           type="text"
@@ -89,18 +97,36 @@
           (input)="filterEmployees()"
           class="search-input"
         />
-        <button class="btn btn-success" (click)="downloadExcel()">
-          <i class="bi bi-file-earmark-excel"></i>
-        </button>
+        <!-- Excel Export Button with Loading Tooltip -->
+        <div class="excel-button-wrapper" #excelButtonWrapper>
+          <button type="button" class="btn btn-success" (click)="downloadTableExcel()" [disabled]="isGeneratingExcel">
+            <i *ngIf="!isGeneratingExcel" class="bi bi-file-earmark-excel"></i>
+            <i *ngIf="isGeneratingExcel" class="pi pi-spin pi-spinner"></i>
+          </button>
+          <!-- "Generating Excel..." Tooltip - Position based on screen size -->
+          <div class="excel-tooltip" *ngIf="isGeneratingExcel" [class.tooltip-top]="tooltipPosition === 'top'" [class.tooltip-bottom]="tooltipPosition === 'bottom'">
+            Generating Excel...
+          </div>
+        </div>
 
-        <button class="btn btn-danger" (click)="downloadPdf()">
-          <i class="bi bi-file-earmark-pdf"></i>
-        </button>
+        <!-- PDF Export Button with Loading Tooltip -->
+        <div class="pdf-button-wrapper" #pdfButtonWrapper>
+          <button type="button" class="btn btn-danger" (click)="downloadPdf()" [disabled]="isGeneratingPdf" #pdfButton>
+            <i *ngIf="!isGeneratingPdf" class="bi bi-file-earmark-pdf"></i>
+            <i *ngIf="isGeneratingPdf" class="pi pi-spin pi-spinner"></i>
+          </button>
+          <!-- "Generating PDF..." Tooltip - Position based on screen size -->
+          <div class="pdf-tooltip" *ngIf="isGeneratingPdf" [class.tooltip-top]="tooltipPosition === 'top'" [class.tooltip-bottom]="tooltipPosition === 'bottom'">
+            Generating PDF...
+          </div>
+        </div>
 
+        <!-- Back Button -->
         <button class="btn btn-secondary" (click)="back()">Back</button>
       </div>
     </div>
 
+    <!-- Employee Attendance Table -->
     <div id="AttendanceTable" class="attendance-table">
       <p-table
         #dt
@@ -111,6 +137,7 @@
         showGridlines="true"
         sortMode="multiple"
       >
+        <!-- Table Header with Sortable Columns -->
         <ng-template pTemplate="header">
           <tr>
             <th pSortableColumn="id">
@@ -150,6 +177,7 @@
             </th>
           </tr>
 
+          <!-- Search Filter Row -->
           <tr>
             <td>
               <input
@@ -220,6 +248,7 @@
           </tr>
         </ng-template>
 
+        <!-- Table Body - Employee Data Rows -->
         <ng-template pTemplate="body" let-employee>
           <tr>
             <td>
@@ -238,6 +267,7 @@
               {{ employee.location }}
             </td>
 
+            <!-- Machine Status with Color Coding -->
             <td>
               <span
                 [class.text-success]="employee.machineStatus === 'ON'"
@@ -247,6 +277,7 @@
               </span>
             </td>
 
+            <!-- Attendance Status with Color Coding -->
             <td>
               <span
                 [class.text-success]="employee.status === 'Present'"
@@ -258,6 +289,7 @@
           </tr>
         </ng-template>
 
+        <!-- Empty State Message -->
         <ng-template pTemplate="emptymessage">
           <tr>
             <td colspan="6" class="text-center">No Employees Found</td>

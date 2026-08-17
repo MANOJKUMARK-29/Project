@@ -1,32 +1,42 @@
-  <div class="dashboard-shell" [class.sidebar-expanded]="sidebar">
+<!-- ============================================================================
+     LAYOUT COMPONENT TEMPLATE
+     ============================================================================
+     Main application layout with:
+     - Collapsible sidebar navigation
+     - Domain-based report access control
+     - User header with domain selector
+     - Router outlet for child routes
+     ============================================================================ -->
 
- <!-- Left sidebar -->
+<!-- Main Dashboard Shell - Sidebar expanded state controlled by [class.sidebar-expanded] -->
+<div class="dashboard-shell" [class.sidebar-expanded]="sidebar">
+
+  <!-- Left Sidebar Navigation -->
   <aside class="sidebar" [class.expanded]="sidebar">
 
-    <!-- Sidebar heading -->
+    <!-- Sidebar Header with Toggle Button -->
     <div class="sidebar-header">
-  <button
-    type="button"
-    class="sidebar-toggle-button"
-    (click)="expand()"
+      <button
+        type="button"
+        class="sidebar-toggle-button"
+        (click)="expand()"
 
-  >
-  <!-- [class.bi-bluesky]="!sidebar" -->
-    <i
-      class="bi"
+      >
+        <!-- Toggle Icon - Changes based on sidebar state -->
+        <i
+          class="bi"
+          [class.bi-bluesky]="!sidebar"
+        ></i>
+      </button>
 
-      [class.bi-bluesky]="!sidebar"
-    ></i>
-  </button>
+      <span class="sidebar-title">APP</span>
+    </div>
 
-  <span class="sidebar-title">APP</span>
-</div>
-
-    <!-- Pure CSS menu -->
+    <!-- Pure CSS Navigation Menu -->
     <nav class="pure-menu" aria-label="Main navigation">
       <ul class="pure-menu-list">
 
-        <!-- Reports menu -->
+        <!-- Reports Menu with Sub-items -->
         <li
           class="pure-menu-item
                  pure-menu-has-children
@@ -38,8 +48,7 @@
             <i class="bi bi-chevron-right menu-arrow"></i>
           </div>
 
-
-          <!-- Reports children -->
+          <!-- Reports Sub-menu -->
           <ul class="pure-menu-children">
 
             <li class="pure-menu-item">
@@ -54,10 +63,10 @@
               </a>
             </li>
 
-            <!-- Report 3 menu -->
+            <!-- Report 3 with Nested Sub-menu -->
             <li
               class="pure-menu-item
-                     pure-menu-has-children
+                     pure-menu-has-cSubhildren
                      pure-menu-allow-hover"
             >
               <div class="pure-menu-link">
@@ -65,7 +74,7 @@
                 <i class="bi bi-chevron-right menu-arrow"></i>
               </div>
 
-              <!-- Report 3.1 child -->
+              <!-- Report 3.1 Child -->
               <ul class="pure-menu-children">
                 <li class="pure-menu-item">
                   <a href="#" class="pure-menu-link">
@@ -75,36 +84,41 @@
               </ul>
             </li>
 
-            <!-- Domain menus -->
-               <li
+            <!-- Domain-based Report Links - Shown based on user role/domain -->
+            <!-- "All" Domain - Only for ADMIN users -->
+            <li
               class="pure-menu-item"
-              *ngIf="showdomainreport('All')"
+              *ngIf="!loading && showdomainreport('All')"
             >
               <a (click)="openReport('All')" class="pure-menu-link">
                 All
               </a>
             </li>
+
+            <!-- Voltas Domain -->
             <li
               class="pure-menu-item"
-              *ngIf="showdomainreport('Voltas')"
+              *ngIf="!loading && showdomainreport('Voltas')"
             >
               <a (click)="openReport('Voltas')" class="pure-menu-link">
                 Voltas
               </a>
             </li>
 
+            <!-- SMS Domain -->
             <li
               class="pure-menu-item"
-              *ngIf="showdomainreport('Sms')"
+              *ngIf="!loading && showdomainreport('Sms')"
             >
               <a (click)="openReport('Sms')" class="pure-menu-link">
                 SMS
               </a>
             </li>
 
+            <!-- TVS Domain -->
             <li
               class="pure-menu-item"
-              *ngIf="showdomainreport('Tvs')"
+              *ngIf="!loading && showdomainreport('Tvs')"
             >
               <a (click)="openReport('Tvs')" class="pure-menu-link">
                 TVS
@@ -113,6 +127,8 @@
 
           </ul>
         </li>
+
+        <!-- Task Edit Menu Item -->
         <li>
           <div class="pure-menu-link menu-parent-link">
             <i class="bi bi-file-earmark-text" (click) ="taskeditOpen()"></i>
@@ -124,7 +140,7 @@
       </ul>
     </nav>
 
-    <!-- Fixed bottom logout -->
+    <!-- Fixed Bottom Logout Button -->
     <button
       type="button"
       class="logout-button"
@@ -136,13 +152,17 @@
 
   </aside>
 
+  <!-- Main Content Area -->
   <main class="main-content">
+    <!-- User Header - Shows when user is logged in -->
     <header class="user-header" *ngIf="currentUser">
       <div class="header-left">
-        <a class="home-link" aria-current="page" (click)="Home()"><i class="bi bi-house"></i>Home</a>
+        <!-- Home Link - Resets to user's default domain -->
+        <a class="home-link" aria-current="page" (click)="Home()" [class.disabled]="loading"><i class="bi bi-house"></i>Home</a>
       </div>
 
       <div class="header-right">
+        <!-- Domain Selector Dropdown (Display only) -->
         <select class="domain-select">
           <option>{{ currentUser.role === 'ADMIN' ? 'Administrator' : currentUser.domain }}</option>
           <option disabled>VOLTAS</option>
@@ -150,6 +170,7 @@
           <option disabled>TVS</option>
         </select>
 
+        <!-- User Details -->
         <div class="user-details">
           <p class="user-name">{{ currentUser.name }}</p>
           <p class="user-email">{{ currentUser.email }}</p>
@@ -157,10 +178,8 @@
       </div>
     </header>
 
-
+    <!-- Router Outlet - Renders child components (Dashboard, TaskEdit, etc.) -->
     <router-outlet></router-outlet>
   </main>
 
-
-  </div>
-
+</div>

@@ -4,6 +4,7 @@ import { BarchartComponent } from '../barchart/barchart.component';
 import { TableModule } from 'primeng/table';
 import { Router } from '@angular/router';
 import { BarchartdataservicesService } from '../services/barchartdataservices.service';
+
 @Component({
   selector: 'app-dashboard',
   standalone: true,
@@ -12,12 +13,18 @@ import { BarchartdataservicesService } from '../services/barchartdataservices.se
   styleUrl: './dashboard.component.css',
 })
 export class DashboardComponent implements OnInit {
+   
+  constructor(
+    private router: Router,
+    private barchartDataService: BarchartdataservicesService
+  ) {}
 
-
-  constructor(private router: Router, private barchartDataService: BarchartdataservicesService) {}
-
+   
+  // LIFECYCLE HOOKS
   ngOnInit(): void {
-    console.log("Dashboard Domain:", this.barchartDataService.selectedDomain);
+    console.log('Dashboard Domain:', this.barchartDataService.selectedDomain);
+
+    // AUTHENTICATION CHECK
     const user = localStorage.getItem('currentUser');
     if (!user) {
       this.router.navigate(['/loginform']);

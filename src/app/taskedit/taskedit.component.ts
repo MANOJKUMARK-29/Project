@@ -7,13 +7,13 @@ import { DrawerModule } from 'primeng/drawer';
 import { ButtonModule } from 'primeng/button';
 import { InputTextModule } from 'primeng/inputtext';
 
+ 
+// INTERFACES
+ 
 interface EmployeeTask {
   id: number;
-
   employee: string;
-
   domain: string;
-
   tasks: string[];
 }
 
@@ -32,12 +32,17 @@ interface EmployeeTask {
   styleUrl: './taskedit.component.css',
 })
 export class TaskeditComponent {
-  visible = false;
 
-  searchText = '';
+   
+  // COMPONENT STATE
+   
+  visible = false;                    // Drawer visibility
+  searchText = '';                    // Search filter text
+  selectedEmployee: EmployeeTask | null = null;  // Currently selected employee
 
-  selectedEmployee!: EmployeeTask | null;
-
+   
+  // TASK OPTIONS
+   
   availableTasks: string[] = [
     'Dashboard',
     'Attendance',
@@ -56,8 +61,11 @@ export class TaskeditComponent {
     'Admin Panel',
   ];
 
-  selectedTasks: string[] = [];
+  selectedTasks: string[] = [];       // Tasks selected for current employee
 
+   
+  // EMPLOYEE DATA
+   
   employees: EmployeeTask[] = [
     {
       id: 1,
@@ -65,14 +73,12 @@ export class TaskeditComponent {
       domain: 'Voltas',
       tasks: ['Dashboard', 'Attendance', 'Reports'],
     },
-
     {
       id: 2,
       employee: 'Manoj Kumar',
       domain: 'SMS',
       tasks: ['Dashboard', 'Machine Status'],
     },
-
     {
       id: 3,
       employee: 'Manoj',
@@ -81,11 +87,12 @@ export class TaskeditComponent {
     },
   ];
 
+   
+  // COMPUTED PROPERTIES
   get filteredEmployees(): EmployeeTask[] {
     if (!this.searchText.trim()) {
       return this.employees;
     }
-
     return this.employees.filter(
       (emp) =>
         emp.employee.toLowerCase().includes(this.searchText.toLowerCase()) ||
@@ -93,41 +100,38 @@ export class TaskeditComponent {
     );
   }
 
-  selectEmployee(emp: EmployeeTask) {
+   
+  // EMPLOYEE SELECTION
+  selectEmployee(emp: EmployeeTask): void {
     this.selectedEmployee = emp;
   }
 
-  editEmployee() {
-    if (!this.selectedEmployee) {
-      return;
-    }
+   
+  // DRAWER ACTIONS
+  editEmployee(): void {
+    if (!this.selectedEmployee) return;
 
     this.selectedTasks = [...this.selectedEmployee.tasks];
-
     this.visible = true;
   }
 
-  deleteEmployee() {
-    if (!this.selectedEmployee) {
-      return;
-    }
+  deleteEmployee(): void {
+    if (!this.selectedEmployee) return;
 
     const confirmDelete = confirm(`Delete ${this.selectedEmployee.employee}?`);
-
-    if (!confirmDelete) {
-      return;
-    }
+    if (!confirmDelete) return;
 
     this.employees = this.employees.filter(
       (emp) => emp.id !== this.selectedEmployee!.id,
     );
-
     this.selectedEmployee = null;
   }
 
-  toggleTask(task: string) {
-    const index = this.selectedTasks.indexOf(task);
+   
+  // TASK MANAGEMENT
 
+  toggleTask(task: string): void {
+    const index = this.selectedTasks.indexOf(task);
     if (index > -1) {
       this.selectedTasks.splice(index, 1);
     } else {
@@ -139,14 +143,22 @@ export class TaskeditComponent {
     return this.selectedTasks.includes(task);
   }
 
-  saveTasks() {
+  /**
+   * Saves the selected tasks to the employee
+   * and closes the drawer
+   */
+  saveTasks(): void {
     if (!this.selectedEmployee) return;
 
     this.selectedEmployee.tasks = [...this.selectedTasks];
-
     this.visible = false;
   }
-  removetask(){
+
+  /**
+   * Removes the last task from selected employee
+   * (Unused/legacy method)
+   */
+  removetask(): void {
     this.selectedEmployee?.tasks.pop();
   }
 }

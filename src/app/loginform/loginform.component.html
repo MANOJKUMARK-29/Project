@@ -1,8 +1,20 @@
+<!-- ============================================================================
+     LOGIN FORM COMPONENT TEMPLATE
+     ============================================================================
+     User authentication form with:
+     - Email and password inputs with validation
+     - Password visibility toggle
+     - Success toast notification on login
+     ============================================================================ -->
+
+<!-- Login Card Container - Centered on screen -->
 <div class="container-fluid d-flex justify-content-center align-items-center vh-100 ">
   <div class="card shadow p-4 login-card">
     <h2 class="text-center mb-4">Login</h2>
 
+    <!-- Login Form with Angular validation -->
     <form #loginForm="ngForm" (ngSubmit)="login(loginForm)" >
+      <!-- Email Input Field -->
       <div class="row mb-3 align-items-center" >
         <label for="email" class="col-3 col-form-label">E-mail<span class="text-danger">*</span></label>
          <div class="col-9">
@@ -18,17 +30,21 @@
         [ngClass]="{
           'is-invalid': emailRef.invalid && loginForm.submitted, 'is-valid': emailRef.valid && loginForm.touched
         }">
+        <!-- Email Validation Messages -->
         <div class="text-danger mt-1" *ngIf="emailRef.invalid && loginForm.submitted">
           <small *ngIf="emailRef.errors?.['required']">E-mail is required</small>
           <small *ngIf="emailRef.errors?.['email']">Enter a valid email</small>
         </div>
         </div>
         </div>
+
+        <!-- Password Input Field with Visibility Toggle -->
         <div class="position-relative row mb-4 align-items-center">
           <label for="password" class="col-3 col-form-label">Password<span class="text-danger">*</span></label>
         <div class="col-9">
           <div class="password-box">
           <input id="password" [type]="viewpassword ? 'text' : 'password'" class="form-control" name="password" required minlength="8" placeholder="Enter your password" title="Password" [(ngModel)]="password" #passwordRef ="ngModel" [ngClass]="{'is-invalid': passwordRef.invalid && passwordRef.touched, 'is-valid': passwordRef.valid && passwordRef.touched}">
+          <!-- Password Visibility Toggle Button -->
         <span class="eye-icon" (click)="showpassword()">
     <i class="bi"
        [ngClass]="viewpassword ? 'bi-eye-slash-fill' : 'bi-eye-fill'">
@@ -36,6 +52,7 @@
   </span>
 
         </div>
+      <!-- Password Validation Messages -->
       <div class="text-danger mt-1 " *ngIf='passwordRef.invalid && loginForm.submitted'>
         <small *ngIf="passwordRef.errors?.['required']">Password is required</small>
         <small *ngIf="passwordRef.errors?.['minlength']">Enter a valid password</small>
@@ -43,13 +60,15 @@
       </div>
       </div>
 
-
+      <!-- Submit Button -->
       <button class="btn btn-primary justify-content-center" type="submit">Login</button>
       <p class="text-center mt-3">Have you <a href="#">Registered?</a></p>
     </form>
 
   </div>
 </div>
+
+<!-- Success Toast Notification - Shown after successful login -->
 <div class="toast-container position-fixed top-0 end-0 p-3 align-items-center" role="alert" aria-live="assertive" aria-atomic="true">
   <div class="toast show text-bg-success" *ngIf="showtoast">
     <div class="d-flex">
@@ -60,4 +79,4 @@
     <button type="button" class="btn-close me-2 m-auto" aria-label="Close" (click)="closeToast()"></button>
   </div>
   </div>
-
+</div>

@@ -1,8 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, HostListener } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { MultiSelectModule } from 'primeng/multiselect';
-import { TableModule } from 'primeng/table';
+import { Table, TableModule } from 'primeng/table';
 import { InputTextModule } from 'primeng/inputtext';
 import { CheckboxModule } from 'primeng/checkbox';
 import { Router } from '@angular/router';
@@ -31,19 +31,23 @@ import {
   styleUrl: './barchartdatatable.component.css',
 })
 export class BarchartdatatableComponent implements OnInit {
-  employees: EmployeeData[] = [];
+  // DATA PROPERTIES
+  employees: EmployeeData[] = [];              // All employees for selected domain
+  filteredEmployees: EmployeeData[] = [];      // Filtered employees for display
+  // FILTER STATE
+  allSelected = false;                         // Select all locations checkbox
+  selectedLocation = 'All';                    // Single location filter (legacy)
+  selectedLocations: string[] = [];            // Multi-select location filter
+  selectedStatus: 'All' | 'Present' | 'Absent' = 'All';  // Status filter
+  selectedDomain = '';                         // Current domain from service
+  searchTerm = '';                             // Global search term
 
-  filteredEmployees: EmployeeData[] = [];
-  allSelected = false;
-  selectedLocation = 'All';
-  selectedLocations: string[] = [];
+  // EXPORT STATE
+  isGeneratingPdf = false;                     // PDF generation loading state
+  isGeneratingExcel = false;                   // Excel generation loading state
+  tooltipPosition: 'top' | 'bottom' = 'top';   // Responsive tooltip position
 
-  selectedStatus: 'All' | 'Present' | 'Absent' = 'All';
-
-  selectedDomain = '';
-
-  searchTerm = '';
-
+  // FILTER OPTIONS
   locationOptions = [
     { label: 'Medavakkam', value: 'Medavakkam' },
     { label: 'shozinganallur', value: 'shozinganallur' },
@@ -63,18 +67,35 @@ export class BarchartdatatableComponent implements OnInit {
     'Adayar',
   ];
 
+  // CONSTRUCTOR
   constructor(
     private router: Router,
     private barchartDataService: BarchartdataservicesService,
-  ) {}
+  ) { }
 
+  // LIFECYCLE HOOKS
   ngOnInit(): void {
     this.selectedDomain = this.barchartDataService.selectedDomain;
-
     this.selectedStatus = this.barchartDataService.selectedstatus ?? 'All';
-
+    this.updateTooltipPosition();
     this.loadEmployees();
   }
+
+
+  // RESPONSIVE TOOLTIP POSITIONING
+
+  @HostListener('window:resize')
+  onResize(): void {
+    this.updateTooltipPosition();
+  }
+
+
+  updateTooltipPosition(): void {
+    this.tooltipPosition = window.innerWidth <= 768 ? 'bottom' : 'top';
+  }
+
+
+  // DATA LOADING
 
   loadEmployees(): void {
     if (this.selectedDomain === 'All') {
@@ -87,13 +108,18 @@ export class BarchartdatatableComponent implements OnInit {
     this.filterEmployees();
   }
 
+
+  // FILTERING LOGIC
+
   filterEmployees(): void {
+    // Absent employees have machine OFF
     this.employees.forEach((emp) => {
       if (emp.status === 'Absent') {
         emp.machineStatus = 'OFF';
       }
     });
 
+    // Filter by location and status
     const locationStatusFiltered = this.employees.filter((emp) => {
       const locationMatch =
         this.selectedLocations.length === 0 ||
@@ -105,19 +131,23 @@ export class BarchartdatatableComponent implements OnInit {
       return locationMatch && statusMatch;
     });
 
+    // Apply search filter (only if term >= 3 chars)
     this.filteredEmployees = this.searchTerm.length < 3
       ? locationStatusFiltered
       : locationStatusFiltered.filter((emp) => {
-          return (
-            emp.id.toString().toLowerCase().includes(this.searchTerm.toLowerCase()) ||
-            emp.name.toLowerCase().includes(this.searchTerm.toLowerCase()) ||
-            emp.domain.toLowerCase().includes(this.searchTerm.toLowerCase()) ||
-            emp.location.toLowerCase().includes(this.searchTerm.toLowerCase()) ||
-            emp.machineStatus.toLowerCase().includes(this.searchTerm.toLowerCase()) ||
-            emp.status.toLowerCase().includes(this.searchTerm.toLowerCase())
-          );
-        });
+        return (
+          emp.id.toString().toLowerCase().includes(this.searchTerm.toLowerCase()) ||
+          emp.name.toLowerCase().includes(this.searchTerm.toLowerCase()) ||
+          emp.domain.toLowerCase().includes(this.searchTerm.toLowerCase()) ||
+          emp.location.toLowerCase().includes(this.searchTerm.toLowerCase()) ||
+          emp.machineStatus.toLowerCase().includes(this.searchTerm.toLowerCase()) ||
+          emp.status.toLowerCase().includes(this.searchTerm.toLowerCase())
+        );
+      });
   }
+
+
+  // NAVIGATION
 
   refresh(): void {
     this.loadEmployees();
@@ -127,37 +157,58 @@ export class BarchartdatatableComponent implements OnInit {
     this.router.navigate(['/dashboard']);
   }
 
-  downloadExcel(): void {
-    const worksheet = XLSX.utils.json_to_sheet(this.filteredEmployees);
 
-    const workbook = XLSX.utils.book_new();
+  // EXPORT FUNCTIONS
 
-    XLSX.utils.book_append_sheet(workbook, worksheet, 'Attendance');
 
-    XLSX.writeFile(workbook, `${this.selectedDomain}_Attendance.xlsx`);
+  // ------------------------- EXCEL EXPORT -------------------------
+  async downloadTableExcel(): Promise<void> {
+    if (this.isGeneratingExcel) return;
+    this.isGeneratingExcel = true;
+
+    try {
+      const worksheet = XLSX.utils.json_to_sheet(this.filteredEmployees);
+      const workbook = XLSX.utils.book_new();
+      XLSX.utils.book_append_sheet(workbook, worksheet, 'Attendance');
+      XLSX.writeFile(workbook, 'Attendance.xlsx');
+
+      // Show spinner for 5 seconds
+      await new Promise(resolve => setTimeout(resolve, 5000));
+    } finally {
+      this.isGeneratingExcel = false;
+    }
   }
 
-  downloadPdf(): void {
-    const table = document.getElementById('AttendanceTable');
+  // ------------------------- PDF EXPORT -------------------------
+  async downloadPdf(): Promise<void> {
+    if (this.isGeneratingPdf) return;
+    this.isGeneratingPdf = true;
 
-    if (!table) {
+    const TablepTable = document.getElementById('AttendanceTable');
+    if (!TablepTable) {
+      this.isGeneratingPdf = false;
       return;
     }
 
-    html2canvas(table).then((canvas) => {
-      const img = canvas.toDataURL('image/png');
+    try {
+      await html2canvas(TablepTable).then(canvas => {
+        const imageWidth = 180;
+        const imageHeight = canvas.height * imageWidth / canvas.width;
+        const image = canvas.toDataURL('image/png');
 
-      const pdf = new jsPDF();
-
-      const width = 190;
-
-      const height = (canvas.height * width) / canvas.width;
-
-      pdf.addImage(img, 'PNG', 10, 10, width, height);
-
-      pdf.save(`${this.selectedDomain}_Attendance.pdf`);
-    });
+        const pdf = new jsPDF();
+        pdf.addImage(image, 'PNG', 10, 10, imageWidth, imageHeight);
+        pdf.save('Attendance.pdf');
+      });
+      // Show spinner for 5 seconds
+      await new Promise(resolve => setTimeout(resolve, 5000));
+    } finally {
+      this.isGeneratingPdf = false;
+    }
   }
+
+  // COMPUTED PROPERTIES (Summary Cards)
+
   get totalEmployees(): number {
     return this.employees.filter((emp) => {
       const locationMatch =
@@ -207,14 +258,24 @@ export class BarchartdatatableComponent implements OnInit {
     }).length;
   }
 
+
+  // TOOLBAR ACTIONS
+
   exportCurrentData(): void {
-    this.downloadExcel();
+    this.downloadTableExcel();
   }
 
   printCurrentData(): void {
     this.downloadPdf();
   }
-  toggleSelectAll(){
+
+
+  // MULTI-SELECT HELPER
+
+  /**
+   * Toggles all locations in multi-select
+   */
+  toggleSelectAll(): void {
     if (this.allSelected) {
       this.selectedLocations = this.locationOptions.map(x => x.value);
     } else {
