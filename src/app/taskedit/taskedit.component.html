@@ -1,163 +1,275 @@
 <main>
-  <div class="task-container">
-    <div class="page-header">
-      <div>
-        <h2>Task Editor</h2>
-      </div>
-      <div class="toolbar">
-        <button
-          pButton
-          label="Edit"
-          icon="pi pi-pencil"
-          class="p-button-primary"
-          (click)="editEmployee()"
-          [disabled]="!selectedEmployee"
-        ></button>
-        <button
-          pButton
-          label="Delete"
-          icon="pi pi-times"
-          class="p-button-danger"
-          (click)="deleteEmployee()"
-          [disabled]="!selectedEmployee"
-        ></button>
-      </div>
-    </div>
+  <ul class="nav nav-pills review-tabnav inventory-tabs" ngbNav #nav="ngbNav" role="tablist">
+    <li class="nav-item" ngbNavItem="navpills-1">
 
-    <p-table
-      #dt
-      responsiveLayout="scroll"
-      stripedRows="true"
-      showGridlines="true"
-      sortMode="multiple"
-      [(selection)]="selectedEmployee"
-      dataKey="id"
-      [value]="filteredEmployees"
-      [tableStyle]="{ 'min-width': '100%' }"
-    >
-      <ng-template pTemplate="header">
-        <tr>
-          <th>Select</th>
+      <a class="nav-link px-2 px-lg-3" (click)="tabClick(1)" ngbNavLink>
+        Inventory
+      </a>
 
-          <th>
-            <div class="labelsearch">
-              <span>Employee</span>
-              <input
-                pInputText
-                type="text"
-                style="width: 20px"
-                placeholder="Search Employee"
-                (input)="
-                  dt.filter($any($event.target).value, 'employee', 'contains')
-                "
-              />
+      <ng-template ngbNavContent>
+        <div class="task-container py-1">
+
+          <div class="page-header my-3 d-flex justify-content-between align-items-center">
+            <h2>Inventory Data</h2>
+
+            <div class="d-flex align-items-center gap-2">
+              <button
+                type="button"
+                [disabled]="selectedRows.length === 0"
+                class="btn btn-danger d-flex align-items-center gap-2 size-50px"
+                (click)="delConfirmation = true"
+              >
+                <i class="bi bi-trash"></i>
+              </button>
+
+              <button
+                type="button"
+                class="btn btn-primary d-flex align-items-center gap-2"
+                style="background-color: #a8108afa; border: #a8108afa;"
+                (click)="openDrawer()"
+              >
+                <i class="bi bi-plus-lg"></i>
+                <span>Add Inventory</span>
+              </button>
             </div>
-          </th>
-          <th>Domain</th>
-          <th>Assigned Tasks</th>
-        </tr></ng-template
-      >
+          </div>
 
-      <ng-template pTemplate="body" let-emp>
-        <tr
-          (click)="selectEmployee(emp)"
-          [class.selected-row]="selectedEmployee?.id === emp.id"
-        >
-          <td style="width: 50px; text-align: center">
-            <p-tableRadioButton [value]="emp"></p-tableRadioButton>
-          </td>
-          <td>
-            <div class="employee-name">
-              {{ emp.employee }}
 
-            </div>
-          </td>
+          <div *ngIf="delConfirmation" class="modal-overlay" (click)="delConfirmation = false">
+            <div class="modal-box">
+              <h5>Delete {{ selectedRows.length }} rows?</h5>
+              <div class="modal-actions">
 
-          <td>
-            <span class="domain-badge">
-              {{ emp.domain }}
-            </span>
-          </td>
+                <button class="btn btn-success btn-sm" (click)="delconfirmationfun()">Cancel</button>
+                <button class="btn btn-danger btn-sm" (click)="confirmDelete()">Delete</button>
 
-          <td>
-            <div class="task-chip-container">
-              <div class="task-chip" *ngFor="let task of emp.tasks">
-                {{ task }}
-                              <button    pButton
-    icon="pi pi-times"
-    class="taskbtn"
-     severity="secondary"
-    [text]="true"
-      [rounded]="true"
-      (click) = "removetask()"
-    >
-    </button>
               </div>
             </div>
-          </td>
-        </tr>
+          </div>
+
+          <p-table
+            [columns]="cols"
+            [value]="inventoryList"
+            [(selection)]="selectedRows"
+            dataKey="id"
+            [tableStyle]="{ 'min-width': '50rem' }"
+            stripedRows="true"
+            responsiveLayout="scroll"
+            showGridlines="true"
+            [paginator]="true"
+            [rows]="10"
+          >
+
+            <ng-template pTemplate="header" let-columns>
+              <tr>
+                <th style="width: 4rem" class="text-center">
+                  <p-tableHeaderCheckbox></p-tableHeaderCheckbox>
+                </th>
+                <th style="width: 5rem" class="text-center">
+                  S.No
+                </th>
+                <th *ngFor="let col of columns">
+                  {{ col.header }}
+                </th>
+                <th>View</th>
+                <!-- <th style="width: 8rem" class="text-center">Actions</th> -->
+              </tr>
+            </ng-template>
+
+            <ng-template pTemplate="body" let-rowData let-rowIndex="rowIndex">
+              <tr [pSelectableRow]="rowData">
+                <td class="text-center">
+                  <p-tableCheckbox [value]="rowData"></p-tableCheckbox>
+                </td>
+                <td class="text-center" (click)="openEditDrawer(rowData)">
+                  {{ rowIndex + 1 }}
+                </td>
+                <td (click)="openEditDrawer(rowData)">{{ rowData.name }}</td>
+
+                <td (click)="openEditDrawer(rowData)">{{ rowData.employee }}</td>
+
+                <td (click)="openEditDrawer(rowData)">{{ rowData.role }}</td>
+
+                <td (click)="openEditDrawer(rowData)">
+                  {{ rowData.description.length > 50 ? (rowData.description|slice : 0 : 50) + "..." : rowData.desription }}
+                </td>
+                <!-- <td class="text-center">
+            <button type="button" class="btn btn-sm btn-outline-primary me-1" (click)="openEditDrawer(rowData)"
+              title="Edit">
+              <i class="bi bi-pencil-square"></i>
+            </button>
+            <button type="button" class="btn btn-sm btn-outline-danger" (click)="deleteItem(rowData)" title="Delete">
+              <i class="bi bi-trash"></i>
+            </button>
+          </td> -->
+                <td class="text-center">
+                  <button type="button" class="btn btn-primary btn-sm d-inline-flex align-items-center justify-content-center p-0" style="width: 30px; height: 30px; background-color: #a8108a00; border-color: #a8108a00;" (click)="view(rowData)" title="View Details">
+                    <i class="bi bi-eye" style="color: #a8108afa ;"></i>
+                  </button>
+                </td>
+              </tr>
+            </ng-template>
+
+            <ng-template pTemplate="nodatamessage">
+              <tr>
+                <td colspan="6" class="text-center py-3">
+                  No inventory data found.
+                </td>
+              </tr>
+            </ng-template>
+
+          </p-table>
+        </div>
       </ng-template>
-    </p-table>
+    </li>
+    <li class="nav-item" ngbNavItem="navpills-2">
+
+      <a class="nav-link px-2 px-lg-3" (click)="tabClick(2)" ngbNavLink>
+        Category
+      </a>
+
+      <ng-template ngbNavContent>
+        <div class="task-container">
+          <div class="page-header my-3 d-flex justify-content-between align-items-center">
+
+            <h2>Inventory Category</h2>
+
+          </div>
+        </div>
+
+      </ng-template>
+    </li>
+  </ul>
+  <div [ngbNavOutlet]="nav" class="inventory-tab-content">
   </div>
-
-  <p-drawer [(visible)]="visible" position="right" [style]="{ width: '520px' }">
-    <div class="drawer-title">
-      <h2>Edit Employee Tasks</h2>
-    </div>
-
-    <!-- Employee Information -->
-
-    <div class="employee-grid">
-      <div class="field">
-        <label>Employee</label>
-
-        <input
-          pInputText
-          [value]="selectedEmployee?.employee"
-          style="height: 40px"
-          readonly
-        />
-      </div>
-
-      <div class="field">
-        <label>Domain</label>
-
-        <input
-          pInputText
-          [value]="selectedEmployee?.domain"
-          style="height: 40px"
-          readonly
-        />
-      </div>
-    </div>
-
-    <h3 class="task-heading">Available Tasks</h3>
-
-    <div class="task-grid">
-      <div
-        *ngFor="let task of availableTasks"
-        class="task-card"
-        [class.active]="isSelected(task)"
-        (click)="toggleTask(task)"
-      >
-        {{ task }}
-      </div>
-    </div>
-
-    <div class="drawer-footer">
-      <button
-        pButton
-        label="Cancel"
-          severity="secondary"
-        (click)="visible = false"
-      ></button>
-
-      <button
-        pButton
-        label="Save"
-        icon="pi pi-check"
-        (click)="saveTasks()"
-      ></button>
-    </div>
-  </p-drawer>
 </main>
+<nz-modal
+  nzDraggable
+  [nzVisible]="ispopup"
+  nzTitle="Inventory Details"
+  [nzCentered]="true"
+  [nzMaskClosable]="true"
+  [nzFooter]="null"
+  nzClassName="viewModal"
+  (nzOnCancel)="closeView()"
+>
+  <ng-container *nzModalContent>
+    <div *ngIf="selectedPopUpData" class="p-2">
+      <div class="d-flex col-"><p style="color: #a8108afa;">Machine Name: </p><p>{{ selectedPopUpData.name }}</p></div>
+      <div class="d-flex col-6"><p style="color: #a8108afa;">Employee Name: </p><p>{{ selectedPopUpData.employee }}</p></div>
+      <div class="d-flex col-6"><p style="color: #a8108afa; ">Role: </p><p>{{ selectedPopUpData.role }}</p></div>
+      <div class="d-flex col-6"><p style="color: #a8108afa; ">Description: </p><p>{{ selectedPopUpData.description }}</p></div>
+    </div>
+
+  </ng-container>
+
+</nz-modal>
+<nz-drawer
+  [nzVisible]="isVisible"
+  [nzClosable]="true"
+  [nzMaskClosable]="true"
+  [nzWidth]="500"
+  [nzTitle]="drawerTitle"
+  (nzOnClose)="closeDrawer()"
+  [nzFooter]="footer"
+  nzWrapClassName="taskedit-drawer"
+>
+  <ng-container *nzDrawerContent>
+
+    <form #inventoryForm="ngForm" (ngSubmit)="saveInventory()" class="drawer-form">
+
+      <!-- <div class="drawer-header">
+          <h2>{{ drawerTitle }}</h2>
+      </div> -->
+
+      <div class="drawer-body">
+
+
+        <div class="mb-3">
+          <label for="inventoryName" class="form-label fw-semibold">
+            Machine Name <span class="text-danger">*</span>
+          </label>
+          <input
+            type="text"
+            id="inventoryName"
+            name="name"
+            class="form-control"
+            placeholder="Enter Machine Name"
+            [class.is-invalid]="formSubmitted && !currentInventory.name?.trim()"
+            required
+            [(ngModel)]="currentInventory.name"
+          />
+        </div>
+
+        <div class="mb-3">
+          <label for="inventoryemployee" class="form-label fw-semibold">
+            Employee Name<span class="text-danger">*</span>
+          </label>
+
+          <input
+            type="text"
+            id="inventoryemployee"
+            name="employee"
+            class="form-control"
+            placeholder="Enter Employee Name"
+            [(ngModel)]="currentInventory.employee"
+            [class.is-invalid]="formSubmitted && !currentInventory.employee?.trim()"
+            required
+          />
+
+        </div>
+        <div class="mb-3">
+          <label for="inventoryrole" class="form-label fw-semibold">
+            Role <span class="text-danger">*</span>
+          </label>
+
+          <input
+            type="text"
+            id="inventoryrole"
+            name="role"
+            class="form-control"
+            placeholder="Enter Role"
+            [(ngModel)]="currentInventory.role"
+            [class.is-invalid]="formSubmitted && !currentInventory.role?.trim()"
+            required
+          />
+        </div>
+
+        <div class="mb-3">
+          <label for="inventoryDesc" class="form-label fw-semibold">
+            Description <span class="text-danger">*</span>
+          </label>
+
+          <textarea id="inventoryDesc" name="description" class="form-control" rows="4" placeholder="Enter description"
+            [(ngModel)]="currentInventory.description"
+            [class.is-invalid]="formSubmitted && !currentInventory.description?.trim()" required></textarea>
+        </div>
+      </div>
+    </form>
+  </ng-container>
+</nz-drawer>
+<ng-template #footer>
+        
+  <div class="drawer-footer d-flex justify-content-end gap-2">
+
+    <button type="button" class="btn btn-outline-danger" (click)="closeDrawer()">
+      Cancel
+    </button>
+
+    <button
+      type="button"
+      class="btn btn-success"
+      style="background-color: #a8108afa; border-color: #a8108afa;"
+      (click)="saveInventory()"
+      *ngIf="!isEditDrawer"
+    >Save</button>
+
+    <button
+      type="button"
+      class="btn btn-success"
+      style="background-color: #a8108afa; border-color: #a8108afa;"
+      (click)="saveInventory()"
+      *ngIf="isEditDrawer"
+    >Update</button>
+  </div>
+</ng-template>

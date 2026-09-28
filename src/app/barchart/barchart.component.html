@@ -1,53 +1,238 @@
-<div class="charts-mainpage">
-  <div class="chart-card">
 
+<div
+  class="card shadow-sm border-0 rounded-4  bg-white mb-4 border-2"
+  *ngIf="barchartDataService.selectedArea === 'Voltas'"
+>
 
-    <div class="chart-container" >
-      <div class="export-buttons-bar">
-        <h2>Machine Status</h2>
-        <button type="button" class="btn btn-danger"  title="Download PDF" id="barchart" (click)="downloadBarPdf()">
-          <i class="bi bi-file-earmark-pdf"></i>
-        </button>
-    </div>
-      <canvas id="barChart" class="bar-chart" baseChart [data]="myData" [options]="myOptions" [type]="'bar'">
-      </canvas>
+  <div
+    class="card-header export-buttons-pie d-flex justify-content-between 
+  align-items-center px-3 py-1 text-white border-0"
+  >
+    <h4 class="h5 mb-0 fw-semibold text-white">Attendance Details</h4>
+    <div class="position-relative d-inline-block">
+      <div *ngIf="isGeneratingBarPdf" class="generating-popup" data-html2canvas-ignore="true">
+        <span class="spinner-border spinner-border-sm me-1" role="status" aria-hidden="true"></span>
+        <span>Generating PDF, please wait...</span>
+      </div>
+      <button
+        type="button"
+        class="btn btn-danger btn-sm export-chart-btn shadow-sm d-flex align-items-center 
+        justify-content-center border-1"
+        title="Download PDF"
+        id="barchart"
+        [disabled]="isGeneratingBarPdf || !chartReady"
+        (click)="downloadBarPdf()"
+      >
+        <i class="bi bi-file-earmark-pdf"></i>
+      </button>
     </div>
   </div>
 
-  <div class="piechart-card">
+  <div class="card-body p-3 p-md-4" id="barChart">
+    <div class="row g-4">
 
-    <div class="piechart-container" >
-      <div class="export-buttons-pie">
-        <h2>Attendance Status</h2>
-        <button type="button" class="btn btn-danger"  title="Download PDF" (click)="downloadPiePdf()">
-          <i class="bi bi-file-earmark-pdf"></i>
+      <div class="col-12 col-xl-8">
+        <div class="card border rounded-4 overflow-hidden h-100">
+          <div
+            class="card-header export-buttons-bar d-flex justify-content-center 
+            align-items-center px-3 py-2 text-white border-0"
+          >
+            <h2 class="h6 mb-0 fw-semibold text-white">Machine Status</h2>
+          </div>
+          <div class="card-body p-3">
+            <apx-chart
+              *ngIf="barchartDataService.selectedArea === 'Voltas'"
+              [series]="machineStausChart.series!"
+              [chart]="machineStausChart.chart!"
+              [xaxis]="machineStausChart.xaxis!"
+              [yaxis]="machineStausChart.yaxis!"
+              [legend]="machineStausChart.legend!"
+              [stroke]="machineStausChart.stroke!"
+              [dataLabels]="machineStausChart.dataLabels!"
+              [tooltip]="machineStausChart.tooltip!"
+              [plotOptions]="machineStausChart.plotOptions!"
+              [colors]="machineStausChart.colors!"
+            >
+            </apx-chart>
+          </div>
+        </div>
+      </div>
 
-        </button>
-    </div>
-
-      <canvas id="pieChart" class="pie-chart" baseChart [data]="pieChartData" [options]="pieChartOptions" [plugins]="pieChartPlugins"
-        [type]="pieChartType" (chartClick)="onPiechartClick($event)">
-      </canvas>
+      <div class="col-12 col-xl-4">
+        <div class="card border rounded-4 overflow-hidden h-100">
+          <div
+            class="card-header export-buttons-pie d-flex justify-content-center 
+            align-items-center px-3 py-2 text-white border-0"
+          >
+            <h2 class="h6 mb-0 fw-semibold text-white">Attendance Status</h2>
+          </div>
+          <div class="card-body p-3 d-flex align-items-center justify-content-center" id="pieChart">
+            <apx-chart
+              [series]="attendanceStatus.series!"
+              [chart]="attendanceStatus.chart!"
+              [labels]="attendanceStatus.labels!"
+              [title]="attendanceStatus.title!"
+              [plotOptions]="attendanceStatus.plotOptions!"
+              [responsive]="attendanceStatus.responsive!"
+              [legend]="attendanceStatus.legend!"
+              [colors]="attendanceStatus.colors!"
+              [tooltip]="attendanceStatus.tooltip!"
+            >
+            </apx-chart>
+          </div>
+        </div>
+      </div>
 
     </div>
   </div>
 </div>
-<div class="table-charts-layout">
-  <!-- <div class="attendance-table" id="table"> -->
-    <div class="export-buttons-table">
-      <h2 class="table-head">Machine Status Data</h2>
-      <div class="table-action-buttons">
-        <button type="button" class="btn btn-danger" title="Download PDF" (click)="downloadTabPdf()">
+
+<div class="row g-4 mb-4 " *ngIf="barchartDataService.selectedArea === 'Area1'">
+  <div class="col-12 ">
+    <div class="card shadow-sm border-0 rounded-4">
+      <div
+        class="card-header other-export-buttons-bar d-flex justify-content-between 
+        align-items-center px-4 py-1 text-white border-0"
+      >
+        <h2 class="h5 mb-0 fw-semibold text-white">Water Consumption</h2>
+        <div class="d-flex align-items-center gap-2">
+          <input
+            #dateBox
+            type="date"
+            class="form-control form-control-sm date-picker-input"
+            value="2026-09-24"
+            [max]="today"
+          >
+          <button
+            class="btn btn-secondary btn-sm search-btn fw-medium"
+            (click)="searchData(dateBox.value)"
+          >Search</button>
+          <div class="position-relative d-inline-block">
+            <div *ngIf="isGeneratingBarPdf" class="generating-popup" data-html2canvas-ignore="true">
+              <span class="spinner-border spinner-border-sm me-1" role="status" aria-hidden="true"></span>
+              <span>Generating PDF, please wait...</span>
+            </div>
+            <button
+              type="button"
+              class="btn btn-danger btn-sm export-chart-btn shadow-sm d-flex align-items-center 
+            justify-content-center"
+              title="Download PDF"
+              id="barchart"
+              [disabled]="isGeneratingBarPdf || !isWaterDataLoaded"
+              (click)="downloadBarPdf()"
+            >
+              <i class="bi bi-file-earmark-pdf"></i>
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <div class="card-body p-3 p-md-4">
+        <div class="row g-4" id="Area1chart">
+          <div class="col-12 col-lg-12">
+            <div class="card border rounded-3 p-3 shadow-xs">
+              <h2 class="h6 text-center py-2 rounded-2 text-white bg-primary mb-3">
+                Energy Consumption
+              </h2>
+              <apx-chart
+                class="Area1chart"
+                *ngIf="barchartDataService.selectedArea === 'Area1'"
+                [series]="waterConsumption.series!"
+                [chart]="waterConsumption.chart!"
+                [xaxis]="waterConsumption.xaxis!"
+                [yaxis]="waterConsumption.yaxis!"
+                [legend]="waterConsumption.legend!"
+                [stroke]="waterConsumption.stroke!"
+                [dataLabels]="waterConsumption.dataLabels!"
+                [tooltip]="waterConsumption.tooltip!"
+                [colors]="waterConsumption.colors!"
+                [plotOptions]="waterConsumption.plotOptions!"
+              >
+              </apx-chart>
+            </div>
+          </div>
+
+          <div class="col-12 col-lg-12">
+            <div class="card border rounded-3 p-3 shadow-xs">
+              <h2 class="h6 text-center py-2 rounded-2 text-white bg-primary mb-3">
+                Water Consumption Quantity</h2>
+              <apx-chart
+                class="Area1chart1"
+                *ngIf="barchartDataService.selectedArea === 'Area1'"
+                [series]="waterQuantity.series!"
+                [chart]="waterQuantity.chart!"
+                [xaxis]="waterQuantity.xaxis!"
+                [yaxis]="waterQuantity.yaxis!"
+                [legend]="waterQuantity.legend!"
+                [stroke]="waterQuantity.stroke!"
+                [dataLabels]="waterQuantity.dataLabels!"
+                [tooltip]="waterQuantity.tooltip!"
+                [colors]="waterQuantity.colors!"
+                [plotOptions]="waterQuantity.plotOptions!"
+              >
+              </apx-chart>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div
+  class="card shadow-sm border-0 rounded-4 mb-4"
+  *ngIf="barchartDataService.selectedArea === 'Voltas'"
+>
+  <div
+    class="card-header export-buttons-table d-flex justify-content-between align-items-center 
+    px-3 py-1 text-white border-0"
+  >
+    <h2 class="h5 mb-0 fw-semibold text-white">Machine Status Data</h2>
+    <div class="d-flex align-items-center gap-2">
+      <div class="position-relative d-inline-block">
+        <div *ngIf="isGeneratingTablePdf" class="generating-popup" data-html2canvas-ignore="true">
+          <span class="spinner-border spinner-border-sm me-1" role="status" aria-hidden="true"></span>
+          <span>Generating PDF, please wait...</span>
+        </div>
+        <button
+          type="button"
+          class="btn btn-danger btn-sm shadow-sm"
+          title="Download PDF"
+          [disabled]="isGeneratingTablePdf || tableData.length === 0"
+          (click)="downloadTabPdf()"
+        >
           <i class="bi bi-file-earmark-pdf"></i>
         </button>
-        <button type="button" class="btn btn-success" title="Download xls" (click)="downloadTableExcel()">
+      </div>
+
+      <div class="position-relative d-inline-block">
+        <div *ngIf="isGeneratingExcel" class="generating-popup" data-html2canvas-ignore="true">
+          <span class="spinner-border spinner-border-sm me-1" role="status" aria-hidden="true"></span>
+          <span>Generating XLS, please wait...</span>
+        </div>
+        <button
+          type="button"
+          class="btn btn-success btn-sm shadow-sm"
+          title="Download xls"
+          [disabled]="isGeneratingExcel || tableData.length === 0"
+          (click)="downloadTableExcel()"
+        >
           <i class="bi bi-file-earmark-excel"></i>
         </button>
       </div>
     </div>
-    <div id="tableXl">
-    <p-table class="table" #tbl [value]="tableData" [tableStyle]="{'min-width':'60rem'}" responsiveLayout="scroll"
-      stripedRows="true" showGridlines="true">
+  </div>
+
+  <div class="card-body p-1  p-md-2 table-responsive" id="tableXl">
+    <p-table
+      class="table mb-0"
+      #tbl
+      [value]="tableData"
+      [tableStyle]="{'min-width':'60rem'}"
+      responsiveLayout="scroll"
+      stripedRows="true"
+      showGridlines="true"
+    >
       <ng-template pTemplate="header">
         <tr>
           <th pSortableColumn="SNo">S.No<p-sortIcon field="SNo"></p-sortIcon></th>
@@ -59,35 +244,57 @@
           <th pSortableColumn="totalEmployees">Total Employees<p-sortIcon field="totalEmployees"></p-sortIcon></th>
         </tr>
         <tr>
-              <td><input pInputText
-               type="text"
-               (input)="tbl.filter($any($event.target).value,'SNo','equals')"
-               placeholder="Search SNo"></td>
-               <td><input pInputText
-               type="text"
-               (input)="tbl.filter($any($event.target).value,'Location','contains')"
-               placeholder="Search Location"></td>
-               <td><input pInputText
-               type="text"
-               (input)="tbl.filter($any($event.target).value,'MachineOn','equals')"
-               placeholder="Search MachineOn"></td>
-               <td><input pInputText
-               type="text"
-               (input)="tbl.filter($any($event.target).value,'MachineOff','equals')"
-               placeholder="Search MachineOff"></td>
-               <td><input pInputText
-               type="text"
-               (input)="tbl.filter($any($event.target).value,'PresentEmployees','equals')"
-               placeholder="Search PresentEmployees"></td>
-               <td><input pInputText
-               type="text"
-               (input)="tbl.filter($any($event.target).value,'AbsentEmployees','equals')"
-               placeholder="Search AbsentEmployees"></td>
-               <td><input pInputText
-               type="text"
-               (input)="tbl.filter($any($event.target).value,'totalEmployees','equals')"
-               placeholder="Search totalEmployees"></td>
-            </tr>
+          <td><input
+              pInputText
+              class="form-control form-control-sm"
+              type="text"
+              (input)="tbl.filter($any($event.target).value,'SNo','equals')"
+              placeholder="Search SNo"
+            ></td>
+          <td><input
+              pInputText
+              class="form-control form-control-sm"
+              type="text"
+              (input)="tbl.filter($any($event.target).value,'Location','contains')"
+              placeholder="Search Location"
+            ></td>
+          <td><input
+              pInputText
+              class="form-control form-control-sm"
+              type="text"
+              (input)="tbl.filter($any($event.target).value,'MachineOn','equals')"
+              placeholder="Search MachineOn"
+            ></td>
+          <td><input
+              pInputText
+              class="form-control form-control-sm"
+              type="text"
+              (input)="tbl.filter($any($event.target).value,'MachineOff','equals')"
+              placeholder="Search MachineOff"
+            >
+          </td>
+          <td><input
+              pInputText
+              class="form-control form-control-sm"
+              type="text"
+              (input)="tbl.filter($any($event.target).value,'PresentEmployees','equals')"
+              placeholder="Search PresentEmployees"
+            ></td>
+          <td><input
+              pInputText
+              class="form-control form-control-sm"
+              type="text"
+              (input)="tbl.filter($any($event.target).value,'AbsentEmployees','equals')"
+              placeholder="Search AbsentEmployees"
+            ></td>
+          <td><input
+              pInputText
+              class="form-control form-control-sm"
+              type="text"
+              (input)="tbl.filter($any($event.target).value,'totalEmployees','equals')"
+              placeholder="Search totalEmployees"
+            ></td>
+        </tr>
       </ng-template>
 
       <ng-template pTemplate="body" let-row>
@@ -102,6 +309,8 @@
         </tr>
       </ng-template>
     </p-table>
-
   </div>
 </div>
+
+
+

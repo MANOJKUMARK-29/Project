@@ -1,0 +1,423 @@
+[33m❯[39m Building...
+[32m✔[39m Building...
+Application bundle generation failed. [2.960 seconds]
+
+[1m[31m[31mX [41;31m[[41;97mERROR[41;31m][0m [1mNG1: Object is of type 'unknown'.[0m [1m[35m[plugin angular-compiler][0m
+
+    src/app/barchartdatatable/barchartdatatable.component.html:65:70:
+[37m      65 │ ...tiselect-chip" [label]="item.[32mlabel[37m" [removable]="true" (onRemov...
+         ╵                                 [32m~~~~~[0m
+
+  Error occurs in the template of component BarchartdatatableComponent.
+
+    src/app/barchartdatatable/barchartdatatable.component.ts:32:15:
+[37m      32 │   templateUrl: [32m'./barchartdatatable.component.html'[37m,
+         ╵                [32m~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+
+[39m[22m
+Watch mode enabled. Watching for file changes...
+[33m❯[39m Changes detected. Rebuilding...
+[32m✔[39m Changes detected. Rebuilding...
+[1mInitial chunk files[22m[2m | [22m[1mNames[22m        [2m | [22m [1mRaw size[22m
+[32mstyles.css[39m         [2m | [22m[2mstyles[22m       [2m | [22m[36m508.19 kB[39m[2m | [22m
+[32mmain.js[39m            [2m | [22m[2mmain[22m         [2m | [22m[36m132.14 kB[39m[2m | [22m
+[32mpolyfills.js[39m       [2m | [22m[2mpolyfills[22m    [2m | [22m [36m90.20 kB[39m[2m | [22m
+
+[1m [22m                  [2m | [22m[1mInitial total[22m[2m | [22m[1m730.52 kB[22m
+
+Application bundle generation complete. [1.583 seconds]
+
+NOTE: Raw file sizes do not reflect development server per-request transformations.
+  [32m➜[39m  [1mLocal[22m:   [36mhttp://localhost:[1m4200[22m/[39m
+[2m[32m  ➜[39m[22m[2m  press [22m[1mh + enter[22m[2m to show help[22m
+[33m❯[39m Changes detected. Rebuilding...
+[32m✔[39m Changes detected. Rebuilding...
+[1mInitial chunk files[22m[2m | [22m[1mNames[22m[2m | [22m [1mRaw size[22m
+[32mmain.js[39m            [2m | [22m[2mmain[22m [2m | [22m[36m129.94 kB[39m[2m | [22m
+
+Application bundle generation complete. [0.864 seconds]
+
+Page reload sent to client(s).
+[33m❯[39m Changes detected. Rebuilding...
+[32m✔[39m Changes detected. Rebuilding...
+Application bundle generation failed. [0.713 seconds]
+
+[1m[31m[31mX [41;31m[[41;97mERROR[41;31m][0m [1mTS-991010: 'imports' must be an array of components, directives, pipes, or NgModules.
+  Value is of type '[CommonModule, FormsModule, TableModule, InputTextModule, MultiSelectModule, CheckboxModule, (not statically analyzable)]'.[0m [1m[35m[plugin angular-compiler][0m
+
+    src/app/barchartdatatable/barchartdatatable.component.ts:22:11:
+[37m      22 │   imports: [32m[[37m
+         ╵            [32m^[0m
+
+
+[31mX [41;31m[[41;97mERROR[41;31m][0m [1mTS2304: Cannot find name 'ChipModule'.[0m [1m[35m[plugin angular-compiler][0m
+
+    src/app/barchartdatatable/barchartdatatable.component.ts:29:4:
+[37m      29 │     [32mChipModule[37m,
+         ╵     [32m~~~~~~~~~~[0m
+
+[39m[22m
+[33m❯[39m Changes detected. Rebuilding...
+[32m✔[39m Changes detected. Rebuilding...
+[1mInitial chunk files[22m[2m | [22m[1mNames[22m        [2m | [22m [1mRaw size[22m
+[32mstyles.css[39m         [2m | [22m[2mstyles[22m       [2m | [22m[36m508.19 kB[39m[2m | [22m
+[32mmain.js[39m            [2m | [22m[2mmain[22m         [2m | [22m[36m129.88 kB[39m[2m | [22m
+[32mpolyfills.js[39m       [2m | [22m[2mpolyfills[22m    [2m | [22m [36m90.20 kB[39m[2m | [22m
+
+[1m [22m                  [2m | [22m[1mInitial total[22m[2m | [22m[1m728.27 kB[22m
+
+Application bundle generation complete. [0.707 seconds]
+
+Page reload sent to client(s).
+[33m❯[39m Changes detected. Rebuilding...
+[32m✔[39m Changes detected. Rebuilding...
+[1mInitial chunk files[22m[2m | [22m[1mNames[22m[2m | [22m [1mRaw size[22m
+[32mmain.js[39m            [2m | [22m[2mmain[22m [2m | [22m[36m129.59 kB[39m[2m | [22m
+
+Application bundle generation complete. [0.459 seconds]
+
+Page reload sent to client(s).
+[33m❯[39m Changes detected. Rebuilding...
+[32m✔[39m Changes detected. Rebuilding...
+[1mInitial chunk files[22m[2m | [22m[1mNames[22m[2m | [22m [1mRaw size[22m
+[32mmain.js[39m            [2m | [22m[2mmain[22m [2m | [22m[36m129.59 kB[39m[2m | [22m
+
+Application bundle generation complete. [333.710 seconds]
+
+Page reload sent to client(s).
+[33m❯[39m Changes detected. Rebuilding...
+[32m✔[39m Changes detected. Rebuilding...
+[1mInitial chunk files[22m[2m | [22m[1mNames[22m[2m | [22m [1mRaw size[22m
+[32mmain.js[39m            [2m | [22m[2mmain[22m [2m | [22m[36m129.65 kB[39m[2m | [22m
+
+Application bundle generation complete. [5.704 seconds]
+
+Page reload sent to client(s).
+[33m❯[39m Changes detected. Rebuilding...
+[32m✔[39m Changes detected. Rebuilding...
+Application bundle generation failed. [1.379 seconds]
+
+[1m[31m[31mX [41;31m[[41;97mERROR[41;31m][0m [1mNG5002: Unexpected closing tag "div". It may happen when the tag has already been closed by another tag. For more info see https://www.w3.org/TR/html5/syntax.html#closing-elements-that-have-implied-end-tags[0m [1m[35m[plugin angular-compiler][0m
+
+    src/app/barchartdatatable/barchartdatatable.component.html:51:8:
+[37m      51 │         [32m</div>[37m
+         ╵         [32m~~~~~~[0m
+
+  Error occurs in the template of component BarchartdatatableComponent.
+
+    src/app/barchartdatatable/barchartdatatable.component.ts:31:15:
+[37m      31 │   templateUrl: [32m'./barchartdatatable.component.html'[37m,
+         ╵                [32m~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+
+[39m[22m
+[33m❯[39m Changes detected. Rebuilding...
+[32m✔[39m Changes detected. Rebuilding...
+Application bundle generation failed. [0.837 seconds]
+
+[1m[31m[31mX [41;31m[[41;97mERROR[41;31m][0m [1mNG5002: Unexpected closing tag "div". It may happen when the tag has already been closed by another tag. For more info see https://www.w3.org/TR/html5/syntax.html#closing-elements-that-have-implied-end-tags[0m [1m[35m[plugin angular-compiler][0m
+
+    src/app/barchartdatatable/barchartdatatable.component.html:51:8:
+[37m      51 │         [32m</div>[37m
+         ╵         [32m~~~~~~[0m
+
+  Error occurs in the template of component BarchartdatatableComponent.
+
+    src/app/barchartdatatable/barchartdatatable.component.ts:31:15:
+[37m      31 │   templateUrl: [32m'./barchartdatatable.component.html'[37m,
+         ╵                [32m~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+
+[39m[22m
+[33m❯[39m Changes detected. Rebuilding...
+[32m✔[39m Changes detected. Rebuilding...
+Application bundle generation failed. [2.154 seconds]
+
+[1m[31m[31mX [41;31m[[41;97mERROR[41;31m][0m [1mNG9: Property 'removeLocation' does not exist on type 'BarchartdatatableComponent'.[0m [1m[35m[plugin angular-compiler][0m
+
+    src/app/barchartdatatable/barchartdatatable.component.html:43:30:
+[37m      43 │ ...             (onRemove)="[32mremoveLocation[37m(item.value || item, $ev...
+         ╵                             [32m~~~~~~~~~~~~~~[0m
+
+  Error occurs in the template of component BarchartdatatableComponent.
+
+    src/app/barchartdatatable/barchartdatatable.component.ts:31:15:
+[37m      31 │   templateUrl: [32m'./barchartdatatable.component.html'[37m,
+         ╵                [32m~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+
+[39m[22m
+[33m❯[39m Changes detected. Rebuilding...
+[32m✔[39m Changes detected. Rebuilding...
+Application bundle generation failed. [3.218 seconds]
+
+[1m[31m[31mX [41;31m[[41;97mERROR[41;31m][0m [1mNG9: Property 'removeLocation' does not exist on type 'BarchartdatatableComponent'.[0m [1m[35m[plugin angular-compiler][0m
+
+    src/app/barchartdatatable/barchartdatatable.component.html:43:30:
+[37m      43 │ ...             (onRemove)="[32mremoveLocation[37m(item.value || item, $ev...
+         ╵                             [32m~~~~~~~~~~~~~~[0m
+
+  Error occurs in the template of component BarchartdatatableComponent.
+
+    src/app/barchartdatatable/barchartdatatable.component.ts:31:15:
+[37m      31 │   templateUrl: [32m'./barchartdatatable.component.html'[37m,
+         ╵                [32m~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+
+[39m[22m
+[33m❯[39m Changes detected. Rebuilding...
+[32m✔[39m Changes detected. Rebuilding...
+Application bundle generation failed. [1.460 seconds]
+
+[1m[31m[31mX [41;31m[[41;97mERROR[41;31m][0m [1mNG9: Property 'removeLocation' does not exist on type 'BarchartdatatableComponent'.[0m [1m[35m[plugin angular-compiler][0m
+
+    src/app/barchartdatatable/barchartdatatable.component.html:43:30:
+[37m      43 │ ...             (onRemove)="[32mremoveLocation[37m(item.value || item, $ev...
+         ╵                             [32m~~~~~~~~~~~~~~[0m
+
+  Error occurs in the template of component BarchartdatatableComponent.
+
+    src/app/barchartdatatable/barchartdatatable.component.ts:31:15:
+[37m      31 │   templateUrl: [32m'./barchartdatatable.component.html'[37m,
+         ╵                [32m~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+
+[39m[22m
+[33m❯[39m Changes detected. Rebuilding...
+[32m✔[39m Changes detected. Rebuilding...
+Application bundle generation failed. [0.797 seconds]
+
+[1m[31m[31mX [41;31m[[41;97mERROR[41;31m][0m [1mNG4: Expected 1 arguments, but got 2.[0m [1m[35m[plugin angular-compiler][0m
+
+    src/app/barchartdatatable/barchartdatatable.component.html:43:65:
+[37m      43 │ ... (onRemove)="removeLocation(item.value || item, [32m$event[37m)"></p-chip>
+         ╵                                                    [32m~~~~~~[0m
+
+  Error occurs in the template of component BarchartdatatableComponent.
+
+    src/app/barchartdatatable/barchartdatatable.component.ts:31:15:
+[37m      31 │   templateUrl: [32m'./barchartdatatable.component.html'[37m,
+         ╵                [32m~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+
+[39m[22m
+[33m❯[39m Changes detected. Rebuilding...
+[32m✔[39m Changes detected. Rebuilding...
+[1mInitial chunk files[22m[2m | [22m[1mNames[22m        [2m | [22m [1mRaw size[22m
+[32mstyles.css[39m         [2m | [22m[2mstyles[22m       [2m | [22m[36m508.19 kB[39m[2m | [22m
+[32mmain.js[39m            [2m | [22m[2mmain[22m         [2m | [22m[36m130.67 kB[39m[2m | [22m
+[32mpolyfills.js[39m       [2m | [22m[2mpolyfills[22m    [2m | [22m [36m90.20 kB[39m[2m | [22m
+
+[1m [22m                  [2m | [22m[1mInitial total[22m[2m | [22m[1m729.05 kB[22m
+
+Application bundle generation complete. [0.582 seconds]
+
+Page reload sent to client(s).
+[33m❯[39m Changes detected. Rebuilding...
+[32m✔[39m Changes detected. Rebuilding...
+[1mInitial chunk files[22m[2m | [22m[1mNames[22m[2m | [22m [1mRaw size[22m
+[32mmain.js[39m            [2m | [22m[2mmain[22m [2m | [22m[36m130.68 kB[39m[2m | [22m
+
+Application bundle generation complete. [0.749 seconds]
+
+Page reload sent to client(s).
+[33m❯[39m Changes detected. Rebuilding...
+[32m✔[39m Changes detected. Rebuilding...
+
+No output file changes.
+
+Application bundle generation complete. [0.566 seconds]
+
+[33m❯[39m Changes detected. Rebuilding...
+[32m✔[39m Changes detected. Rebuilding...
+
+No output file changes.
+
+Application bundle generation complete. [0.675 seconds]
+
+[33m❯[39m Changes detected. Rebuilding...
+[32m✔[39m Changes detected. Rebuilding...
+[1mInitial chunk files[22m[2m | [22m[1mNames[22m[2m | [22m [1mRaw size[22m
+[32mmain.js[39m            [2m | [22m[2mmain[22m [2m | [22m[36m130.25 kB[39m[2m | [22m
+
+Application bundle generation complete. [0.656 seconds]
+
+Page reload sent to client(s).
+[33m❯[39m Changes detected. Rebuilding...
+[32m✔[39m Changes detected. Rebuilding...
+
+No output file changes.
+
+Application bundle generation complete. [0.931 seconds]
+
+[33m❯[39m Changes detected. Rebuilding...
+[32m✔[39m Changes detected. Rebuilding...
+[1mInitial chunk files[22m[2m | [22m[1mNames[22m[2m | [22m [1mRaw size[22m
+[32mmain.js[39m            [2m | [22m[2mmain[22m [2m | [22m[36m130.68 kB[39m[2m | [22m
+
+Application bundle generation complete. [0.613 seconds]
+
+Page reload sent to client(s).
+[33m❯[39m Changes detected. Rebuilding...
+[32m✔[39m Changes detected. Rebuilding...
+[1mInitial chunk files[22m[2m | [22m[1mNames[22m[2m | [22m [1mRaw size[22m
+[32mmain.js[39m            [2m | [22m[2mmain[22m [2m | [22m[36m130.68 kB[39m[2m | [22m
+
+Application bundle generation complete. [3.765 seconds]
+
+Page reload sent to client(s).
+[33m❯[39m Changes detected. Rebuilding...
+[32m✔[39m Changes detected. Rebuilding...
+[1mInitial chunk files[22m[2m | [22m[1mNames[22m[2m | [22m [1mRaw size[22m
+[32mmain.js[39m            [2m | [22m[2mmain[22m [2m | [22m[36m130.67 kB[39m[2m | [22m
+
+Application bundle generation complete. [2.353 seconds]
+
+Page reload sent to client(s).
+[33m❯[39m Changes detected. Rebuilding...
+[32m✔[39m Changes detected. Rebuilding...
+
+No output file changes.
+
+Application bundle generation complete. [0.505 seconds]
+
+[33m❯[39m Changes detected. Rebuilding...
+[32m✔[39m Changes detected. Rebuilding...
+[1mInitial chunk files[22m[2m | [22m[1mNames[22m[2m | [22m [1mRaw size[22m
+[32mmain.js[39m            [2m | [22m[2mmain[22m [2m | [22m[36m130.73 kB[39m[2m | [22m
+
+Application bundle generation complete. [0.556 seconds]
+
+Page reload sent to client(s).
+[33m❯[39m Changes detected. Rebuilding...
+[32m✔[39m Changes detected. Rebuilding...
+[1mInitial chunk files[22m[2m | [22m[1mNames[22m[2m | [22m [1mRaw size[22m
+[32mmain.js[39m            [2m | [22m[2mmain[22m [2m | [22m[36m130.76 kB[39m[2m | [22m
+
+Application bundle generation complete. [2.190 seconds]
+
+Page reload sent to client(s).
+[33m❯[39m Changes detected. Rebuilding...
+[32m✔[39m Changes detected. Rebuilding...
+[1mInitial chunk files[22m[2m | [22m[1mNames[22m[2m | [22m [1mRaw size[22m
+[32mmain.js[39m            [2m | [22m[2mmain[22m [2m | [22m[36m130.28 kB[39m[2m | [22m
+
+Application bundle generation complete. [1.493 seconds]
+
+Page reload sent to client(s).
+[33m❯[39m Changes detected. Rebuilding...
+[32m✔[39m Changes detected. Rebuilding...
+[1mInitial chunk files[22m[2m | [22m[1mNames[22m[2m | [22m [1mRaw size[22m
+[32mmain.js[39m            [2m | [22m[2mmain[22m [2m | [22m[36m130.68 kB[39m[2m | [22m
+
+Application bundle generation complete. [0.979 seconds]
+
+Page reload sent to client(s).
+[33m❯[39m Changes detected. Rebuilding...
+[32m✔[39m Changes detected. Rebuilding...
+[1mInitial chunk files[22m[2m | [22m[1mNames[22m[2m | [22m [1mRaw size[22m
+[32mmain.js[39m            [2m | [22m[2mmain[22m [2m | [22m[36m130.76 kB[39m[2m | [22m
+
+Application bundle generation complete. [1.984 seconds]
+
+Page reload sent to client(s).
+[33m❯[39m Changes detected. Rebuilding...
+[32m✔[39m Changes detected. Rebuilding...
+[1mInitial chunk files[22m[2m | [22m[1mNames[22m[2m | [22m [1mRaw size[22m
+[32mmain.js[39m            [2m | [22m[2mmain[22m [2m | [22m[36m130.80 kB[39m[2m | [22m
+
+Application bundle generation complete. [0.636 seconds]
+
+Page reload sent to client(s).
+[33m❯[39m Changes detected. Rebuilding...
+[32m✔[39m Changes detected. Rebuilding...
+[1mInitial chunk files[22m[2m | [22m[1mNames[22m[2m | [22m [1mRaw size[22m
+[32mmain.js[39m            [2m | [22m[2mmain[22m [2m | [22m[36m130.82 kB[39m[2m | [22m
+
+Application bundle generation complete. [1.923 seconds]
+
+Page reload sent to client(s).
+[33m❯[39m Changes detected. Rebuilding...
+[32m✔[39m Changes detected. Rebuilding...
+[1mInitial chunk files[22m[2m | [22m[1mNames[22m[2m | [22m [1mRaw size[22m
+[32mmain.js[39m            [2m | [22m[2mmain[22m [2m | [22m[36m130.82 kB[39m[2m | [22m
+
+Application bundle generation complete. [1.356 seconds]
+
+Page reload sent to client(s).
+[33m❯[39m Changes detected. Rebuilding...
+[32m✔[39m Changes detected. Rebuilding...
+
+No output file changes.
+
+Application bundle generation complete. [1.622 seconds]
+
+[33m❯[39m Changes detected. Rebuilding...
+[32m✔[39m Changes detected. Rebuilding...
+[1mInitial chunk files[22m[2m | [22m[1mNames[22m[2m | [22m [1mRaw size[22m
+[32mmain.js[39m            [2m | [22m[2mmain[22m [2m | [22m[36m130.82 kB[39m[2m | [22m
+
+Application bundle generation complete. [1.248 seconds]
+
+Page reload sent to client(s).
+[33m❯[39m Changes detected. Rebuilding...
+[32m✔[39m Changes detected. Rebuilding...
+[1mInitial chunk files[22m[2m | [22m[1mNames[22m[2m | [22m [1mRaw size[22m
+[32mmain.js[39m            [2m | [22m[2mmain[22m [2m | [22m[36m130.82 kB[39m[2m | [22m
+
+Application bundle generation complete. [0.401 seconds]
+
+Page reload sent to client(s).
+[33m❯[39m Changes detected. Rebuilding...
+[32m✔[39m Changes detected. Rebuilding...
+[1mInitial chunk files[22m[2m | [22m[1mNames[22m[2m | [22m [1mRaw size[22m
+[32mmain.js[39m            [2m | [22m[2mmain[22m [2m | [22m[36m130.82 kB[39m[2m | [22m
+
+Application bundle generation complete. [0.601 seconds]
+
+Page reload sent to client(s).
+[33m❯[39m Changes detected. Rebuilding...
+[32m✔[39m Changes detected. Rebuilding...
+Application bundle generation failed. [0.755 seconds]
+
+[1m[31m[31mX [41;31m[[41;97mERROR[41;31m][0m [1mNG1: Property 'downloadPdf' does not exist on type 'BarchartdatatableComponent'. Did you mean 'downloadBarPdf'?[0m [1m[35m[plugin angular-compiler][0m
+
+    src/app/barchartdatatable/barchartdatatable.component.html:97:48:
+[37m      97 │         <button class="btn btn-danger" (click)="[32mdownloadPdf[37m()">
+         ╵                                                 [32m~~~~~~~~~~~[0m
+
+  Error occurs in the template of component BarchartdatatableComponent.
+
+    src/app/barchartdatatable/barchartdatatable.component.ts:31:15:
+[37m      31 │   templateUrl: [32m'./barchartdatatable.component.html'[37m,
+         ╵                [32m~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+
+
+[31mX [41;31m[[41;97mERROR[41;31m][0m [1mTS2339: Property 'hideTooltip' does not exist on type 'BarchartdatatableComponent'.[0m [1m[35m[plugin angular-compiler][0m
+
+    src/app/barchartdatatable/barchartdatatable.component.ts:146:26:
+[37m      146 │     setTimeout(() => this.[32mhideTooltip[37m(), 500);
+          ╵                           [32m~~~~~~~~~~~[0m
+
+
+[31mX [41;31m[[41;97mERROR[41;31m][0m [1mTS2339: Property 'hideTooltip' does not exist on type 'BarchartdatatableComponent'.[0m [1m[35m[plugin angular-compiler][0m
+
+    src/app/barchartdatatable/barchartdatatable.component.ts:192:15:
+[37m      192 │           this.[32mhideTooltip[37m();
+          ╵                [32m~~~~~~~~~~~[0m
+
+
+[31mX [41;31m[[41;97mERROR[41;31m][0m [1mTS2339: Property 'hideTooltip' does not exist on type 'BarchartdatatableComponent'.[0m [1m[35m[plugin angular-compiler][0m
+
+    src/app/barchartdatatable/barchartdatatable.component.ts:194:28:
+[37m      194 │         .catch(() => { this.[32mhideTooltip[37m(); });
+          ╵                             [32m~~~~~~~~~~~[0m
+
+
+[31mX [41;31m[[41;97mERROR[41;31m][0m [1mTS2551: Property 'downloadPdf' does not exist on type 'BarchartdatatableComponent'. Did you mean 'downloadBarPdf'?[0m [1m[35m[plugin angular-compiler][0m
+
+    src/app/barchartdatatable/barchartdatatable.component.ts:251:9:
+[37m      251 │     this.[32mdownloadPdf[37m();
+          ╵          [32m~~~~~~~~~~~[0m
+
+  'downloadBarPdf' is declared here.
+
+    src/app/barchartdatatable/barchartdatatable.component.ts:170:2:
+[37m      170 │   [32mdownloadBarPdf[37m() {
+          ╵   [32m~~~~~~~~~~~~~~[0m
+
+[39m[22m

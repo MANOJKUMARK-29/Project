@@ -2,7 +2,7 @@
   display: block;
   width: 100%;
   min-height: 100vh;
-  background: #f4f7fb;
+  background: #dde3ea;
   padding: 24px;
   box-sizing: border-box;
   font-family: "Segoe UI", sans-serif;
@@ -10,9 +10,22 @@
 
 .task-container {
   background: #fff;
-  border-radius: 14px;
+  /* border-radius: 14px; */
   padding: 24px;
-  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08);
+  box-shadow: 0 6px 24px rgba(0, 0, 0, 0.12);
+}
+
+
+.page-header .btn-primary {
+  background-color: #1f2937;
+  border-color: #1f2937;
+  color: #ffffff;
+}
+
+.page-header .btn-primary:hover,
+.page-header .btn-primary:focus {
+  background-color: #374151;
+  border-color: #374151;
 }
 
 .page-header {
@@ -35,235 +48,173 @@
   margin-top: 5px;
   color: #6b7280;
 }
-.p-button-primary,
-.p-button-danger {
-  background-color: rgba(251, 250, 252, 0.98);
-  color: #070808;
+
+:host ::ng-deep .p-datatable-content{
+  margin-top: 200px;
 }
 
-.toolbar {
+:host ::ng-deep .p-datatable-thead>tr>th {
+  background: #ebebeb !important;
+  color: #a8108afa !important;
+  font-weight: 600;
+  border-color: #d4d4d4 !important;
+  padding: 12px 16px;
+}
+
+:host ::ng-deep .p-datatable-thead>tr>th .p-checkbox .p-checkbox-box {
+  border-color: rgba(255, 255, 255, 0.65);
+}
+
+:host ::ng-deep .p-datatable-tbody>tr>td {
+  vertical-align: middle;
+  padding: 12px 16px;
+}
+
+
+.modal-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.45);
   display: flex;
   align-items: center;
-  gap: 12px;
-  flex-wrap: wrap;
+  justify-content: center;
+  z-index: 1050;
 }
 
-.toolbar input {
-  width: 260px;
-}
-
-:host ::ng-deep .p-datatable {
-  border-radius: 12px;
-  overflow: hidden;
-}
-
-:host ::ng-deep .p-datatable thead tr th {
-  background: rgba(21, 10, 48, 0.98);
-  color: white;
-  border: none;
-  font-size: 14px;
-  padding: 14px;
-}
-
-:host ::ng-deep .p-datatable tbody tr td {
-  padding: 18px 14px;
-  vertical-align: top;
-}
-
-:host ::ng-deep .p-datatable tbody tr {
-  transition: 0.25s;
-  cursor: pointer;
-}
-
-:host ::ng-deep .p-datatable tbody tr:hover {
-  background: #eef5ff;
-}
-
-:host ::ng-deep .p-buttons {
-  cursor: pointer;
-}
-:host ::ng-deep .p-button:disabled {
-  cursor: not-allowed !important;
-  opacity: 0.6;
-}
-:host ::ng-deep .p-datatable .p-column-header .labelsearch {
-  display: flex !important;
-  flex-direction: row !important;
-  align-items: center !important;
-  gap: 10px !important;
-}
-
-.labelsearch {
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  gap: 20px;
-}
-
-.labelsearch input {
-  flex: 1;
-  min-width: 20px;
-}
-
-.labelsearch span {
-  white-space: nowrap;
-}
-.labelsearch2 {
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  gap: 20px;
-}
-
-.labelsearch2 input {
-  flex: 1;
-  min-width: 20px;
-}
-
-.labelsearch2 span {
-  white-space: nowrap;
-}
-
-.selected-row {
-  background: #dbeafe !important;
-}
-
-.employee-name {
-  font-size: 15px;
-  font-weight: 600;
-}
-
-.domain-badge {
-  background: #eff6ff;
-  color: #070808;
-  padding: 7px 14px;
-  border-radius: 20px;
-  font-weight: 600;
-  display: inline-block;
-}
-
-.task-chip-container {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 8px;
-}
-
-.task-chip {
-  background: rgba(228, 226, 230, 0.685);
-  color: rgb(0, 0, 0);
-  padding: 7px 14px;
-  border-radius: 18px;
-  font-size: 13px;
-  font-weight: 600;
-  transition: 0.25s;
-}
-
-.task-chip:hover {
-  transform: translateY(-2px);
-}
-:host ::ng-deep .taskbtn{
-    width: 15px !important;
-    height: 10px !important;
-   top: -9px;
-   left: 17px;
-}
-:host ::ng-deep .taskbtn:hover {
-    color: #fffcfc !important;
-    background: rgb(253, 102, 102) !important;
-}
-:host ::ng-deep .taskbtn .p-button-icon{
-    font-size:8px;
-}
-
-.drawer-title {
-  background-color: rgba(21, 10, 48, 0.98);
-  border-radius: 8px;
-  padding: 18px;
-  margin-bottom: 25px;
-}
-
-.drawer-title h2 {
-  margin: 0;
-  color: #ffffff;
-}
-
-.employee-grid {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 18px;
-  margin-bottom: 30px;
-}
-
-.field {
-  display: flex;
-  flex-direction: column;
-}
-
-.field label {
-  font-weight: 600;
-  margin-bottom: 8px;
-  color: #374151;
-}
-
-.task-heading {
-  margin-bottom: 18px;
-}
-
-.task-grid {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 15px;
-}
-
-.task-card {
-  background: white;
-  border: 2px solid #d9d9d9;
-  border-radius: 12px;
-  padding: 18px;
+.modal-box {
+  background: #fff;
+  border-radius: 14px;
+  padding: 32px 28px;
+  width: 360px;
   text-align: center;
-  cursor: pointer;
-  font-weight: 600;
-  transition: 0.25s;
-  user-select: none;
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.2);
 }
 
-.task-card:hover {
-  transform: translateY(-3px);
-  border-color: #000000;
-  box-shadow: 0 5px 15px rgba(37, 99, 235, 0.15);
+.modal-icon {
+  font-size: 2.5rem;
+  color: #dc3545;
+  margin-bottom: 12px;
 }
 
-.task-card.active {
-  background: #58e053;
-  color: rgb(56, 55, 55);
+.modal-box h5 {
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: #1f2937;
+  margin-bottom: 8px;
 }
 
-.drawer-footer {
+.modal-box p {
+  color: #ff0000;
+  font-size: 0.9rem;
+  margin-bottom: 24px;
+}
+
+.modal-actions {
   display: flex;
-  justify-content: flex-end;
+  justify-content: center;
   gap: 12px;
-  margin-top: 35px;
 }
 
-@media (max-width: 900px) {
-  .page-header {
-    flex-direction: column;
-    align-items: flex-start;
-  }
+.nav-item {
+  border: none;
+  background: transparent;
+  gap: 0;
+  margin-bottom: 0;
+}
 
-  .toolbar {
-    width: 100%;
-  }
+.inventory-tabs .nav-item {
+  margin: 0;
+}
 
-  .toolbar input {
-    width: 100%;
-  }
+.inventory-tabs .nav-link {
+  position: relative;
 
-  .employee-grid {
-    grid-template-columns: 1fr;
-  }
+  border: none !important;
+  border-radius: 0 !important;
 
-  .task-grid {
-    grid-template-columns: 1fr;
-  }
+  padding: 12px 22px !important;
+
+  background: transparent !important;
+
+  color: #6f8b91 !important;
+
+  font-size: 14px;
+  font-weight: 500;
+
+  box-shadow: none !important;
+
+  transition: all 0.2s ease;
+}
+
+.inventory-tabs .nav-link.active {
+  background: #ffffff !important;
+
+  color: #a8108afa !important;
+
+  border-radius: 12px 12px 0 0 !important;
+
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04) !important;
+}
+
+.inventory-tabs .nav-link.active::after {
+  content: "";
+
+  position: absolute;
+
+  bottom: -4px;
+  left: 50%;
+
+  transform: translateX(-50%);
+
+  width: 45px;
+  height: 4px;
+
+  background: #a8108afa;
+
+  border-radius: 10px;
+}
+
+.inventory-tabs .nav-link:hover {
+  color: #a8108afa !important;
+}
+::ng-deep .viewModal .ant-modal-content {
+  border-radius: 20px !important;
+  overflow: hidden !important;
+}
+::ng-deep .viewModal .ant-modal-header {
+  background-color: #96107bfa !important;
+  border-bottom: none !important;
+}
+::ng-deep .viewModal .ant-modal-title {
+  color: #ffffff !important;
+}
+::ng-deep .viewModal .ant-modal-close {
+  color: #ffffff !important;
+}
+
+/* Constrain drawer below the 60px user-header */
+::ng-deep .taskedit-drawer {
+  top: 60px !important;
+  height: calc(100vh - 60px) !important;
+}
+
+::ng-deep .taskedit-drawer .ant-drawer-mask {
+  top: 60px !important;
+  height: calc(100vh - 60px) !important;
+}
+
+::ng-deep .taskedit-drawer .ant-drawer-content-wrapper {
+  top: 60px !important;
+  height: calc(100vh - 60px) !important;
+  box-shadow: -4px 0 16px rgba(0, 0, 0, 0.08) !important;
+}
+::ng-deep .taskedit-drawer .ant-drawer-header{
+  background-color: #96107bfa;
+
+}
+::ng-deep .taskedit-drawer .ant-drawer-title{
+  color: white;
+}
+::ng-deep .taskedit-drawer .ant-drawer-close{
+  color: white;
 }

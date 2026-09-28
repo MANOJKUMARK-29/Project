@@ -1,1 +1,15 @@
-/* You can add global styles to this file, and also import other style files */
+/* Global styles */
+@import "ng-zorro-antd/ng-zorro-antd.min.css";
+
+.ant-message {
+    margin-left: 600px !important;
+    align-items: end !important;
+    top: 70px !important;
+    z-index: 999999 !important;
+}
+
+/* Ensure NG-ZORRO dropdown overlays float above all sticky headers & purple card bars */
+.cdk-overlay-container,
+.ant-select-dropdown {
+    z-index: 999999 !important;
+}

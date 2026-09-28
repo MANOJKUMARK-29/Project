@@ -107,7 +107,7 @@ input:-webkit-autofill:active {
 
 /* login page styling */
 .container-fluid{
-  background: linear-gradient(90deg, rgba(21, 10, 48, 0.98), rgba(9, 6, 22, 0.98));
+    background: linear-gradient(90deg, rgba(149, 115, 233, 0.98), rgba(98, 71, 221, 0.98));
 }
 .login-card{
 
@@ -141,6 +141,12 @@ h2{
     display: block;
     width: 120px;
     margin: 20px auto 0;
+    transition: all 0.25s ease;
+}
+
+.btn-primary:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 14px rgba(13, 110, 253, 0.35);
 }
 .form-control{
     height: 45px;

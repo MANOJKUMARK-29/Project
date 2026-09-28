@@ -1,26 +1,17 @@
-  <div class="dashboard-shell" [class.sidebar-expanded]="sidebar">
+<div class="dashboard-shell" [class.sidebar-expanded]="sidebar">
 
- <!-- Left sidebar -->
+  <!-- Left sidebar -->
   <aside class="sidebar" [class.expanded]="sidebar">
 
     <!-- Sidebar heading -->
     <div class="sidebar-header">
-  <button
-    type="button"
-    class="sidebar-toggle-button"
-    (click)="expand()"
+      <button type="button" class="sidebar-toggle-button" (click)="expand()">
+        <!-- [class.bi-bluesky]="!sidebar" -->
+        <!-- <i class="bi" [class.bi-bluesky]="!sidebar"></i> -->
+      </button>
 
-  >
-  <!-- [class.bi-bluesky]="!sidebar" -->
-    <i
-      class="bi"
-
-      [class.bi-bluesky]="!sidebar"
-    ></i>
-  </button>
-
-  <span class="sidebar-title">APP</span>
-</div>
+      <span class="sidebar-title">APP</span>
+    </div>
 
     <!-- Pure CSS menu -->
     <nav class="pure-menu" aria-label="Main navigation">
@@ -43,13 +34,13 @@
           <ul class="pure-menu-children">
 
             <li class="pure-menu-item">
-              <a href="#" class="pure-menu-link">
+              <a href="#" class="pure-menu-link" (click)="onHrefClick($event)">
                 Report 1
               </a>
             </li>
 
             <li class="pure-menu-item">
-              <a href="#" class="pure-menu-link">
+              <a href="#" class="pure-menu-link" (click)="onHrefClick($event)">
                 Report 2
               </a>
             </li>
@@ -68,7 +59,7 @@
               <!-- Report 3.1 child -->
               <ul class="pure-menu-children">
                 <li class="pure-menu-item">
-                  <a href="#" class="pure-menu-link">
+                  <a href="#" class="pure-menu-link" (click)="onHrefClick($event)">
                     Report 3.1
                   </a>
                 </li>
@@ -76,36 +67,24 @@
             </li>
 
             <!-- Domain menus -->
-               <li
-              class="pure-menu-item"
-              *ngIf="showdomainreport('All')"
-            >
+            <li class="pure-menu-item" *ngIf="showdomainreport('All')">
               <a (click)="openReport('All')" class="pure-menu-link">
                 All
               </a>
             </li>
-            <li
-              class="pure-menu-item"
-              *ngIf="showdomainreport('Voltas')"
-            >
+            <li class="pure-menu-item" *ngIf="showdomainreport('Voltas')">
               <a (click)="openReport('Voltas')" class="pure-menu-link">
                 Voltas
               </a>
             </li>
 
-            <li
-              class="pure-menu-item"
-              *ngIf="showdomainreport('Sms')"
-            >
+            <li class="pure-menu-item" *ngIf="showdomainreport('Sms')">
               <a (click)="openReport('Sms')" class="pure-menu-link">
                 SMS
               </a>
             </li>
 
-            <li
-              class="pure-menu-item"
-              *ngIf="showdomainreport('Tvs')"
-            >
+            <li class="pure-menu-item" *ngIf="showdomainreport('Tvs')">
               <a (click)="openReport('Tvs')" class="pure-menu-link">
                 TVS
               </a>
@@ -115,7 +94,7 @@
         </li>
         <li>
           <div class="pure-menu-link menu-parent-link">
-            <i class="bi bi-file-earmark-text" (click) ="taskeditOpen()"></i>
+            <i class="bi bi-file-earmark-text" (click)="taskeditOpen()"></i>
             <span class="menu-text">Task Edit</span>
             <i class="bi bi-chevron-right menu-arrow"></i>
           </div>
@@ -125,11 +104,8 @@
     </nav>
 
     <!-- Fixed bottom logout -->
-    <button
-      type="button"
-      class="logout-button"
-      (click)="logout()"
-    >
+    <!-- <button type="button"><i class="bi bi-gear-fill"></i></button> -->
+    <button type="button" class="logout-button" (click)="logout()">
       <i class="bi bi-box-arrow-right"></i>
       <span class="menu-text">Logout</span>
     </button>
@@ -139,20 +115,34 @@
   <main class="main-content">
     <header class="user-header" *ngIf="currentUser">
       <div class="header-left">
-        <a class="home-link" aria-current="page" (click)="Home()"><i class="bi bi-house"></i>Home</a>
+        <a class="home-link" aria-current="page" (click)="Home()"><i class="bi bi-house"></i> Home </a>
+        <!-- <a class="route-link" aria-current="page" href="#">{{ router.url }}</a> -->
       </div>
 
       <div class="header-right">
-        <select class="domain-select">
-          <option>{{ currentUser.role === 'ADMIN' ? 'Administrator' : currentUser.domain }}</option>
-          <option disabled>VOLTAS</option>
-          <option disabled>SMS</option>
-          <option disabled>TVS</option>
-        </select>
+        
+        <!-- <select class="form-select" aria-label="Default select example" (change)="placeChange($event)">
+          
+          <option value="Voltas">Voltas</option>
+          <option value="Area1">Area1</option>
+          <option value="Area2">Area2</option>
+        </select> -->
 
+        <nz-select
+          [(ngModel)]="selectedArea"
+          (ngModelChange)="placeChange($event)"
+          nzPlaceHolder="Select Area"
+          class="nz-select-option"
+          nzDropdownClassName="area-dropdown"
+        >
+          <nz-option nzValue="Voltas" nzLabel="Voltas"/>
+          <nz-option nzValue="Area1" nzLabel="Area1"/>
+          <nz-option nzValue="Area2" nzLabel="Area2"/>
+        </nz-select>
+        
         <div class="user-details">
           <p class="user-name">{{ currentUser.name }}</p>
-          <p class="user-email">{{ currentUser.email }}</p>
+          <p class="user-role">{{ currentUser.role }}</p>
         </div>
       </div>
     </header>
@@ -162,5 +152,4 @@
   </main>
 
 
-  </div>
-
+</div>

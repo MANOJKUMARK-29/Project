@@ -35,7 +35,7 @@
       <div class="filters">
         <div class="filter-box">
           <label>Location</label>
-          <p-multiSelect
+          <!-- <p-multiSelect
             [options]="locationOptions"
             [(ngModel)]="selectedLocations"
             optionLabel="label"
@@ -43,9 +43,9 @@
             defaultLabel="Select Locations"
             filter="false"
             [showToggleAll]="false"
-            display="chip"
-            [maxSelectedLabels]="100"
-
+            display="comma"
+            [maxSelectedLabels]="3"
+            selectedItemsLabel="+{0} more"
           >
             <ng-template pTemplate="header">
 
@@ -60,17 +60,24 @@
                 <label class="ms-2" > Select All </label>
               </div>
             </ng-template>
+          </p-multiSelect> -->
+          <p-multiSelect [options]="locationOptions" [(ngModel)]="selectedLocations" placeholder="Select Locations" ...>
+            <ng-template pTemplate="selectedItems" let-values>
+              <div class="d-flex align-items-center gap-1 flex-wrap">
+                <p-chip *ngFor="let item of values?.slice(0, 2)" [label]="item.label || item" [removable]="true"
+                  (onRemove)="removeLocation(item.value || item, $event)"></p-chip>
+                <p-chip *ngIf="values?.length > 2" [label]="'+' + (values.length - 2)"
+                  styleClass="counter-chip"></p-chip>
+                <span style="color: black;" *ngIf="!values || values.length === 0">Select Locations</span>
+              </div>
+            </ng-template>
           </p-multiSelect>
         </div>
 
         <div class="filter-box">
           <label>Status</label>
 
-          <select
-            class="form-select"
-            [(ngModel)]="selectedStatus"
-            (change)="filterEmployees()"
-          >
+          <select class="form-select" [(ngModel)]="selectedStatus" (change)="filterEmployees()">
             <option value="All">All</option>
 
             <option value="Present">Present</option>
@@ -81,36 +88,26 @@
       </div>
 
       <div class="action-buttons">
-        <input
-          pInputText
-          type="text"
-          [(ngModel)]="searchTerm"
-          placeholder="Search employees..."
-          (input)="filterEmployees()"
-          class="search-input"
-        />
-        <button class="btn btn-success" (click)="downloadExcel()">
-          <i class="bi bi-file-earmark-excel"></i>
-        </button>
-
-        <button class="btn btn-danger" (click)="downloadPdf()">
+        <input pInputText type="text" [(ngModel)]="searchTerm" placeholder="Search employees..."
+          (input)="filterEmployees()" class="search-input" />
+        <button type="button" class="btn btn-danger export-chart-btn" title="Download PDF" id="barchart"
+          (click)="downloadPdf()">
           <i class="bi bi-file-earmark-pdf"></i>
         </button>
 
-        <button class="btn btn-secondary" (click)="back()">Back</button>
+        <button type="button" class="btn btn-success export-chart-btn" title="Download xls"
+          (click)="downloadExcel()">
+          <i class="bi bi-file-earmark-excel"></i>
+        </button>
+
+        <button class="btn btn-secondary" (click)="back()">Back<i style="font-size: 20px;"
+            class="bi bi-arrow-left-short"></i></button>
       </div>
     </div>
 
     <div id="AttendanceTable" class="attendance-table">
-      <p-table
-        #dt
-        [value]="filteredEmployees"
-        [tableStyle]="{ 'min-width': '70rem' }"
-        responsiveLayout="scroll"
-        stripedRows="true"
-        showGridlines="true"
-        sortMode="multiple"
-      >
+      <p-table #dt [value]="filteredEmployees" [tableStyle]="{ 'min-width': '70rem' }" responsiveLayout="scroll"
+        stripedRows="true" showGridlines="true" sortMode="multiple" [paginator]="true" [rows]="20">
         <ng-template pTemplate="header">
           <tr>
             <th pSortableColumn="id">
@@ -123,6 +120,12 @@
               Name
 
               <p-sortIcon field="name"></p-sortIcon>
+            </th>
+
+            <th pSortableColumn="role">
+              Role
+
+              <p-sortIcon field="role"></p-sortIcon>
             </th>
 
             <th pSortableColumn="domain">
@@ -152,70 +155,46 @@
 
           <tr>
             <td>
-              <input
-                pInputText
-                type="text"
-                placeholder="Search ID"
-                (input)="dt.filter($any($event.target).value, 'id', 'contains')"
-              />
+              <input pInputText type="text" placeholder="Search ID"
+                (input)="dt.filter($any($event.target).value, 'id', 'contains')" />
             </td>
 
             <td>
-              <input
-                pInputText
-                type="text"
-                placeholder="Search Name"
-                (input)="
+              <input pInputText type="text" placeholder="Search Name" (input)="
                   dt.filter($any($event.target).value, 'name', 'contains')
-                "
-              />
+                " />
             </td>
             <td>
-              <input
-                pInputText
-                type="text"
-                placeholder="Search Domain"
-                (input)="
+              <input pInputText type="text" placeholder="Search Role" (input)="
+                  dt.filter($any($event.target).value, 'role', 'contains')
+                " />
+            </td>
+            <td>
+              <input pInputText type="text" placeholder="Search Domain" (input)="
                   dt.filter($any($event.target).value, 'domain', 'contains')
-                "
-              />
+                " />
             </td>
 
             <td>
-              <input
-                pInputText
-                type="text"
-                placeholder="Search Location"
-                (input)="
+              <input pInputText type="text" placeholder="Search Location" (input)="
                   dt.filter($any($event.target).value, 'location', 'contains')
-                "
-              />
+                " />
             </td>
 
             <td>
-              <input
-                pInputText
-                type="text"
-                placeholder="Search Machine"
-                (input)="
+              <input pInputText type="text" placeholder="Search Machine" (input)="
                   dt.filter(
                     $any($event.target).value,
                     'machineStatus',
                     'contains'
                   )
-                "
-              />
+                " />
             </td>
 
             <td>
-              <input
-                pInputText
-                type="text"
-                placeholder="Search Status"
-                (input)="
+              <input pInputText type="text" placeholder="Search Status" (input)="
                   dt.filter($any($event.target).value, 'status', 'contains')
-                "
-              />
+                " />
             </td>
           </tr>
         </ng-template>
@@ -231,6 +210,10 @@
             </td>
 
             <td>
+              {{ employee.role }}
+            </td>
+
+            <td>
               {{ employee.domain }}
             </td>
 
@@ -239,19 +222,15 @@
             </td>
 
             <td>
-              <span
-                [class.text-success]="employee.machineStatus === 'ON'"
-                [class.text-danger]="employee.machineStatus === 'OFF'"
-              >
+              <span [class.text-success]="employee.machineStatus === 'ON'"
+                [class.text-danger]="employee.machineStatus === 'OFF'">
                 {{ employee.machineStatus }}
               </span>
             </td>
 
             <td>
-              <span
-                [class.text-success]="employee.status === 'Present'"
-                [class.text-danger]="employee.status === 'Absent'"
-              >
+              <span [class.text-success]="employee.status === 'Present'"
+                [class.text-danger]="employee.status === 'Absent'">
                 {{ employee.status }}
               </span>
             </td>
@@ -260,10 +239,11 @@
 
         <ng-template pTemplate="emptymessage">
           <tr>
-            <td colspan="6" class="text-center">No Employees Found</td>
+            <td colspan="7" class="text-center">No Employees Found</td>
           </tr>
         </ng-template>
       </p-table>
     </div>
   </section>
+
 </main>

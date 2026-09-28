@@ -6,7 +6,7 @@ import { TableModule } from 'primeng/table';
 import { InputTextModule } from 'primeng/inputtext';
 import { CheckboxModule } from 'primeng/checkbox';
 import { Router } from '@angular/router';
-
+import { ChipModule } from 'primeng/chip';
 import html2canvas from 'html2canvas';
 import jsPDF from 'jspdf';
 import * as XLSX from 'xlsx';
@@ -15,6 +15,7 @@ import {
   BarchartdataservicesService,
   EmployeeData,
 } from '../services/barchartdataservices.service';
+import { LoadingService } from '../services/loading.service';
 
 @Component({
   selector: 'app-barchartdatatable',
@@ -26,6 +27,7 @@ import {
     InputTextModule,
     MultiSelectModule,
     CheckboxModule,
+    ChipModule
   ],
   templateUrl: './barchartdatatable.component.html',
   styleUrl: './barchartdatatable.component.css',
@@ -63,17 +65,28 @@ export class BarchartdatatableComponent implements OnInit {
     'Adayar',
   ];
 
+  tableData: any[] = [];
+  chartReady = false;
+
   constructor(
     private router: Router,
-    private barchartDataService: BarchartdataservicesService,
-  ) {}
+    private barchartDataService: BarchartdataservicesService, private loadingService: LoadingService
+  ) { }
 
   ngOnInit(): void {
     this.selectedDomain = this.barchartDataService.selectedDomain;
 
     this.selectedStatus = this.barchartDataService.selectedstatus ?? 'All';
 
-    this.loadEmployees();
+    this.barchartDataService.fetchEmployees().subscribe({
+      next: () => {
+        this.loadEmployees();
+      },
+      error: (err) => {
+        console.error('Failed to fetch employees:', err);
+      }
+    });
+    this.loadingService.hide();
   }
 
   loadEmployees(): void {
@@ -108,15 +121,16 @@ export class BarchartdatatableComponent implements OnInit {
     this.filteredEmployees = this.searchTerm.length < 3
       ? locationStatusFiltered
       : locationStatusFiltered.filter((emp) => {
-          return (
-            emp.id.toString().toLowerCase().includes(this.searchTerm.toLowerCase()) ||
-            emp.name.toLowerCase().includes(this.searchTerm.toLowerCase()) ||
-            emp.domain.toLowerCase().includes(this.searchTerm.toLowerCase()) ||
-            emp.location.toLowerCase().includes(this.searchTerm.toLowerCase()) ||
-            emp.machineStatus.toLowerCase().includes(this.searchTerm.toLowerCase()) ||
-            emp.status.toLowerCase().includes(this.searchTerm.toLowerCase())
-          );
-        });
+        return (
+          emp.id.toString().toLowerCase().includes(this.searchTerm.toLowerCase()) ||
+          emp.name.toLowerCase().includes(this.searchTerm.toLowerCase()) ||
+          (emp.role && emp.role.toLowerCase().includes(this.searchTerm.toLowerCase())) ||
+          emp.domain.toLowerCase().includes(this.searchTerm.toLowerCase()) ||
+          emp.location.toLowerCase().includes(this.searchTerm.toLowerCase()) ||
+          emp.machineStatus.toLowerCase().includes(this.searchTerm.toLowerCase()) ||
+          emp.status.toLowerCase().includes(this.searchTerm.toLowerCase())
+        );
+      });
   }
 
   refresh(): void {
@@ -137,26 +151,31 @@ export class BarchartdatatableComponent implements OnInit {
     XLSX.writeFile(workbook, `${this.selectedDomain}_Attendance.xlsx`);
   }
 
-  downloadPdf(): void {
+  downloadPdf() {
     const table = document.getElementById('AttendanceTable');
 
-    if (!table) {
-      return;
-    }
+    if (!table) return;
 
-    html2canvas(table).then((canvas) => {
-      const img = canvas.toDataURL('image/png');
+    setTimeout(() => {
+      html2canvas(table as HTMLElement, { scale: 2, useCORS: true })
+        .then(canvas => {
+          const PDF = new jsPDF('landscape', 'mm', 'a2', true);
+          const pageWidth = PDF.internal.pageSize.getWidth();
 
-      const pdf = new jsPDF();
+          const FILEURI = canvas.toDataURL('image/png');
+          const fileWidth = pageWidth - 20;
+          const fileHeight = (canvas.height * fileWidth) / canvas.width;
 
-      const width = 190;
+          // Title
+          PDF.setFontSize(24);
+          PDF.text('Attendace Data', pageWidth / 2, 15, { align: 'center' });
 
-      const height = (canvas.height * width) / canvas.width;
-
-      pdf.addImage(img, 'PNG', 10, 10, width, height);
-
-      pdf.save(`${this.selectedDomain}_Attendance.pdf`);
-    });
+          // Chart/Image
+          PDF.addImage(FILEURI, 'PNG', 10, 22, fileWidth, fileHeight);
+          PDF.save('attendancetable.pdf');
+        })
+        .catch(() => { });
+    }, 500);
   }
   get totalEmployees(): number {
     return this.employees.filter((emp) => {
@@ -214,7 +233,7 @@ export class BarchartdatatableComponent implements OnInit {
   printCurrentData(): void {
     this.downloadPdf();
   }
-  toggleSelectAll(){
+  toggleSelectAll() {
     if (this.allSelected) {
       this.selectedLocations = this.locationOptions.map(x => x.value);
     } else {
@@ -222,4 +241,11 @@ export class BarchartdatatableComponent implements OnInit {
     }
     this.filterEmployees();
   }
+  removeLocation(value: string, event: Event): void {
+    this.selectedLocations = this.selectedLocations.filter(loc => loc !== value);
+    this.filterEmployees();
+  }
+
+
+
 }

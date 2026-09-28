@@ -1,21 +1,14 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
-
 import { TableModule } from 'primeng/table';
-import { DrawerModule } from 'primeng/drawer';
-import { ButtonModule } from 'primeng/button';
-import { InputTextModule } from 'primeng/inputtext';
-
-interface EmployeeTask {
-  id: number;
-
-  employee: string;
-
-  domain: string;
-
-  tasks: string[];
-}
+import { InventoryData, InventoryService } from '../services/inventory.service';
+import { NzDrawerModule } from 'ng-zorro-antd/drawer';
+import { LoadingService } from '../services/loading.service';
+import { NzMessageService } from 'ng-zorro-antd/message';
+import { NgbNavModule } from '@ng-bootstrap/ng-bootstrap'; 
+import { NzModalModule, NzModalService } from 'ng-zorro-antd/modal';
+import {NzButtonModule} from 'ng-zorro-antd/button';
 
 @Component({
   selector: 'app-taskedit',
@@ -24,129 +17,193 @@ interface EmployeeTask {
     CommonModule,
     FormsModule,
     TableModule,
-    DrawerModule,
-    ButtonModule,
-    InputTextModule,
+    NzDrawerModule,
+    NgbNavModule,
+    NzModalModule,
+    NzButtonModule
   ],
   templateUrl: './taskedit.component.html',
   styleUrl: './taskedit.component.css',
 })
-export class TaskeditComponent {
-  visible = false;
 
-  searchText = '';
+export class TaskeditComponent implements OnInit {
+  saving: boolean = false;
+  isVisible: boolean = false;
+  isEditDrawer: boolean = false;
+  delConfirmation: boolean = false;
+  formSubmitted: boolean = false;
+  ispopup: boolean = false;
+  selectedPopUpData: InventoryData | null = null;
 
-  selectedEmployee!: EmployeeTask | null;
-
-  availableTasks: string[] = [
-    'Dashboard',
-    'Attendance',
-    'Reports',
-    'Login',
-    'Machine Status',
-    'User Management',
-    'Analytics',
-    'Settings',
-    'Profile',
-    'Employee Report',
-    'Production',
-    'Quality',
-    'Inventory',
-    'Approval',
-    'Admin Panel',
+  cols = [
+    { field: "name", header: "Name" },
+    { field: 'employee', header: 'Employee' },
+    { field: 'role', header: 'Role' },
+    { field: 'description', header: 'Description' }
   ];
+  inventoryList: InventoryData[] = [];
+  selectedRows: InventoryData[] = [];
+  selectedItem: InventoryData | null = null;
 
-  selectedTasks: string[] = [];
+  drawerTitle: string = "Edit Inventory";
+  currentInventory: Partial<InventoryData> = {
+    name: '',
+    description: '',
+    employee: '',
+    role: '',
+  }
 
-  employees: EmployeeTask[] = [
-    {
-      id: 1,
-      employee: 'Srimack',
-      domain: 'Voltas',
-      tasks: ['Dashboard', 'Attendance', 'Reports'],
-    },
+  constructor(private inventoryService: InventoryService,
+    private loadingService: LoadingService,
+    private message: NzMessageService,
+    private modal: NzModalService,
+  ) { }
 
-    {
-      id: 2,
-      employee: 'Manoj Kumar',
-      domain: 'SMS',
-      tasks: ['Dashboard', 'Machine Status'],
-    },
-
-    {
-      id: 3,
-      employee: 'Manoj',
-      domain: 'TVS',
-      tasks: ['Reports', 'Login'],
-    },
-  ];
-
-  get filteredEmployees(): EmployeeTask[] {
-    if (!this.searchText.trim()) {
-      return this.employees;
+  ngOnInit() {
+    this.getInventory();
+  }
+  tabClick(selectTab: any) {
+    if (selectTab == 1) {
+      this.getInventory();
     }
-
-    return this.employees.filter(
-      (emp) =>
-        emp.employee.toLowerCase().includes(this.searchText.toLowerCase()) ||
-        emp.domain.toLowerCase().includes(this.searchText.toLowerCase()),
-    );
+    if (selectTab == 2) {
+      this.getInventory();
+    }
+  }
+  getInventory(): void {
+    this.loadingService.show();
+    this.inventoryService.getInventory().subscribe({
+      next: (data) => {
+        this.inventoryList = data;
+        this.loadingService.hide();
+      },
+      error: (err) => {
+        console.log(err);
+        this.loadingService.hide();
+      }
+    });
+  }
+  delconfirmationfun() {
+    this.delConfirmation = false;
   }
 
-  selectEmployee(emp: EmployeeTask) {
-    this.selectedEmployee = emp;
+  openDrawer() {
+    this.isEditDrawer = false;
+    this.drawerTitle = 'Add Inventory';
+    this.formSubmitted = false;
+    this.currentInventory = {
+      name: '',
+      employee: '',
+      role: '',
+      description: '',
+    };
+    this.isVisible = true;
   }
 
-  editEmployee() {
-    if (!this.selectedEmployee) {
+  openEditDrawer(item: InventoryData) {
+    this.isEditDrawer = true;
+    this.drawerTitle = 'Edit Inventory';
+    this.formSubmitted = false;
+    this.currentInventory = { ...item };
+    this.isVisible = true;
+  }
+
+  closeDrawer() {
+    this.isVisible = false;
+    this.formSubmitted = false;
+    this.currentInventory = {
+      name: '',
+      description: ''
+    };
+  }
+  saveInventory(): void {
+    this.formSubmitted = true;
+    if (
+      !this.currentInventory.name?.trim() ||
+      !this.currentInventory.employee?.trim() ||
+      !this.currentInventory.role?.trim() ||
+      !this.currentInventory.description?.trim()
+    ) {
       return;
     }
+    this.saving = true;
 
-    this.selectedTasks = [...this.selectedEmployee.tasks];
+    if (this.isEditDrawer && this.currentInventory.id) {
+      this.loadingService.show();
+      this.inventoryService
+        .updateInventory(this.currentInventory.id, this.currentInventory)
+        .subscribe({
+          next: (updatedItem) => {
+            const index = this.inventoryList.findIndex((item) => item.id === updatedItem.id);
+            if (index !== -1) {
+              this.inventoryList[index] = updatedItem;
+              this.inventoryList = [...this.inventoryList];
+            }
+            this.saving = false;
+            this.closeDrawer();
+            this.loadingService.hide();
+            this.message.success('Updated Successfully', { nzDuration: 5000 })
 
-    this.visible = true;
-  }
-
-  deleteEmployee() {
-    if (!this.selectedEmployee) {
-      return;
-    }
-
-    const confirmDelete = confirm(`Delete ${this.selectedEmployee.employee}?`);
-
-    if (!confirmDelete) {
-      return;
-    }
-
-    this.employees = this.employees.filter(
-      (emp) => emp.id !== this.selectedEmployee!.id,
-    );
-
-    this.selectedEmployee = null;
-  }
-
-  toggleTask(task: string) {
-    const index = this.selectedTasks.indexOf(task);
-
-    if (index > -1) {
-      this.selectedTasks.splice(index, 1);
+          },
+          error: (err) => {
+            this.message.success('Failed to update inventory', { nzDuration: 5000 })
+            console.error('Failed to update data', err);
+            this.saving = false;
+          },
+        });
     } else {
-      this.selectedTasks.push(task);
+      const nextId = this.getNextId();
+      const payload: Partial<InventoryData> = {
+        ...this.currentInventory,
+        id: nextId
+      };
+      this.inventoryService.addInventory(payload).subscribe({
+        next: (newItem) => {
+          this.inventoryList = [...this.inventoryList, newItem];
+          this.saving = false;
+          this.closeDrawer();
+          this.loadingService.show()
+          this.message.success('Added Successfully', { nzDuration: 5000 })
+        },
+        error: (err) => {
+          this.message.success('Failed to add inventory', { nzDuration: 5000 })
+          console.error('Failed to add data', err);
+          this.saving = false;
+        },
+      });
+      this.loadingService.hide();
     }
   }
 
-  isSelected(task: string): boolean {
-    return this.selectedTasks.includes(task);
+  deleteSelected(): void {
+    if (this.selectedRows.length === 0) return;
+    this.delConfirmation = true;
   }
 
-  saveTasks() {
-    if (!this.selectedEmployee) return;
-
-    this.selectedEmployee.tasks = [...this.selectedTasks];
-
-    this.visible = false;
+  confirmDelete(): void {
+    this.delConfirmation = false;
+    for (const row of this.selectedRows) {
+      this.inventoryService.deleteInventory(row.id).subscribe({
+        next: () => {
+          this.inventoryList = this.inventoryList.filter(dr => dr.id !== row.id);
+          this.loadingService.show();
+        },
+        error: (err) => console.error('Failed to delete', row.name, err)
+      });
+      this.loadingService.hide();
+    }
+    this.selectedRows = [];
   }
-  removetask(){
-    this.selectedEmployee?.tasks.pop();
+
+ getNextId(): string {
+  return crypto.randomUUID();
+ }
+  view(data: InventoryData): void {
+    this.selectedPopUpData = data;
+    this.ispopup = true;
+  }
+  closeView(): void{
+    this.selectedPopUpData = null;
+    this.ispopup = false;
   }
 }

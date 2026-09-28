@@ -1,0 +1,1614 @@
+{
+  "employees": [
+    {
+      "id": "1",
+      "name": "Ashwin",
+      "location": "Medavakkam",
+      "domain": "Voltas",
+      "status": "Absent",
+      "machineStatus": "OFF",
+      "role": "CNC Machine Operator"
+    },
+    {
+      "id": "2",
+      "name": "Hari",
+      "location": "Medavakkam",
+      "domain": "Sms",
+      "status": "Present",
+      "machineStatus": "ON",
+      "role": "CNC Machine Operator"
+    },
+    {
+      "id": "3",
+      "name": "Vijay",
+      "location": "Medavakkam",
+      "domain": "Tvs",
+      "status": "Present",
+      "machineStatus": "ON",
+      "role": "Robotic Welding Specialist"
+    },
+    {
+      "id": "4",
+      "name": "Akash",
+      "location": "Medavakkam",
+      "domain": "Voltas",
+      "status": "Present",
+      "machineStatus": "ON",
+      "role": "Robotic Welding Specialist"
+    },
+    {
+      "id": "5",
+      "name": "Rahul",
+      "location": "Medavakkam",
+      "domain": "Sms",
+      "status": "Absent",
+      "machineStatus": "OFF",
+      "role": "CNC Machine Operator"
+    },
+    {
+      "id": "6",
+      "name": "Adithya",
+      "location": "Medavakkam",
+      "domain": "Tvs",
+      "status": "Absent",
+      "machineStatus": "OFF",
+      "role": "Robotic Welding Specialist"
+    },
+    {
+      "id": "7",
+      "name": "Bala",
+      "location": "Medavakkam",
+      "domain": "Voltas",
+      "status": "Present",
+      "machineStatus": "ON",
+      "role": "CNC Machine Operator"
+    },
+    {
+      "id": "8",
+      "name": "Balasubramanian",
+      "location": "Medavakkam",
+      "domain": "Sms",
+      "status": "Absent",
+      "machineStatus": "OFF",
+      "role": "CNC Machine Operator"
+    },
+    {
+      "id": "9",
+      "name": "Balaji",
+      "location": "Medavakkam",
+      "domain": "Tvs",
+      "status": "Absent",
+      "machineStatus": "OFF",
+      "role": "Robotic Welding Specialist"
+    },
+    {
+      "id": "10",
+      "name": "Ravi",
+      "location": "Medavakkam",
+      "domain": "Voltas",
+      "status": "Present",
+      "machineStatus": "ON",
+      "role": "Robotic Welding Specialist"
+    },
+    {
+      "id": "11",
+      "name": "Sanjay",
+      "location": "Medavakkam",
+      "domain": "Sms",
+      "status": "Absent",
+      "machineStatus": "OFF",
+      "role": "CNC Machine Operator"
+    },
+    {
+      "id": "12",
+      "name": "Kiran",
+      "location": "Medavakkam",
+      "domain": "Tvs",
+      "status": "Absent",
+      "machineStatus": "OFF",
+      "role": "Robotic Welding Specialist"
+    },
+    {
+      "id": "13",
+      "name": "Aravind",
+      "location": "Medavakkam",
+      "domain": "Voltas",
+      "status": "Present",
+      "machineStatus": "ON",
+      "role": "CNC Machine Operator"
+    },
+    {
+      "id": "14",
+      "name": "Manoj",
+      "location": "Medavakkam",
+      "domain": "Sms",
+      "status": "Absent",
+      "machineStatus": "OFF",
+      "role": "CNC Machine Operator"
+    },
+    {
+      "id": "15",
+      "name": "Dinesh",
+      "location": "Medavakkam",
+      "domain": "Tvs",
+      "status": "Absent",
+      "machineStatus": "OFF",
+      "role": "Robotic Welding Specialist"
+    },
+    {
+      "id": "16",
+      "name": "Bharath",
+      "location": "Medavakkam",
+      "domain": "Voltas",
+      "status": "Absent",
+      "machineStatus": "OFF",
+      "role": "Robotic Welding Specialist"
+    },
+    {
+      "id": "17",
+      "name": "Madhan",
+      "location": "Medavakkam",
+      "domain": "Sms",
+      "status": "Absent",
+      "machineStatus": "OFF",
+      "role": "CNC Machine Operator"
+    },
+    {
+      "id": "18",
+      "name": "Ajith",
+      "location": "Medavakkam",
+      "domain": "Tvs",
+      "status": "Absent",
+      "machineStatus": "OFF",
+      "role": "Robotic Welding Specialist"
+    },
+    {
+      "id": "19",
+      "name": "Praveen",
+      "location": "Medavakkam",
+      "domain": "Voltas",
+      "status": "Absent",
+      "machineStatus": "OFF",
+      "role": "CNC Machine Operator"
+    },
+    {
+      "id": "20",
+      "name": "Anand",
+      "location": "Medavakkam",
+      "domain": "Sms",
+      "status": "Absent",
+      "machineStatus": "OFF",
+      "role": "CNC Machine Operator"
+    },
+    {
+      "id": "21",
+      "name": "Bharath",
+      "location": "Medavakkam",
+      "domain": "Tvs",
+      "status": "Absent",
+      "machineStatus": "OFF",
+      "role": "Robotic Welding Specialist"
+    },
+    {
+      "id": "22",
+      "name": "Vimal",
+      "location": "Medavakkam",
+      "domain": "Voltas",
+      "status": "Absent",
+      "machineStatus": "OFF",
+      "role": "Robotic Welding Specialist"
+    },
+    {
+      "id": "23",
+      "name": "Arun",
+      "location": "Medavakkam",
+      "domain": "Sms",
+      "status": "Absent",
+      "machineStatus": "OFF",
+      "role": "CNC Machine Operator"
+    },
+    {
+      "id": "24",
+      "name": "Suresh",
+      "location": "Medavakkam",
+      "domain": "Tvs",
+      "status": "Absent",
+      "machineStatus": "OFF",
+      "role": "Robotic Welding Specialist"
+    },
+    {
+      "id": "25",
+      "name": "Vignesh",
+      "location": "Medavakkam",
+      "domain": "Voltas",
+      "status": "Present",
+      "machineStatus": "ON",
+      "role": "CNC Machine Operator"
+    },
+    {
+      "id": "26",
+      "name": "Ashok",
+      "location": "Medavakkam",
+      "domain": "Sms",
+      "status": "Absent",
+      "machineStatus": "OFF",
+      "role": "CNC Machine Operator"
+    },
+    {
+      "id": "27",
+      "name": "Abinesh",
+      "location": "Medavakkam",
+      "domain": "Tvs",
+      "status": "Present",
+      "machineStatus": "ON",
+      "role": "Robotic Welding Specialist"
+    },
+    {
+      "id": "28",
+      "name": "Arul",
+      "location": "Medavakkam",
+      "domain": "Voltas",
+      "status": "Present",
+      "machineStatus": "ON",
+      "role": "Robotic Welding Specialist"
+    },
+    {
+      "id": "29",
+      "name": "Naveen",
+      "location": "Medavakkam",
+      "domain": "Sms",
+      "status": "Present",
+      "machineStatus": "ON",
+      "role": "CNC Machine Operator"
+    },
+    {
+      "id": "30",
+      "name": "Kishore",
+      "location": "Medavakkam",
+      "domain": "Tvs",
+      "status": "Absent",
+      "machineStatus": "OFF",
+      "role": "Robotic Welding Specialist"
+    },
+    {
+      "id": "31",
+      "name": "Karthik",
+      "location": "Medavakkam",
+      "domain": "Voltas",
+      "status": "Present",
+      "machineStatus": "ON",
+      "role": "CNC Machine Operator"
+    },
+    {
+      "id": "32",
+      "name": "Ashwin",
+      "location": "Medavakkam",
+      "domain": "Sms",
+      "status": "Absent",
+      "machineStatus": "OFF",
+      "role": "CNC Machine Operator"
+    },
+    {
+      "id": "33",
+      "name": "Deenadayalan",
+      "location": "shozinganallur",
+      "domain": "Voltas",
+      "status": "Absent",
+      "machineStatus": "OFF",
+      "role": "Press Brake Operator"
+    },
+    {
+      "id": "34",
+      "name": "Mohan",
+      "location": "shozinganallur",
+      "domain": "Sms",
+      "status": "Present",
+      "machineStatus": "ON",
+      "role": "Pneumatics Maintenance Technician"
+    },
+    {
+      "id": "35",
+      "name": "Bharathi",
+      "location": "shozinganallur",
+      "domain": "Tvs",
+      "status": "Absent",
+      "machineStatus": "OFF",
+      "role": "Press Brake Operator"
+    },
+    {
+      "id": "36",
+      "name": "Yuvaraj",
+      "location": "shozinganallur",
+      "domain": "Voltas",
+      "status": "Present",
+      "machineStatus": "ON",
+      "role": "Press Brake Operator"
+    },
+    {
+      "id": "37",
+      "name": "Sankar",
+      "location": "shozinganallur",
+      "domain": "Sms",
+      "status": "Absent",
+      "machineStatus": "OFF",
+      "role": "Pneumatics Maintenance Technician"
+    },
+    {
+      "id": "38",
+      "name": "Elango",
+      "location": "shozinganallur",
+      "domain": "Tvs",
+      "status": "Present",
+      "machineStatus": "ON",
+      "role": "Pneumatics Maintenance Technician"
+    },
+    {
+      "id": "39",
+      "name": "Deepak",
+      "location": "shozinganallur",
+      "domain": "Voltas",
+      "status": "Absent",
+      "machineStatus": "OFF",
+      "role": "Press Brake Operator"
+    },
+    {
+      "id": "40",
+      "name": "Ranjith",
+      "location": "shozinganallur",
+      "domain": "Sms",
+      "status": "Present",
+      "machineStatus": "ON",
+      "role": "Pneumatics Maintenance Technician"
+    },
+    {
+      "id": "41",
+      "name": "Prakash",
+      "location": "shozinganallur",
+      "domain": "Tvs",
+      "status": "Present",
+      "machineStatus": "ON",
+      "role": "Press Brake Operator"
+    },
+    {
+      "id": "42",
+      "name": "Chelladurai",
+      "location": "shozinganallur",
+      "domain": "Voltas",
+      "status": "Present",
+      "machineStatus": "ON",
+      "role": "Press Brake Operator"
+    },
+    {
+      "id": "43",
+      "name": "Kumar",
+      "location": "shozinganallur",
+      "domain": "Sms",
+      "status": "Absent",
+      "machineStatus": "OFF",
+      "role": "Pneumatics Maintenance Technician"
+    },
+    {
+      "id": "44",
+      "name": "Vinoth",
+      "location": "shozinganallur",
+      "domain": "Tvs",
+      "status": "Present",
+      "machineStatus": "ON",
+      "role": "Pneumatics Maintenance Technician"
+    },
+    {
+      "id": "45",
+      "name": "Vasanth",
+      "location": "shozinganallur",
+      "domain": "Voltas",
+      "status": "Present",
+      "machineStatus": "ON",
+      "role": "Press Brake Operator"
+    },
+    {
+      "id": "46",
+      "name": "Rajesh",
+      "location": "shozinganallur",
+      "domain": "Sms",
+      "status": "Absent",
+      "machineStatus": "OFF",
+      "role": "Pneumatics Maintenance Technician"
+    },
+    {
+      "id": "47",
+      "name": "Chandrasekar",
+      "location": "shozinganallur",
+      "domain": "Tvs",
+      "status": "Present",
+      "machineStatus": "ON",
+      "role": "Press Brake Operator"
+    },
+    {
+      "id": "48",
+      "name": "Darshan",
+      "location": "shozinganallur",
+      "domain": "Voltas",
+      "status": "Present",
+      "machineStatus": "ON",
+      "role": "Press Brake Operator"
+    },
+    {
+      "id": "49",
+      "name": "Ramesh",
+      "location": "shozinganallur",
+      "domain": "Sms",
+      "status": "Present",
+      "machineStatus": "ON",
+      "role": "Pneumatics Maintenance Technician"
+    },
+    {
+      "id": "50",
+      "name": "Saravanan",
+      "location": "shozinganallur",
+      "domain": "Tvs",
+      "status": "Present",
+      "machineStatus": "ON",
+      "role": "Pneumatics Maintenance Technician"
+    },
+    {
+      "id": "51",
+      "name": "Deepak",
+      "location": "shozinganallur",
+      "domain": "Voltas",
+      "status": "Present",
+      "machineStatus": "ON",
+      "role": "Press Brake Operator"
+    },
+    {
+      "id": "52",
+      "name": "Siva",
+      "location": "shozinganallur",
+      "domain": "Sms",
+      "status": "Present",
+      "machineStatus": "ON",
+      "role": "Pneumatics Maintenance Technician"
+    },
+    {
+      "id": "53",
+      "name": "Murali",
+      "location": "shozinganallur",
+      "domain": "Tvs",
+      "status": "Present",
+      "machineStatus": "ON",
+      "role": "Press Brake Operator"
+    },
+    {
+      "id": "54",
+      "name": "Easwaran",
+      "location": "shozinganallur",
+      "domain": "Voltas",
+      "status": "Absent",
+      "machineStatus": "OFF",
+      "role": "Press Brake Operator"
+    },
+    {
+      "id": "55",
+      "name": "Sathish",
+      "location": "shozinganallur",
+      "domain": "Sms",
+      "status": "Absent",
+      "machineStatus": "OFF",
+      "role": "Pneumatics Maintenance Technician"
+    },
+    {
+      "id": "56",
+      "name": "Gokul",
+      "location": "shozinganallur",
+      "domain": "Tvs",
+      "status": "Present",
+      "machineStatus": "ON",
+      "role": "Pneumatics Maintenance Technician"
+    },
+    {
+      "id": "57",
+      "name": "Dharan",
+      "location": "shozinganallur",
+      "domain": "Voltas",
+      "status": "Absent",
+      "machineStatus": "OFF",
+      "role": "Press Brake Operator"
+    },
+    {
+      "id": "58",
+      "name": "Chandru",
+      "location": "shozinganallur",
+      "domain": "Sms",
+      "status": "Absent",
+      "machineStatus": "OFF",
+      "role": "Pneumatics Maintenance Technician"
+    },
+    {
+      "id": "59",
+      "name": "Dineshbabu",
+      "location": "shozinganallur",
+      "domain": "Tvs",
+      "status": "Present",
+      "machineStatus": "ON",
+      "role": "Press Brake Operator"
+    },
+    {
+      "id": "60",
+      "name": "Ganesh",
+      "location": "shozinganallur",
+      "domain": "Voltas",
+      "status": "Absent",
+      "machineStatus": "OFF",
+      "role": "Press Brake Operator"
+    },
+    {
+      "id": "61",
+      "name": "Charan",
+      "location": "shozinganallur",
+      "domain": "Sms",
+      "status": "Present",
+      "machineStatus": "ON",
+      "role": "Pneumatics Maintenance Technician"
+    },
+    {
+      "id": "62",
+      "name": "Lokesh",
+      "location": "shozinganallur",
+      "domain": "Tvs",
+      "status": "Absent",
+      "machineStatus": "OFF",
+      "role": "Pneumatics Maintenance Technician"
+    },
+    {
+      "id": "63",
+      "name": "Arul",
+      "location": "shozinganallur",
+      "domain": "Voltas",
+      "status": "Present",
+      "machineStatus": "ON",
+      "role": "Press Brake Operator"
+    },
+    {
+      "id": "64",
+      "name": "Aravind",
+      "location": "shozinganallur",
+      "domain": "Sms",
+      "status": "Present",
+      "machineStatus": "ON",
+      "role": "Pneumatics Maintenance Technician"
+    },
+    {
+      "id": "65",
+      "name": "Keerthivasan",
+      "location": "Karapakkam",
+      "domain": "Voltas",
+      "status": "Absent",
+      "machineStatus": "OFF",
+      "role": "Laser Cutting Operator"
+    },
+    {
+      "id": "66",
+      "name": "Ezhilarasan",
+      "location": "Karapakkam",
+      "domain": "Sms",
+      "status": "Absent",
+      "machineStatus": "OFF",
+      "role": "Laser Cutting Operator"
+    },
+    {
+      "id": "67",
+      "name": "Dharan",
+      "location": "Karapakkam",
+      "domain": "Tvs",
+      "status": "Absent",
+      "machineStatus": "OFF",
+      "role": "Laser Cutting Operator"
+    },
+    {
+      "id": "68",
+      "name": "Franklin",
+      "location": "Karapakkam",
+      "domain": "Voltas",
+      "status": "Absent",
+      "machineStatus": "OFF",
+      "role": "Laser Cutting Operator"
+    },
+    {
+      "id": "69",
+      "name": "Pranav",
+      "location": "Karapakkam",
+      "domain": "Sms",
+      "status": "Absent",
+      "machineStatus": "OFF",
+      "role": "Laser Cutting Operator"
+    },
+    {
+      "id": "70",
+      "name": "Abinesh",
+      "location": "Karapakkam",
+      "domain": "Tvs",
+      "status": "Present",
+      "machineStatus": "ON",
+      "role": "Laser Cutting Operator"
+    },
+    {
+      "id": "71",
+      "name": "Chandru",
+      "location": "Karapakkam",
+      "domain": "Voltas",
+      "status": "Absent",
+      "machineStatus": "OFF",
+      "role": "Laser Cutting Operator"
+    },
+    {
+      "id": "72",
+      "name": "Tharun",
+      "location": "Karapakkam",
+      "domain": "Sms",
+      "status": "Absent",
+      "machineStatus": "OFF",
+      "role": "Laser Cutting Operator"
+    },
+    {
+      "id": "73",
+      "name": "Ezhil",
+      "location": "Karapakkam",
+      "domain": "Tvs",
+      "status": "Present",
+      "machineStatus": "ON",
+      "role": "Laser Cutting Operator"
+    },
+    {
+      "id": "74",
+      "name": "Varun",
+      "location": "Karapakkam",
+      "domain": "Voltas",
+      "status": "Present",
+      "machineStatus": "ON",
+      "role": "Laser Cutting Operator"
+    },
+    {
+      "id": "75",
+      "name": "Farook",
+      "location": "Karapakkam",
+      "domain": "Sms",
+      "status": "Present",
+      "machineStatus": "ON",
+      "role": "Laser Cutting Operator"
+    },
+    {
+      "id": "76",
+      "name": "Jagan",
+      "location": "Karapakkam",
+      "domain": "Tvs",
+      "status": "Present",
+      "machineStatus": "ON",
+      "role": "Laser Cutting Operator"
+    },
+    {
+      "id": "77",
+      "name": "Mithun",
+      "location": "Karapakkam",
+      "domain": "Voltas",
+      "status": "Absent",
+      "machineStatus": "OFF",
+      "role": "Laser Cutting Operator"
+    },
+    {
+      "id": "78",
+      "name": "Akash",
+      "location": "Karapakkam",
+      "domain": "Sms",
+      "status": "Present",
+      "machineStatus": "ON",
+      "role": "Laser Cutting Operator"
+    },
+    {
+      "id": "79",
+      "name": "Nithish",
+      "location": "Karapakkam",
+      "domain": "Tvs",
+      "status": "Present",
+      "machineStatus": "ON",
+      "role": "Laser Cutting Operator"
+    },
+    {
+      "id": "80",
+      "name": "Ezhil",
+      "location": "Karapakkam",
+      "domain": "Voltas",
+      "status": "Absent",
+      "machineStatus": "OFF",
+      "role": "Laser Cutting Operator"
+    },
+    {
+      "id": "81",
+      "name": "Balaji",
+      "location": "Karapakkam",
+      "domain": "Sms",
+      "status": "Present",
+      "machineStatus": "ON",
+      "role": "Laser Cutting Operator"
+    },
+    {
+      "id": "82",
+      "name": "Farook",
+      "location": "Karapakkam",
+      "domain": "Tvs",
+      "status": "Present",
+      "machineStatus": "ON",
+      "role": "Laser Cutting Operator"
+    },
+    {
+      "id": "83",
+      "name": "Udhay",
+      "location": "Karapakkam",
+      "domain": "Voltas",
+      "status": "Absent",
+      "machineStatus": "OFF",
+      "role": "Laser Cutting Operator"
+    },
+    {
+      "id": "84",
+      "name": "Yogesh",
+      "location": "Karapakkam",
+      "domain": "Sms",
+      "status": "Absent",
+      "machineStatus": "OFF",
+      "role": "Laser Cutting Operator"
+    },
+    {
+      "id": "85",
+      "name": "Harish",
+      "location": "Karapakkam",
+      "domain": "Tvs",
+      "status": "Present",
+      "machineStatus": "ON",
+      "role": "Laser Cutting Operator"
+    },
+    {
+      "id": "86",
+      "name": "Fazil",
+      "location": "Karapakkam",
+      "domain": "Voltas",
+      "status": "Absent",
+      "machineStatus": "OFF",
+      "role": "Laser Cutting Operator"
+    },
+    {
+      "id": "87",
+      "name": "Ganesh",
+      "location": "Karapakkam",
+      "domain": "Sms",
+      "status": "Present",
+      "machineStatus": "ON",
+      "role": "Laser Cutting Operator"
+    },
+    {
+      "id": "88",
+      "name": "Rohith",
+      "location": "Karapakkam",
+      "domain": "Tvs",
+      "status": "Present",
+      "machineStatus": "ON",
+      "role": "Laser Cutting Operator"
+    },
+    {
+      "id": "89",
+      "name": "Ganapathi",
+      "location": "Karapakkam",
+      "domain": "Voltas",
+      "status": "Present",
+      "machineStatus": "ON",
+      "role": "Laser Cutting Operator"
+    },
+    {
+      "id": "90",
+      "name": "Senthil",
+      "location": "Karapakkam",
+      "domain": "Sms",
+      "status": "Absent",
+      "machineStatus": "OFF",
+      "role": "Laser Cutting Operator"
+    },
+    {
+      "id": "91",
+      "name": "Surya",
+      "location": "Karapakkam",
+      "domain": "Tvs",
+      "status": "Present",
+      "machineStatus": "ON",
+      "role": "Laser Cutting Operator"
+    },
+    {
+      "id": "92",
+      "name": "Adithya",
+      "location": "Navallur",
+      "domain": "Voltas",
+      "status": "Absent",
+      "machineStatus": "OFF",
+      "role": "Surface Grinding Operator"
+    },
+    {
+      "id": "93",
+      "name": "Jayanth",
+      "location": "Navallur",
+      "domain": "Sms",
+      "status": "Absent",
+      "machineStatus": "OFF",
+      "role": "Surface Grinding Operator"
+    },
+    {
+      "id": "94",
+      "name": "Gokul",
+      "location": "Navallur",
+      "domain": "Tvs",
+      "status": "Present",
+      "machineStatus": "ON",
+      "role": "Surface Grinding Operator"
+    },
+    {
+      "id": "95",
+      "name": "Oviya",
+      "location": "Navallur",
+      "domain": "Voltas",
+      "status": "Absent",
+      "machineStatus": "OFF",
+      "role": "Surface Grinding Operator"
+    },
+    {
+      "id": "96",
+      "name": "Hemanth",
+      "location": "Navallur",
+      "domain": "Sms",
+      "status": "Present",
+      "machineStatus": "ON",
+      "role": "Surface Grinding Operator"
+    },
+    {
+      "id": "97",
+      "name": "Logesh",
+      "location": "Navallur",
+      "domain": "Tvs",
+      "status": "Absent",
+      "machineStatus": "OFF",
+      "role": "Surface Grinding Operator"
+    },
+    {
+      "id": "98",
+      "name": "Saran",
+      "location": "Navallur",
+      "domain": "Voltas",
+      "status": "Absent",
+      "machineStatus": "OFF",
+      "role": "Surface Grinding Operator"
+    },
+    {
+      "id": "99",
+      "name": "Rithik",
+      "location": "Navallur",
+      "domain": "Sms",
+      "status": "Present",
+      "machineStatus": "ON",
+      "role": "Surface Grinding Operator"
+    },
+    {
+      "id": "100",
+      "name": "Karthikeyan",
+      "location": "Navallur",
+      "domain": "Tvs",
+      "status": "Present",
+      "machineStatus": "ON",
+      "role": "Surface Grinding Operator"
+    },
+    {
+      "id": "101",
+      "name": "Elango",
+      "location": "Navallur",
+      "domain": "Voltas",
+      "status": "Absent",
+      "machineStatus": "OFF",
+      "role": "Surface Grinding Operator"
+    },
+    {
+      "id": "102",
+      "name": "Guru",
+      "location": "Navallur",
+      "domain": "Sms",
+      "status": "Present",
+      "machineStatus": "ON",
+      "role": "Surface Grinding Operator"
+    },
+    {
+      "id": "103",
+      "name": "Udhayakumar",
+      "location": "Navallur",
+      "domain": "Tvs",
+      "status": "Absent",
+      "machineStatus": "OFF",
+      "role": "Surface Grinding Operator"
+    },
+    {
+      "id": "104",
+      "name": "Iniya",
+      "location": "Navallur",
+      "domain": "Voltas",
+      "status": "Absent",
+      "machineStatus": "OFF",
+      "role": "Surface Grinding Operator"
+    },
+    {
+      "id": "105",
+      "name": "Mugesh",
+      "location": "Navallur",
+      "domain": "Sms",
+      "status": "Present",
+      "machineStatus": "ON",
+      "role": "Surface Grinding Operator"
+    },
+    {
+      "id": "106",
+      "name": "Tamilselvan",
+      "location": "Navallur",
+      "domain": "Tvs",
+      "status": "Present",
+      "machineStatus": "ON",
+      "role": "Surface Grinding Operator"
+    },
+    {
+      "id": "107",
+      "name": "Darshan",
+      "location": "Navallur",
+      "domain": "Voltas",
+      "status": "Absent",
+      "machineStatus": "OFF",
+      "role": "Surface Grinding Operator"
+    },
+    {
+      "id": "108",
+      "name": "Guru",
+      "location": "Navallur",
+      "domain": "Sms",
+      "status": "Absent",
+      "machineStatus": "OFF",
+      "role": "Surface Grinding Operator"
+    },
+    {
+      "id": "109",
+      "name": "Prithvi",
+      "location": "Navallur",
+      "domain": "Tvs",
+      "status": "Present",
+      "machineStatus": "ON",
+      "role": "Surface Grinding Operator"
+    },
+    {
+      "id": "110",
+      "name": "Charan",
+      "location": "Navallur",
+      "domain": "Voltas",
+      "status": "Present",
+      "machineStatus": "ON",
+      "role": "Surface Grinding Operator"
+    },
+    {
+      "id": "111",
+      "name": "Nelson",
+      "location": "Navallur",
+      "domain": "Sms",
+      "status": "Present",
+      "machineStatus": "ON",
+      "role": "Surface Grinding Operator"
+    },
+    {
+      "id": "112",
+      "name": "Franklin",
+      "location": "Navallur",
+      "domain": "Tvs",
+      "status": "Absent",
+      "machineStatus": "OFF",
+      "role": "Surface Grinding Operator"
+    },
+    {
+      "id": "113",
+      "name": "Bala",
+      "location": "Navallur",
+      "domain": "Voltas",
+      "status": "Absent",
+      "machineStatus": "OFF",
+      "role": "Surface Grinding Operator"
+    },
+    {
+      "id": "114",
+      "name": "Gokulnath",
+      "location": "Navallur",
+      "domain": "Sms",
+      "status": "Absent",
+      "machineStatus": "OFF",
+      "role": "Surface Grinding Operator"
+    },
+    {
+      "id": "115",
+      "name": "Vasudevan",
+      "location": "Tambaram",
+      "domain": "Voltas",
+      "status": "Present",
+      "machineStatus": "ON",
+      "role": "Radial Drilling Operator"
+    },
+    {
+      "id": "116",
+      "name": "Yazhini",
+      "location": "Tambaram",
+      "domain": "Sms",
+      "status": "Absent",
+      "machineStatus": "OFF",
+      "role": "Injection Molding Operator"
+    },
+    {
+      "id": "117",
+      "name": "Ramkumar",
+      "location": "Tambaram",
+      "domain": "Tvs",
+      "status": "Absent",
+      "machineStatus": "OFF",
+      "role": "Injection Molding Operator"
+    },
+    {
+      "id": "118",
+      "name": "Manikandan",
+      "location": "Tambaram",
+      "domain": "Voltas",
+      "status": "Present",
+      "machineStatus": "ON",
+      "role": "Radial Drilling Operator"
+    },
+    {
+      "id": "119",
+      "name": "Parthiban",
+      "location": "Tambaram",
+      "domain": "Sms",
+      "status": "Present",
+      "machineStatus": "ON",
+      "role": "Injection Molding Operator"
+    },
+    {
+      "id": "120",
+      "name": "Kalyan",
+      "location": "Tambaram",
+      "domain": "Tvs",
+      "status": "Absent",
+      "machineStatus": "OFF",
+      "role": "Radial Drilling Operator"
+    },
+    {
+      "id": "121",
+      "name": "Bharathi",
+      "location": "Tambaram",
+      "domain": "Voltas",
+      "status": "Absent",
+      "machineStatus": "OFF",
+      "role": "Radial Drilling Operator"
+    },
+    {
+      "id": "122",
+      "name": "Selvam",
+      "location": "Tambaram",
+      "domain": "Sms",
+      "status": "Absent",
+      "machineStatus": "OFF",
+      "role": "Injection Molding Operator"
+    },
+    {
+      "id": "123",
+      "name": "Fazil",
+      "location": "Tambaram",
+      "domain": "Tvs",
+      "status": "Absent",
+      "machineStatus": "OFF",
+      "role": "Injection Molding Operator"
+    },
+    {
+      "id": "124",
+      "name": "Nagaraj",
+      "location": "Tambaram",
+      "domain": "Voltas",
+      "status": "Present",
+      "machineStatus": "ON",
+      "role": "Radial Drilling Operator"
+    },
+    {
+      "id": "125",
+      "name": "Inbaraj",
+      "location": "Tambaram",
+      "domain": "Sms",
+      "status": "Present",
+      "machineStatus": "ON",
+      "role": "Injection Molding Operator"
+    },
+    {
+      "id": "126",
+      "name": "Ezhilarasan",
+      "location": "Tambaram",
+      "domain": "Tvs",
+      "status": "Present",
+      "machineStatus": "ON",
+      "role": "Radial Drilling Operator"
+    },
+    {
+      "id": "127",
+      "name": "Ilamparithi",
+      "location": "Tambaram",
+      "domain": "Voltas",
+      "status": "Present",
+      "machineStatus": "ON",
+      "role": "Radial Drilling Operator"
+    },
+    {
+      "id": "128",
+      "name": "Dineshbabu",
+      "location": "Tambaram",
+      "domain": "Sms",
+      "status": "Absent",
+      "machineStatus": "OFF",
+      "role": "Injection Molding Operator"
+    },
+    {
+      "id": "129",
+      "name": "Harish",
+      "location": "Tambaram",
+      "domain": "Tvs",
+      "status": "Present",
+      "machineStatus": "ON",
+      "role": "Injection Molding Operator"
+    },
+    {
+      "id": "130",
+      "name": "Ganapathi",
+      "location": "Tambaram",
+      "domain": "Voltas",
+      "status": "Present",
+      "machineStatus": "ON",
+      "role": "Radial Drilling Operator"
+    },
+    {
+      "id": "131",
+      "name": "Thirunavukkarasu",
+      "location": "Tambaram",
+      "domain": "Sms",
+      "status": "Present",
+      "machineStatus": "ON",
+      "role": "Injection Molding Operator"
+    },
+    {
+      "id": "132",
+      "name": "Lingaraj",
+      "location": "Tambaram",
+      "domain": "Tvs",
+      "status": "Present",
+      "machineStatus": "ON",
+      "role": "Radial Drilling Operator"
+    },
+    {
+      "id": "133",
+      "name": "Inbaraj",
+      "location": "Tambaram",
+      "domain": "Voltas",
+      "status": "Absent",
+      "machineStatus": "OFF",
+      "role": "Radial Drilling Operator"
+    },
+    {
+      "id": "134",
+      "name": "Hemanth",
+      "location": "Tambaram",
+      "domain": "Sms",
+      "status": "Absent",
+      "machineStatus": "OFF",
+      "role": "Injection Molding Operator"
+    },
+    {
+      "id": "135",
+      "name": "Hariharan",
+      "location": "Tambaram",
+      "domain": "Tvs",
+      "status": "Present",
+      "machineStatus": "ON",
+      "role": "Injection Molding Operator"
+    },
+    {
+      "id": "136",
+      "name": "Jeevanantham",
+      "location": "Tambaram",
+      "domain": "Voltas",
+      "status": "Present",
+      "machineStatus": "ON",
+      "role": "Radial Drilling Operator"
+    },
+    {
+      "id": "137",
+      "name": "Venkatesh",
+      "location": "Tambaram",
+      "domain": "Sms",
+      "status": "Present",
+      "machineStatus": "ON",
+      "role": "Injection Molding Operator"
+    },
+    {
+      "id": "138",
+      "name": "Ashok",
+      "location": "Tambaram",
+      "domain": "Tvs",
+      "status": "Absent",
+      "machineStatus": "OFF",
+      "role": "Radial Drilling Operator"
+    },
+    {
+      "id": "139",
+      "name": "Chandrasekar",
+      "location": "Tambaram",
+      "domain": "Voltas",
+      "status": "Absent",
+      "machineStatus": "OFF",
+      "role": "Radial Drilling Operator"
+    },
+    {
+      "id": "140",
+      "name": "Palani",
+      "location": "Adayar",
+      "domain": "Voltas",
+      "status": "Present",
+      "machineStatus": "ON",
+      "role": "Lathe Machine Operator"
+    },
+    {
+      "id": "141",
+      "name": "Subramani",
+      "location": "Adayar",
+      "domain": "Sms",
+      "status": "Present",
+      "machineStatus": "ON",
+      "role": "Quality Control Inspector"
+    },
+    {
+      "id": "142",
+      "name": "Rajamani",
+      "location": "Adayar",
+      "domain": "Tvs",
+      "status": "Absent",
+      "machineStatus": "OFF",
+      "role": "Lathe Machine Operator"
+    },
+    {
+      "id": "143",
+      "name": "Umarani",
+      "location": "Adayar",
+      "domain": "Voltas",
+      "status": "Present",
+      "machineStatus": "ON",
+      "role": "Lathe Machine Operator"
+    },
+    {
+      "id": "144",
+      "name": "Kishore",
+      "location": "Adayar",
+      "domain": "Sms",
+      "status": "Absent",
+      "machineStatus": "OFF",
+      "role": "Quality Control Inspector"
+    },
+    {
+      "id": "145",
+      "name": "Mathankumar",
+      "location": "Adayar",
+      "domain": "Tvs",
+      "status": "Absent",
+      "machineStatus": "OFF",
+      "role": "Quality Control Inspector"
+    },
+    {
+      "id": "146",
+      "name": "Gokulnath",
+      "location": "Adayar",
+      "domain": "Voltas",
+      "status": "Present",
+      "machineStatus": "ON",
+      "role": "Lathe Machine Operator"
+    },
+    {
+      "id": "147",
+      "name": "Jayakrishnan",
+      "location": "Adayar",
+      "domain": "Sms",
+      "status": "Present",
+      "machineStatus": "ON",
+      "role": "Quality Control Inspector"
+    },
+    {
+      "id": "148",
+      "name": "Velmurugan",
+      "location": "Adayar",
+      "domain": "Tvs",
+      "status": "Absent",
+      "machineStatus": "OFF",
+      "role": "Lathe Machine Operator"
+    },
+    {
+      "id": "149",
+      "name": "Jayakrishnan",
+      "location": "Adayar",
+      "domain": "Voltas",
+      "status": "Absent",
+      "machineStatus": "OFF",
+      "role": "Lathe Machine Operator"
+    },
+    {
+      "id": "150",
+      "name": "Hariharan",
+      "location": "Adayar",
+      "domain": "Sms",
+      "status": "Absent",
+      "machineStatus": "OFF",
+      "role": "Quality Control Inspector"
+    },
+    {
+      "id": "151",
+      "name": "Anand",
+      "location": "Adayar",
+      "domain": "Tvs",
+      "status": "Present",
+      "machineStatus": "ON",
+      "role": "Quality Control Inspector"
+    },
+    {
+      "id": "152",
+      "name": "Kathiravan",
+      "location": "Adayar",
+      "domain": "Voltas",
+      "status": "Absent",
+      "machineStatus": "OFF",
+      "role": "Lathe Machine Operator"
+    },
+    {
+      "id": "153",
+      "name": "Ilamparithi",
+      "location": "Adayar",
+      "domain": "Sms",
+      "status": "Present",
+      "machineStatus": "ON",
+      "role": "Quality Control Inspector"
+    },
+    {
+      "id": "154",
+      "name": "Karthikeyan",
+      "location": "Adayar",
+      "domain": "Tvs",
+      "status": "Present",
+      "machineStatus": "ON",
+      "role": "Lathe Machine Operator"
+    },
+    {
+      "id": "155",
+      "name": "Deenadayalan",
+      "location": "Adayar",
+      "domain": "Voltas",
+      "status": "Present",
+      "machineStatus": "ON",
+      "role": "Lathe Machine Operator"
+    },
+    {
+      "id": "156",
+      "name": "Jayanth",
+      "location": "Adayar",
+      "domain": "Sms",
+      "status": "Absent",
+      "machineStatus": "OFF",
+      "role": "Quality Control Inspector"
+    },
+    {
+      "id": "157",
+      "name": "Iniya",
+      "location": "Adayar",
+      "domain": "Tvs",
+      "status": "Absent",
+      "machineStatus": "OFF",
+      "role": "Quality Control Inspector"
+    },
+    {
+      "id": "158",
+      "name": "Easwaran",
+      "location": "Adayar",
+      "domain": "Voltas",
+      "status": "Present",
+      "machineStatus": "ON",
+      "role": "Lathe Machine Operator"
+    },
+    {
+      "id": "159",
+      "name": "Thamizharasan",
+      "location": "Adayar",
+      "domain": "Sms",
+      "status": "Absent",
+      "machineStatus": "OFF",
+      "role": "Quality Control Inspector"
+    },
+    {
+      "id": "160",
+      "name": "Kalyan",
+      "location": "Adayar",
+      "domain": "Tvs",
+      "status": "Absent",
+      "machineStatus": "OFF",
+      "role": "Lathe Machine Operator"
+    },
+    {
+      "id": "161",
+      "name": "Chelladurai",
+      "location": "Adayar",
+      "domain": "Voltas",
+      "status": "Present",
+      "machineStatus": "ON",
+      "role": "Lathe Machine Operator"
+    },
+    {
+      "id": "162",
+      "name": "Kathiravan",
+      "location": "Adayar",
+      "domain": "Sms",
+      "status": "Present",
+      "machineStatus": "ON",
+      "role": "Quality Control Inspector"
+    },
+    {
+      "id": "163",
+      "name": "Balasubramanian",
+      "location": "Adayar",
+      "domain": "Tvs",
+      "status": "Present",
+      "machineStatus": "ON",
+      "role": "Quality Control Inspector"
+    },
+    {
+      "id": "164",
+      "name": "Keerthivasan",
+      "location": "Adayar",
+      "domain": "Voltas",
+      "status": "Absent",
+      "machineStatus": "OFF",
+      "role": "Lathe Machine Operator"
+    },
+    {
+      "id": "165",
+      "name": "Nirmalkumar",
+      "location": "Adayar",
+      "domain": "Sms",
+      "status": "Present",
+      "machineStatus": "ON",
+      "role": "Quality Control Inspector"
+    },
+    {
+      "id": "166",
+      "name": "Jagan",
+      "location": "Adayar",
+      "domain": "Tvs",
+      "status": "Present",
+      "machineStatus": "ON",
+      "role": "Lathe Machine Operator"
+    },
+    {
+      "id": "167",
+      "name": "Kumar",
+      "location": "Adayar",
+      "domain": "Voltas",
+      "status": "Present",
+      "machineStatus": "ON",
+      "role": "Lathe Machine Operator"
+    },
+    {
+      "id": "168",
+      "name": "Jeevanantham",
+      "location": "Adayar",
+      "domain": "Sms",
+      "status": "Present",
+      "machineStatus": "ON",
+      "role": "Quality Control Inspector"
+    },
+    {
+      "id": "169",
+      "name": "Yoganathan",
+      "location": "Adayar",
+      "domain": "Tvs",
+      "status": "Absent",
+      "machineStatus": "OFF",
+      "role": "Quality Control Inspector"
+    },
+    {
+      "id": "170",
+      "name": "Lakshmanan",
+      "location": "Adayar",
+      "domain": "Voltas",
+      "status": "Absent",
+      "machineStatus": "OFF",
+      "role": "Lathe Machine Operator"
+    }
+  ],
+  "inventory": [
+    {
+      "id": "1",
+      "name": "CNC Vertical Machining Center",
+      "description": "High-precision 3-axis vertical CNC milling machine designed for rapid prototyping.",
+      "employee": "Naveen",
+      "role": "CNC Machine Operator"
+    },
+    {
+      "id": "2",
+      "name": "Hydraulic Press Brake 100T",
+      "description": "Heavy-duty 100-ton hydraulic sheet metal bending machine..",
+      "employee": "Fazil",
+      "role": "Laser Cutting Operator"
+    },
+    {
+      "id": "3",
+      "name": "Fiber Laser Cutting System 4kW",
+      "description": "Industrial-grade high-power fiber laser cutting system engineered for fast....",
+      "employee": "Vimal",
+      "role": "Robotic Welding Specialist"
+    },
+    {
+      "id": "4",
+      "name": "Horizontal Precision Lathe Machine",
+      "description": "Heavy-duty geared-head engine lathe for cylindrical turning..",
+      "employee": "Ajith",
+      "role": "Robotic Welding Specialist"
+    },
+    {
+      "id": "5",
+      "name": "Automated Surface Grinding Machine",
+      "description": "Hydraulic surface grinder with digital readout system.",
+      "employee": "Lingaraj",
+      "role": "Radial Drilling Operator"
+    },
+    {
+      "id": "6",
+      "name": "Plastic Injection Molding Machine 180T",
+      "description": "Servo-hydraulic thermoplastic injection molding unit.",
+      "employee": "Balaji",
+      "role": "Robotic Welding Specialist"
+    },
+    {
+      "id": "7",
+      "name": "Robotic Arc Welding Station",
+      "description": "6-axis industrial articulated robotic arm integrated with MIG/MAG power source for automated.",
+      "employee": "Kishore",
+      "role": "Robotic Welding Specialist"
+    },
+    {
+      "id": "8",
+      "name": "Rotary Screw Air Compressor 50HP",
+      "description": "Variable speed direct-drive industrial screw compressor providing constant.",
+      "employee": "Bharathi",
+      "role": "Press Brake Operator"
+    },
+    {
+      "id": "9",
+      "name": "Coordinate Measuring Machine (CMM)",
+      "description": "High-precision bridge-type 3D coordinate measuring system for metrology inspection, quality verification.",
+      "employee": "Anand",
+      "role": "CNC Machine Operator"
+    },
+    {
+      "id": "10",
+      "name": "Heavy-Duty Radial Drilling Machine",
+      "description": "Geared universal radial arm drill press engineered for drilling, reaming, counterboring.",
+      "employee": "Elango",
+      "role": "Pneumatics Maintenance Technician"
+    },
+    {
+      "name": "ncc",
+      "employee": "kumar",
+      "role": "admin",
+      "description": "test desc",
+      "id": "11"
+    }
+  ],
+  "$schema": "./node_modules/json-server/schema.json"
+}
