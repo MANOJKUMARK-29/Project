@@ -154,11 +154,27 @@
   (nzOnCancel)="closeView()"
 >
   <ng-container *nzModalContent>
-    <div *ngIf="selectedPopUpData" class="p-2">
-      <div class="d-flex col-"><p style="color: #a8108afa;">Machine Name: </p><p>{{ selectedPopUpData.name }}</p></div>
-      <div class="d-flex col-6"><p style="color: #a8108afa;">Employee Name: </p><p>{{ selectedPopUpData.employee }}</p></div>
-      <div class="d-flex col-6"><p style="color: #a8108afa; ">Role: </p><p>{{ selectedPopUpData.role }}</p></div>
-      <div class="d-flex col-6"><p style="color: #a8108afa; ">Description: </p><p>{{ selectedPopUpData.description }}</p></div>
+    <div *ngIf="selectedPopUpData" class="p-3">
+      <div class="row mb-3 align-items-start">
+        <p class="col-4 mb-0 fw-semibold" style="color: #a8108afa;">Machine Name</p>
+        <p class="col-1 mb-0 text-break" style="color: #a8108afa;">:</p>
+        <p class="col-6 mb-0 text-break">{{ selectedPopUpData.name }}</p>
+      </div>
+      <div class="row mb-3 align-items-start">
+        <p class="col-4 mb-0 fw-semibold" style="color: #a8108afa;">Employee Name</p>
+        <p class="col-1 mb-0 text-break" style="color: #a8108afa;">:</p>
+        <p class="col-6 mb-0 text-break">{{ selectedPopUpData.employee }}</p>
+      </div>
+      <div class="row mb-3 align-items-start">
+        <p class="col-4 mb-0 fw-semibold" style="color: #a8108afa;">Role</p>
+        <p class="col-1 mb-0 text-break" style="color: #a8108afa;">:</p>
+        <p class="col-6 mb-0 text-break">{{ selectedPopUpData.role }}</p>
+      </div>
+      <div class="row mb-2 align-items-start">
+        <p class="col-4 mb-0 fw-semibold" style="color: #a8108afa;">Description</p>
+        <p class="col-1 mb-0 text-break" style="color: #a8108afa;">:</p>
+        <p class="col-6 mb-0 text-break">{{ selectedPopUpData.description }}</p>
+      </div>
     </div>
 
   </ng-container>
