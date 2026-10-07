@@ -1,26 +1,29 @@
-<div class="row">
-    <div class="col-lg-12 ">
-        <div class="card-body px-3 py-3">
-            <div class="profile card card-body  px-0 py-0">
-                <div style=" width: 80vw; height: 100px;"> 
-                    <img [src]="coverImage" alt="coverImage" style="overflow: hidden; width: 94vw; height: 100vh; object-fit: cover;"> 
+<div class="row w-100">
+    <div class="col-lg-12 px-5 py-3 ">
+        <div class="card-body ">
+            <div class="profile card card-body  px-3 py-3">
+                <div style="  height: 100px;"> 
+                    <img [src]="coverImage" alt="coverImage" style="height: 100px; width: 100%; overflow: hidden; object-fit: cover;"> 
                 </div>
                 <div class="profile-photo d-flex w-100">
                     <img class="rounded-circle" style="width: 100px; position: absolute; top: 35%; overflow: visible; margin-left: 10px;" [src]="profilePicUrl" alt="Profile">
                     <div style="display:flex; margin-left: 130px;">
                         <div class="profile-name px-3 pt-2">
-                            <h5 style="font-size:18px; font-weight: 500px; color: #ffffff; font-family: 'Poppins', sans-serif;">{{ userDetails?.uname }}</h5>
                             <h6 style="color: #c20091; font-size: 14px;">Name</h6>
+                            <h5 style="font-size:18px; font-weight: 500px; color: #464646; font-family: 'Poppins', sans-serif;">{{ userDetails?.uname }}</h5>
+                            
                         </div>
         
                         <div class="profile-name px-3 pt-2">
-                            <h5 style="font-size:18px; font-weight: 500px; color: #ffffff; font-family: 'Poppins', sans-serif;">{{ userDetails?.role }}</h5>
                             <h6 style="color: #b30086; font-size: 14px;">Role</h6>
+                            <h5 style="font-size:18px; font-weight: 500px; color: #464646; font-family: 'Poppins', sans-serif;">{{ userDetails?.role }}</h5>
+                           
                         
                         </div>
                         <div class="profile-name px-3 pt-2">
-                            <h4 style="font-size:18px; font-weight: 500px; color: #ffffff; font-family: 'Poppins', sans-serif;">{{ userDetails?.email }}</h4>
                             <h6 style="color: #aa0080; font-size: 14px;">email</h6>
+                            <h4 style="font-size:18px; font-weight: 500px; color: #464646; font-family: 'Poppins', sans-serif;">{{ userDetails?.email }}</h4>
+                            
                         
                         </div>
                     </div>
@@ -29,14 +32,14 @@
         </div>
           
     </div>
-    <div class="col-lg-12 px-5 py-4">
+    <div class="col-lg-12 px-5 py-3">
         <div class="profile card card-body px-3 py-3" style="background-color: #ffffff33;">
 
 
-            <div class="card-body px- py-1">
+            <div class="card-body px-1 py-1">
                 <div class="profile-tab">
                     <div class="custom-tab-1">
-                        <ul class="nav nav-underline profile-nav-tabs" ngbNav #nav="ngbNav" style="background-color: rgba(95, 0, 71, 0.438); border-radius: 10px; padding: 4px 8px;">
+                        <ul class="nav nav-underline profile-nav-tabs" ngbNav #nav="ngbNav" style="background-color: rgb(95, 0, 71); border-radius: 10px; padding: 4px 8px;">
                             <li class="nav-item" ngbNavItem="about-me"><a
                                     href="#about-me"
                                     data-toggle="tab"
@@ -48,29 +51,29 @@
                                 <ng-template ngbNavContent>
                                     <div id="about-me" class="tab-pane">
                                         <div class="profile-personal-info pt-4 px-3 py-3 ">
-                                            <h4 class="mb-4" style="color: #ffffff;">Personal Information</h4>
+                                            <h4 class="mb-4" style="color: #aa0069;">Personal Information</h4>
                                            
-                                            <div class="row mb-2" style="color: #ffffff;">
+                                            <div class="row mb-2">
                                                 <div class="col-sm-3 col-5">
-                                                    <h6 class="f-w-500" style="color: #ffffff;">Name <span class="pull-right">:</span>
+                                                    <h6 class="f-w-500">Name <span class="pull-right">:</span>
                                                     </h6>
                                                 </div>
-                                                <div class="col-sm-9 col-7 fw-light" style="color: #ffffff;font-weight: 400;">
+                                                <div class="col-sm-9 col-7 fw-light">
                                                     <span>{{ userDetails?.uname }}</span>
                                                 </div>
                                             </div>
-                                            <div class="row mb-2 " style="color: #ffffff;">
+                                            <div class="row mb-2 ">
                                                 <div class="col-sm-3 col-5">
-                                                    <h6 class="f-w-500" style="color: #ffffff;">Email <span class="pull-right">:</span>
+                                                    <h6 class="f-w-500">Email <span class="pull-right">:</span>
                                                     </h6>
                                                 </div>
                                                 <div class="col-sm-9 col-7">
                                                     <span>{{ userDetails?.email }}</span>
                                                 </div>
                                             </div>
-                                            <div class="row mb-2" style="color: #ffffff;">
+                                            <div class="row mb-2">
                                                 <div class="col-sm-3 col-5">
-                                                    <h6 class="f-w-500" style="color: #ffffff;">Phone 
+                                                    <h6 class="f-w-500">Phone 
                                                     </h6>
                                                 </div>
                                                 <div class="col-sm-9 col-7">
@@ -78,9 +81,9 @@
                                                 </div>
                                             </div>
                                             
-                                            <div class="row mb-2" style="color: #ffffff;">
+                                            <div class="row mb-2">
                                                 <div class="col-sm-3 col-5">
-                                                    <h6 class="f-w-500" style="color: #ffffff;">Address <span class="pull-right">:</span>
+                                                    <h6 class="f-w-500">Address <span class="pull-right">:</span>
                                                     </h6>
                                                 </div>
                                                 <div class="col-sm-9 col-7">
@@ -97,11 +100,12 @@
                                     data-toggle="tab"
                                     class="nav-link"
                                     ngbNavLink
+                                    style="color: white;"
                                 >Settings</a>
                                 
                                 <ng-template ngbNavContent>
                                     <div>
-                                        <p style="font-size: 20px; color: #ffffff; margin-top: 20px; margin-left: 20px;">Change your Password</p>
+                                        <p style="font-size: 20px; color: #aa0069; margin-top: 20px; margin-left: 20px;">Change your Password</p>
                                     </div>
                                     
                                     <form #resetPass="ngForm" (ngSubmit)="formsubmit()" class="change-password my-3">
@@ -115,7 +119,7 @@
                                        
                                         <div class="d-flex flex-row justify-content-between px-4">
                                             <div class="form-group col-md-3 ">
-                                                <label style="color: #ffffff;">Old Password</label>
+                                                <label>Old Password</label>
                                                 <input
                                                     name="oldPassword"
                                                     id="opass"
@@ -127,7 +131,7 @@
                                             </div>
                                            
                                             <div class="form-group col-md-4">
-                                                <label style="color: #ffffff;">New Password</label>
+                                                <label>New Password</label>
                                                 <input
                                                     type="password"
                                                     class="form-control mt-1"
@@ -139,7 +143,7 @@
                                             </div>
                                             
                                             <div class="form-group col-md-4">
-                                                <label style="color: #ffffff;">Confirm Password</label>
+                                                <label>Confirm Password</label>
                                                 <input
                                                     type="password"
                                                     class="form-control mt-1"

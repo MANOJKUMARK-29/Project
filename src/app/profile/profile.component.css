@@ -36,7 +36,7 @@
 } */
 
 
-:host ::ng-deep .profile-tab .profile-nav-tabs,
+/* :host ::ng-deep .profile-tab .profile-nav-tabs,
 .profile-tab .profile-nav-tabs {
   border-bottom: none;
   display: flex;
@@ -77,5 +77,5 @@
   border-bottom: 2px solid #ff2a9d !important;
   overflow: hidden;
 
-}
+} */
 
