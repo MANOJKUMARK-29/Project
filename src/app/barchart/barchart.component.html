@@ -1,8 +1,7 @@
 
 <div
   class="card shadow-sm border-0 rounded-4  bg-white mb-4 border-2"
-  *ngIf="barchartDataService.selectedArea === 'Voltas'"
->
+> 
 
   <div
     class="card-header export-buttons-pie d-flex justify-content-between 
@@ -41,7 +40,7 @@
           </div>
           <div class="card-body p-3">
             <apx-chart
-              *ngIf="barchartDataService.selectedArea === 'Voltas'"
+              *ngIf="chartReady"
               [series]="machineStausChart.series!"
               [chart]="machineStausChart.chart!"
               [xaxis]="machineStausChart.xaxis!"
@@ -68,6 +67,7 @@
           </div>
           <div class="card-body p-3 d-flex align-items-center justify-content-center" id="pieChart">
             <apx-chart
+              *ngIf="chartReady && attendanceStatus.series && attendanceStatus.series.length > 0"
               [series]="attendanceStatus.series!"
               [chart]="attendanceStatus.chart!"
               [labels]="attendanceStatus.labels!"
@@ -100,7 +100,7 @@
             #dateBox
             type="date"
             class="form-control form-control-sm date-picker-input"
-            value="2026-09-24"
+            [value]="today"
             [max]="today"
           >
           <button
@@ -108,7 +108,7 @@
             (click)="searchData(dateBox.value)"
           >Search</button>
           <div class="position-relative d-inline-block">
-            <div *ngIf="isGeneratingBarPdf" class="generating-popup" data-html2canvas-ignore="true">
+            <div *ngIf="isGeneratingWaterBarPdf" class="generating-popup" data-html2canvas-ignore="true">
               <span class="spinner-border spinner-border-sm me-1" role="status" aria-hidden="true"></span>
               <span>Generating PDF, please wait...</span>
             </div>
@@ -118,8 +118,8 @@
             justify-content-center"
               title="Download PDF"
               id="barchart"
-              [disabled]="isGeneratingBarPdf || !isWaterDataLoaded"
-              (click)="downloadBarPdf()"
+              [disabled]="isGeneratingWaterBarPdf || !isWaterDataLoaded"
+              (click)="downloadWaterBarPdf()"
             >
               <i class="bi bi-file-earmark-pdf"></i>
             </button>
@@ -131,7 +131,7 @@
         <div class="row g-4" id="Area1chart">
           <div class="col-12 col-lg-12">
             <div class="card border rounded-3 p-3 shadow-xs">
-              <h2 class="h6 text-center py-2 rounded-2 text-white bg-primary mb-3">
+              <h2 class="h6 text-center py-2 rounded-2 text-white mb-3" style="background-color: #066b02;">
                 Energy Consumption
               </h2>
               <apx-chart
@@ -154,7 +154,7 @@
 
           <div class="col-12 col-lg-12">
             <div class="card border rounded-3 p-3 shadow-xs">
-              <h2 class="h6 text-center py-2 rounded-2 text-white bg-primary mb-3">
+              <h2 class="h6 text-center py-2 rounded-2 text-white  mb-3" style="background-color: #0c7097;">
                 Water Consumption Quantity</h2>
               <apx-chart
                 class="Area1chart1"
@@ -181,7 +181,7 @@
 
 <div
   class="card shadow-sm border-0 rounded-4 mb-4"
-  *ngIf="barchartDataService.selectedArea === 'Voltas'"
+  *ngIf="barchartDataService.selectedArea === 'Voltas' || barchartDataService.selectedArea === 'Area1' || barchartDataService.selectedArea === 'Area2'  "
 >
   <div
     class="card-header export-buttons-table d-flex justify-content-between align-items-center 
@@ -235,13 +235,48 @@
     >
       <ng-template pTemplate="header">
         <tr>
-          <th pSortableColumn="SNo">S.No<p-sortIcon field="SNo"></p-sortIcon></th>
-          <th pSortableColumn="Location">Location<p-sortIcon field="Location"></p-sortIcon></th>
-          <th pSortableColumn="MachineOn">Machine ON<p-sortIcon field="MachineOn"></p-sortIcon></th>
-          <th pSortableColumn="MachineOff">Machine OFF<p-sortIcon field="MachineOff"></p-sortIcon></th>
-          <th pSortableColumn="PresentEmployees">Present<p-sortIcon field="PresentEmployees"></p-sortIcon></th>
-          <th pSortableColumn="AbsentEmployees">Absent<p-sortIcon field="AbsentEmployees"></p-sortIcon></th>
-          <th pSortableColumn="totalEmployees">Total Employees<p-sortIcon field="totalEmployees"></p-sortIcon></th>
+          <th pSortableColumn="SNo">
+            <div class="d-flex justify-content-between align-items-center fw-bold fs-6">
+              <span>S.No</span>
+              <p-sortIcon field="SNo"></p-sortIcon>
+            </div>
+          </th>
+          <th pSortableColumn="Location">
+            <div class="d-flex justify-content-between align-items-center fw-bold fs-6">
+              <span>Location</span>
+              <p-sortIcon field="Location"></p-sortIcon>
+            </div>
+          </th>
+          <th pSortableColumn="MachineOn">
+            <div class="d-flex justify-content-between align-items-center fw-bold fs-6">
+              <span>Machine ON</span>
+              <p-sortIcon field="MachineOn"></p-sortIcon>
+            </div>
+          </th>
+          <th pSortableColumn="MachineOff">
+            <div class="d-flex justify-content-between align-items-center fw-bold fs-6">
+              <span>Machine OFF</span>
+              <p-sortIcon field="MachineOff"></p-sortIcon>
+            </div>
+          </th>
+          <th pSortableColumn="PresentEmployees">
+            <div class="d-flex justify-content-between align-items-center fw-bold fs-6">
+              <span>Present</span>
+              <p-sortIcon field="PresentEmployees"></p-sortIcon>
+            </div>
+          </th>
+          <th pSortableColumn="AbsentEmployees">
+            <div class="d-flex justify-content-between align-items-center fw-bold fs-6">
+              <span>Absent</span>
+              <p-sortIcon field="AbsentEmployees"></p-sortIcon>
+            </div>
+          </th>
+          <th pSortableColumn="totalEmployees">
+            <div class="d-flex justify-content-between align-items-center fw-bold fs-6">
+              <span>Total Employees</span>
+              <p-sortIcon field="totalEmployees"></p-sortIcon>
+            </div>
+          </th>
         </tr>
         <tr>
           <td><input

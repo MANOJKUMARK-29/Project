@@ -1,102 +1,105 @@
-import { NgClass } from '@angular/common';
-import { Component, OnInit } from '@angular/core';
-import { FormsModule } from '@angular/forms';
-import { Router, RouterModule } from '@angular/router';
-import { CommonModule } from '@angular/common';
-import { RouterOutlet } from '@angular/router';
+import { NgClass } from "@angular/common";
+import { Component, OnInit } from "@angular/core";
+import { FormsModule } from "@angular/forms";
+import { Router, RouterModule } from "@angular/router";
+import { CommonModule } from "@angular/common";
+import { AuthService } from "../services/auth.service";
+
+export interface User {
+  id: string;
+  email: string;
+  password: string;
+  uname: string;
+  role: string;
+  domain: string;
+  badge: string;
+}
 
 @Component({
-  selector: 'app-loginform',
+  selector: "app-loginform",
   standalone: true,
   imports: [RouterModule, NgClass, FormsModule, CommonModule],
-  templateUrl: './loginform.component.html',
-  styleUrl: './loginform.component.css',
+  templateUrl: "./loginform.component.html",
+  styleUrl: "./loginform.component.css",
 })
 export class LoginformComponent implements OnInit {
-  viewpassword = false;
-  email: any = '';
-  password: any = '';
+  email: string = "";
+  password: string = "";
+  errorMessage: string = "";
+  isLoading: boolean = false;
   showtoast: boolean = false;
-  users = [
+  rememberMe: boolean = false;
+  viewpassword: boolean = false;
 
-    {
-      email: 'admin@gmail.com',
-      password: 'Admin123',
-      uname: 'MANOJKUMAR',
-      role: 'ADMIN',
-      domain: 'ALL'
-    },
+  constructor(
+    private router: Router,
+    private authService: AuthService,
+  ) {}
 
-    {
-      email: 'manojmj029@gmail.com',
-      password: 'Manoj123',
-      uname: 'MANOJKUMAR',
-      role: 'USER',
-      domain: 'Voltas'
-    },
-
-    {
-      email: 'manoj199929@gmail.com',
-      password: 'SRIMACK',
-      uname: 'MANOJ2',
-      role: 'USER',
-      domain: 'Sms'
-    },
-
-    {
-      email: 'manoj.mailbox.29@gmail.com',
-      password: 'Manoj345',
-      uname: 'VICKY',
-      role: 'USER',
-      domain: 'Tvs'
+  ngOnInit(): void {
+    const remembered = localStorage.getItem("rememberedEmail");
+    if (remembered) {
+      this.email = remembered;
+      this.rememberMe = true;
     }
 
-  ];
-  constructor(private router: Router) { }
-  ngOnInit(): void {
-    const currentUser = localStorage.getItem('currentUser');
-    console.log(currentUser, 'current user');
+    const currentUser = localStorage.getItem("currentUser");
     if (currentUser) {
-      this.router.navigate(['/dashboard']);
-      // localStorage.removeItem('currentUser')
+      this.router.navigate(["/dashboard"]);
     }
   }
 
   login(form: any): void {
+    if (form.invalid) return;
 
+    this.isLoading = true;
+    this.errorMessage = "";
 
-    if (form.invalid) {
-      return;
-    }
-    const user = this.users.find(
-      (u) => u.email === this.email && u.password === this.password,
-    );
-    if (user) {
-      localStorage.setItem(
-        'currentUser',
-        JSON.stringify({
+    this.authService.getUserByEmail(this.email).subscribe({
+      next: (users) => {
+        const user = users.find((u) => u.password === this.password);
 
-          name: user.uname,
-          email: user.email,
-          domain: user.domain,
-          role: user.role
+        if (user) {
+          if (this.rememberMe) {
+            localStorage.setItem("rememberedEmail", this.email);
+          } else {
+            localStorage.removeItem("rememberedEmail");
+          }
 
-        }));
-      this.showtoast = true;
+          localStorage.setItem(
+            "currentUser",
+            JSON.stringify({
+              name: user.uname,
+              email: user.email,
+              domain: user.domain,
+              role: user.role,
+            }),
+          );
 
-      this.router.navigate(['/dashboard']);
-    } else {
-      alert('Please enter correct email & password');
-    }
-
-    setTimeout(() => {
-      this.showtoast = false;
-    }, 4000);
+          this.showtoast = true;
+          setTimeout(() => {
+            this.isLoading = false;
+            this.router.navigate(["/dashboard"]);
+          }, 500);
+        } else {
+          this.isLoading = false;
+          this.errorMessage =
+            "Invalid email or password. Please verify your credentials.";
+        }
+      },
+      error: () => {
+        this.isLoading = false;
+        this.errorMessage = "Unable to Login, Pleasy try again later.";
+      },
+    });
   }
-  closeToast() {
+
+  clearError(): void {
+    this.errorMessage = "";
+  }
+  closeToast(): void {
     this.showtoast = false;
   }
-
   showpassword(): void {
     this.viewpassword = !this.viewpassword;
   }

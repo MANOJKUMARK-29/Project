@@ -48,6 +48,7 @@
           </div>
 
           <p-table
+            #dt
             [columns]="cols"
             [value]="inventoryList"
             [(selection)]="selectedRows"
@@ -66,14 +67,63 @@
                   <p-tableHeaderCheckbox></p-tableHeaderCheckbox>
                 </th>
                 <th style="width: 5rem" class="text-center">
-                  S.No
+                  <div class="d-flex fw-bold fs-6 justify-content-between">
+                    S.No
+                  </div>
                 </th>
-                <th *ngFor="let col of columns">
-                  {{ col.header }}
+                <th pSortableColumn="{{ col.field }}" *ngFor="let col of columns">
+                  <div class="d-flex fw-bold fs-6 justify-content-between">
+                    {{ col.header }}
+                    <p-sortIcon [field]="col.field    "></p-sortIcon>
+                  </div>
                 </th>
-                <th>View</th>
+                <th>
+                  <div class="d-flex fw-bold fs-6 justify-content-between">View</div></th>
                 <!-- <th style="width: 8rem" class="text-center">Actions</th> -->
               </tr>
+              <tr>
+                <th></th>
+                <th></th>
+                <th>
+                  <input
+                    pInputText
+                    type="text"
+                    (input)="dt.filter($any($event.target).value, 'name', 'contains')"
+                    placeholder="Search by Name"
+                    class="form-control"
+                  >
+                </th>
+                <th>
+                  <input
+                    pInputText
+                    type="text"
+                    (input)="dt.filter($any($event.target).value, 'employee', 'contains')"
+                    placeholder="Search by Employee"
+                    class="form-control"
+                  >
+                </th>
+                <th>
+                  <input
+                    pInputText
+                    type="text"
+                    (input)="dt.filter($any($event.target).value, 'role', 'contains')"
+                    placeholder="Search by Role"
+                    class="form-control"
+                  >
+                </th>
+                <th>
+                  <input
+                    pInputText
+                    type="text"
+                    (input)="dt.filter($any($event.target).value, 'description', 'contains')"
+                    placeholder="Search by Description"
+                    class="form-control"
+                  >
+                </th>
+                <th></th>
+              </tr>
+
+              
             </ng-template>
 
             <ng-template pTemplate="body" let-rowData let-rowIndex="rowIndex">
@@ -91,7 +141,7 @@
                 <td (click)="openEditDrawer(rowData)">{{ rowData.role }}</td>
 
                 <td (click)="openEditDrawer(rowData)">
-                  {{ rowData.description.length > 50 ? (rowData.description|slice : 0 : 50) + "..." : rowData.desription }}
+                  {{ rowData.description.length > 50 ? (rowData.description|slice : 0 : 50) + "..." : rowData.description }}
                 </td>
                 <!-- <td class="text-center">
             <button type="button" class="btn btn-sm btn-outline-primary me-1" (click)="openEditDrawer(rowData)"
@@ -155,7 +205,7 @@
 >
   <ng-container *nzModalContent>
     <div *ngIf="selectedPopUpData" class="p-3">
-      <div class="row mb-3 align-items-start">
+      <!-- <div class="row mb-3 align-items-start">
         <p class="col-4 mb-0 fw-semibold" style="color: #a8108afa;">Machine Name</p>
         <p class="col-1 mb-0 text-break" style="color: #a8108afa;">:</p>
         <p class="col-6 mb-0 text-break">{{ selectedPopUpData.name }}</p>
@@ -174,7 +224,28 @@
         <p class="col-4 mb-0 fw-semibold" style="color: #a8108afa;">Description</p>
         <p class="col-1 mb-0 text-break" style="color: #a8108afa;">:</p>
         <p class="col-6 mb-0 text-break">{{ selectedPopUpData.description }}</p>
-      </div>
+      </div> -->
+
+      <table class="table table-bordered mb-0 custom-detail-table">
+        <tbody>
+          <tr>
+            <th class="table-label">Machine Name</th>
+            <td>{{ selectedPopUpData.name }}</td>
+          </tr>
+          <tr>
+            <th class="table-label">Employee Name</th>
+            <td>{{ selectedPopUpData.employee }}</td>
+          </tr>
+          <tr>
+            <th class="table-label">Role</th>
+            <td>{{ selectedPopUpData.role }}</td>
+          </tr>
+          <tr>
+            <th class="table-label">Description</th>
+            <td class="text-break">{{ selectedPopUpData.description }}</td>
+          </tr>
+        </tbody>
+      </table>
     </div>
 
   </ng-container>

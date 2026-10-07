@@ -1,0 +1,103 @@
+<div class="forgot-container d-flex justify-content-center align-items-center min-vh-100">
+    <div class="forgot-card-container">
+        <div class="card forgot-card shadow border-0">
+      
+            
+            <div class="forgot-header text-center">
+                <div class="icon-container mx-auto mb-3" id="forgot-brand-icon" [ngClass]="{'bg-success': isEmailSent}">
+                
+                    <i class="bi bi-shield-lock" *ngIf="!isEmailSent"></i>
+                    <i class="bi bi-envelope-check-fill" *ngIf="isEmailSent"></i>
+                </div>
+                <h2 class="forgot-title">
+                    {{ isEmailSent ? 'The reset password link has been sent to your email successfully' : 'Reset Password' }}
+                </h2>
+            </div>
+
+            <form #resetForm="ngForm" (ngSubmit)="reset(resetForm)" novalidate *ngIf="!isEmailSent">
+                
+                <div class="mb-3">
+                    <label for="email" class="form-label fw-semibold">
+                        E-mail <span class="text-danger">*</span>
+                    </label>
+                    <div class="input-group">
+                        
+                        <input
+                            id="email"
+                            type="email"
+                            class="form-control border-start-1"
+                            placeholder="Enter your email"
+                            name="email"
+                            email
+                            required
+                            [(ngModel)]="email"
+                            #emailRef="ngModel"
+                            (input)="clearError()"
+                            [ngClass]="{
+                                'is-invalid': emailRef.invalid && (resetForm.submitted || emailRef.touched),
+                                'is-valid': emailRef.valid && emailRef.touched
+                            }"
+                            autocomplete="email"
+                        >
+                    </div>
+                    <div class="text-danger small mt-1" *ngIf="emailRef.invalid && (resetForm.submitted || emailRef.touched)">
+                        <span *ngIf="emailRef.errors?.['required']">Email is required</span>
+                        <span *ngIf="emailRef.errors?.['email']">Enter a valid email address</span>
+                    </div>
+                </div>
+
+         
+                <button
+                    type="submit"
+                    class="btn btn-primary w-100 py-2 fw-semibold reset-submit-btn"
+                    id="reset-submit-button"
+                    [disabled]="isLoading"
+                >
+                    <span>
+                        Reset Password <i class="bi bi-arrow-repeat ms-1"></i>
+                    </span>
+                  
+                </button>
+
+                <p class="text-center text-muted small mt-4 mb-0 ">
+                    Remember your password?
+                    <a routerLink="/loginform" class="back-link fw-semibold ms-1 " id="back-to-login-link">Back to Login</a>
+                </p>
+            </form>
+
+           
+            <div *ngIf="isEmailSent" class="text-center py-2" style="margin-right: 90px;">
+
+                <a routerLink="/loginform" class="btn btn-primary w-100 py-2 fw-semibold reset-submit-btn text-decoration-none d-inline-flex align-items-center justify-content-center gap-2" id="back-to-login-btn">
+                    <i class="bi bi-box-arrow-in-left"></i>
+                    <span>Back to Login</span>
+                </a>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+
+<div class="toast-container position-fixed top-0 end-0 p-3" style="z-index: 9999;" *ngIf="showtoast">
+    <div class="toast show border-0">
+        <div class="d-flex align-items-center">
+            <div class="toast-body d-flex align-items-center gap-2 py-2 px-2">
+                <div *ngIf="isEmailSent">
+                    <div class="fw-semibold" style="color: rgb(0, 255, 42);">Success!!</div>
+                    <div class="small opacity-75">Email sent successfully.</div>
+                </div>
+                <div *ngIf="!isEmailSent">
+                    <div class="fw-semibold" style="color: rgb(255, 5, 5);">Failed!!</div>
+                    <div class="small opacity-75">Invalid user</div>
+                </div>
+            </div>
+            <button
+                type="button"
+                class="btn-close btn-close-black me-3 m-auto"
+                (click)="closeToast()"
+                aria-label="Close"
+            ></button>
+        </div>
+    </div>
+</div>

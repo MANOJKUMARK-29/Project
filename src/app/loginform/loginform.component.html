@@ -1,63 +1,166 @@
-<div class="container-fluid d-flex justify-content-center align-items-center vh-100 ">
-  <div class="card shadow p-4 login-card">
-    <h2 class="text-center mb-4">Login</h2>
-
-    <form #loginForm="ngForm" (ngSubmit)="login(loginForm)" >
-      <div class="row mb-3 align-items-center" >
-        <label for="email" class="col-3 col-form-label">E-mail<span class="text-danger">*</span></label>
-         <div class="col-9">
-        <input id="email" type="email"
-        class="form-control"
-        name="email"
-        required
-        email
-        placeholder="Enter your email"
-        title="E-mail"
-        [(ngModel)]="email"
-        #emailRef="ngModel"
-        [ngClass]="{
-          'is-invalid': emailRef.invalid && loginForm.submitted, 'is-valid': emailRef.valid && loginForm.touched
-        }">
-        <div class="text-danger mt-1" *ngIf="emailRef.invalid && loginForm.submitted">
-          <small *ngIf="emailRef.errors?.['required']">E-mail is required</small>
-          <small *ngIf="emailRef.errors?.['email']">Enter a valid email</small>
+<div class="login-wrapper d-flex justify-content-center align-items-center min-vh-100">
+  <div class="login-card-container">
+    <div class="card login-card shadow border-0">
+      
+      <div class="login-header text-center">
+        <div class="icon-container mx-auto mb-3" id="login-brand-icon">
+          <i class="bi bi-hurricane"></i>
         </div>
-        </div>
-        </div>
-        <div class="position-relative row mb-4 align-items-center">
-          <label for="password" class="col-3 col-form-label">Password<span class="text-danger">*</span></label>
-        <div class="col-9">
-          <div class="password-box">
-          <input id="password" [type]="viewpassword ? 'text' : 'password'" class="form-control" name="password" required minlength="8" placeholder="Enter your password" title="Password" [(ngModel)]="password" #passwordRef ="ngModel" [ngClass]="{'is-invalid': passwordRef.invalid && passwordRef.touched, 'is-valid': passwordRef.valid && passwordRef.touched}">
-        <span class="eye-icon" (click)="showpassword()">
-    <i class="bi"
-       [ngClass]="viewpassword ? 'bi-eye-slash-fill' : 'bi-eye-fill'">
-    </i>
-  </span>
-
-        </div>
-      <div class="text-danger mt-1 " *ngIf='passwordRef.invalid && loginForm.submitted'>
-        <small *ngIf="passwordRef.errors?.['required']">Password is required</small>
-        <small *ngIf="passwordRef.errors?.['minlength']">Enter a valid password</small>
-      </div>
-      </div>
+        <h2 class="login-title">Login your Account</h2>
       </div>
 
+      <div
+        class="alert alert-danger d-flex align-items-center justify-content-between py-2 px-3 mb-3"
+        *ngIf="errorMessage"
+        role="alert"
+        id="login-error-alert"
+      >
+        <div class="d-flex align-items-center gap-2">
+          <i class="bi bi-exclamation-circle-fill text-danger"></i>
+          <span class="small">{{ errorMessage }}</span>
+        </div>
+        <button
+          type="button"
+          class="btn-close btn-close-sm"
+          aria-label="Dismiss alert"
+          (click)="clearError()"
+          id="close-error-btn"
+        ></button>
+      </div>
 
-      <button class="btn btn-primary justify-content-center" type="submit">Login</button>
-      <p class="text-center mt-3">Have you <a href="#">Registered?</a></p>
-    </form>
+      <form #loginForm="ngForm" (ngSubmit)="login(loginForm)" novalidate>
+        
+        <div class="mb-3">
+          <label for="email" class="form-label fw-semibold">
+            E-mail <span class="text-danger">*</span>
+          </label>
+          <div class="input-group">
+            <!-- <span class="input-group-text bg-white border-end-0">
+              <i class="bi bi-envelope text-muted"></i>
+            </span> -->
+            <input
+              id="email"
+              type="email"
+              class="form-control border-start-1"
+              name="email"
+              required
+              email
+              placeholder="Enter your email"
+              [(ngModel)]="email"
+              #emailRef="ngModel"
+              (input)="clearError()"
+              [ngClass]="{
+                'is-invalid': emailRef.invalid && (loginForm.submitted || emailRef.touched),
+                'is-valid': emailRef.valid && emailRef.touched
+              }"
+              autocomplete="email"
+            >
+          </div>
+          <div class="text-danger small mt-1" *ngIf="emailRef.invalid && (loginForm.submitted || emailRef.touched)">
+            <span *ngIf="emailRef.errors?.['required']">E-mail is required</span>
+            <span *ngIf="emailRef.errors?.['email']">Enter a valid email</span>
+          </div>
+        </div>
 
+        <div class="mb-3">
+          <label for="password" class="form-label fw-semibold">
+            Password <span class="text-danger">*</span>
+          </label>
+          <div class="input-group">
+            <!-- <span class="input-group-text bg-white border-end-0">
+              <i class="bi bi-lock text-muted"></i>
+            </span> -->
+            <input
+              id="password"
+              [type]="viewpassword ? 'text' : 'password'"
+              class="form-control border-start-1 border-end-1"
+              name="password"
+              required
+              minlength="8"
+              placeholder="122345@xyz"
+              [(ngModel)]="password"
+              #passwordRef="ngModel"
+              (input)="clearError()"
+              [ngClass]="{
+                'is-invalid': passwordRef.invalid && (loginForm.submitted || passwordRef.touched),
+                'is-valid': passwordRef.valid && passwordRef.touched
+              }"
+              autocomplete="current-password"
+            >
+            <!-- <button
+              type="button"
+              class="input-group-text bg-white border-start-0 password-toggle-btn"
+              (click)="showpassword()"
+              [attr.aria-label]="viewpassword ? 'Hide password' : 'Show password'"
+              id="password-visibility-btn"
+            >
+              <i class="bi" [ngClass]="viewpassword ? 'bi-eye-slash-fill' : 'bi-eye-fill'"></i>
+            </button> -->
+          </div>
+          <div class="text-danger small mt-1" *ngIf="passwordRef.invalid && (loginForm.submitted || passwordRef.touched)">
+            <span *ngIf="passwordRef.errors?.['required']">Password is required</span>
+            <span *ngIf="passwordRef.errors?.['minlength']">Password must be at least 8 characters</span>
+          </div>
+        </div>
+
+        <div class="d-flex justify-content-between align-items-center mb-4">
+          <div class="form-check">
+            <input
+              class="form-check-input"
+              type="checkbox"
+              id="remember-me-checkbox"
+              name="rememberMe"
+              [(ngModel)]="viewpassword"
+            >
+            <label class="form-check-label text-muted small" for="remember-me-checkbox">
+              Show Password
+            </label>
+          </div>
+          <a routerLink="/emailverification" class="forgot-link small" id="forgot-password-link">
+            Forgot password?
+          </a>
+        </div>
+
+        <button
+          type="submit"
+          class="btn btn-primary w-100 py-2 fw-semibold login-submit-btn"
+          id="login-submit-button"
+          [disabled]="isLoading"
+        >
+          <span *ngIf="!isLoading">
+            Login <i class="bi bi-box-arrow-in-right ms-1"></i>
+          </span>
+          <span *ngIf="isLoading" class="d-flex align-items-center justify-content-center gap-2">
+            <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
+            <span>Logging in...</span>
+          </span>
+        </button>
+
+        <p class="text-center text-muted small mt-4 mb-0">
+          Don't have an account?
+          <a href="javascript:void(0)" class="register-link fw-semibold ms-1" id="register-link">Register account</a>
+        </p>
+      </form>
+
+    </div>
   </div>
 </div>
-<div class="toast-container position-fixed top-0 end-0 p-3 align-items-center" role="alert" aria-live="assertive" aria-atomic="true">
-  <div class="toast show text-bg-success" *ngIf="showtoast">
-    <div class="d-flex">
-    <div class="toast-body">
-      Login Successfully!
+
+<div class="toast-container position-fixed top-0 end-0 p-3" style="z-index: 9999;" *ngIf="showtoast">
+  <div class="toast show border-0">
+    <div class="d-flex align-items-center">
+      <div class="toast-body d-flex align-items-center gap-2 py-2 px-2">
+        <div>
+          <div class="fw-semibold text-success">Login Successfully!</div>
+          <div class="small opacity-75">Redirecting to dashboard...</div>
+        </div>
+      </div>
+      <button
+        type="button"
+        class="btn-close btn-close-black me-3 m-auto"
+        (click)="closeToast()"
+        aria-label="Close"
+      ></button>
     </div>
-
-    <button type="button" class="btn-close me-2 m-auto" aria-label="Close" (click)="closeToast()"></button>
   </div>
-  </div>
-
+</div>

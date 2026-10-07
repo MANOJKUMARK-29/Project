@@ -6,7 +6,6 @@
     box-sizing: border-box;
 }
 
-/* Custom Header Gradients */
 .export-buttons-bar,
 .export-buttons-pie,
 .export-buttons-table,
@@ -29,9 +28,6 @@
     box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
 }
 
-
-
-/* PrimeNG Overrides */
 :host ::ng-deep .p-datatable-thead > tr > th {
     background: #ebebeb !important;
     color: #a8108afa !important;
@@ -55,11 +51,10 @@
   border-top-right-radius: inherit;
 }
 
-/* Popup container floating above the button */
 .generating-popup { 
   position: absolute;
-  bottom: calc(100% + 6px); /* Float right above the button */
-  right: 0;                 /* Align with the right edge of the button */
+  bottom: calc(100% + 6px);
+  right: 0;
   background: #b90d7260;
   color: #f9fff9;
   border: 1.5px solid #c5109886;

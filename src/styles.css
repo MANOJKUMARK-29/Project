@@ -1,5 +1,10 @@
-/* Global styles */
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap');
 @import "ng-zorro-antd/ng-zorro-antd.min.css";
+
+body {
+  font-family: 'Poppins', 'Roboto', 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+}
+
 
 .ant-message {
     margin-left: 600px !important;
@@ -8,7 +13,6 @@
     z-index: 999999 !important;
 }
 
-/* Ensure NG-ZORRO dropdown overlays float above all sticky headers & purple card bars */
 .cdk-overlay-container,
 .ant-select-dropdown {
     z-index: 999999 !important;

@@ -1,4 +1,56 @@
 {
+  "users": [
+    {
+      "id": "1",
+      "email": "admin@gmail.com",
+      "password": "Admin@029",
+      "uname": "MANOJKUMAR",
+      "role": "ADMIN",
+      "domain": "ALL",
+      "badge": "Admin"
+    },
+    {
+      "id": "2",
+      "email": "manojmj029@gmail.com",
+      "password": "Manoj123",
+      "uname": "MANOJKUMAR",
+      "role": "USER",
+      "domain": "Voltas",
+      "badge": "Voltas"
+    },
+    {
+      "id": "3",
+      "email": "manoj199929@gmail.com",
+      "password": "SRIMACK",
+      "uname": "MANOJ2",
+      "role": "USER",
+      "domain": "SMS",
+      "badge": "SMS"
+    },
+    {
+      "id": "4",
+      "email": "manoj.mailbox.29@gmail.com",
+      "password": "Manoj345",
+      "uname": "VICKY",
+      "role": "USER",
+      "domain": "TVS",
+      "badge": "TVS"
+    }
+  ],
+  "clients": [
+    {
+      "id": "101",
+      "name": "Voltas"
+    },
+    {
+      "id": "102",
+      "name": "Area1"
+    },
+    {
+      "id": "103",
+      "name": "Area2"
+    }
+  ],
   "employees": [
     {
       "id": "1",
@@ -7,7 +59,8 @@
       "domain": "Voltas",
       "status": "Absent",
       "machineStatus": "OFF",
-      "role": "CNC Machine Operator"
+      "role": "CNC Machine Operator",
+      "clientId": 101
     },
     {
       "id": "2",
@@ -16,7 +69,8 @@
       "domain": "Sms",
       "status": "Present",
       "machineStatus": "ON",
-      "role": "CNC Machine Operator"
+      "role": "CNC Machine Operator",
+      "clientId": 101
     },
     {
       "id": "3",
@@ -25,7 +79,8 @@
       "domain": "Tvs",
       "status": "Present",
       "machineStatus": "ON",
-      "role": "Robotic Welding Specialist"
+      "role": "Robotic Welding Specialist",
+      "clientId": 101
     },
     {
       "id": "4",
@@ -34,7 +89,8 @@
       "domain": "Voltas",
       "status": "Present",
       "machineStatus": "ON",
-      "role": "Robotic Welding Specialist"
+      "role": "Robotic Welding Specialist",
+      "clientId": 102
     },
     {
       "id": "5",
@@ -43,7 +99,8 @@
       "domain": "Sms",
       "status": "Absent",
       "machineStatus": "OFF",
-      "role": "CNC Machine Operator"
+      "role": "CNC Machine Operator",
+      "clientId": 102
     },
     {
       "id": "6",
@@ -52,7 +109,8 @@
       "domain": "Tvs",
       "status": "Absent",
       "machineStatus": "OFF",
-      "role": "Robotic Welding Specialist"
+      "role": "Robotic Welding Specialist",
+      "clientId": 102
     },
     {
       "id": "7",
@@ -61,7 +119,8 @@
       "domain": "Voltas",
       "status": "Present",
       "machineStatus": "ON",
-      "role": "CNC Machine Operator"
+      "role": "CNC Machine Operator",
+      "clientId": 103
     },
     {
       "id": "8",
@@ -70,7 +129,8 @@
       "domain": "Sms",
       "status": "Absent",
       "machineStatus": "OFF",
-      "role": "CNC Machine Operator"
+      "role": "CNC Machine Operator",
+      "clientId": 103
     },
     {
       "id": "9",
@@ -79,7 +139,8 @@
       "domain": "Tvs",
       "status": "Absent",
       "machineStatus": "OFF",
-      "role": "Robotic Welding Specialist"
+      "role": "Robotic Welding Specialist",
+      "clientId": 103
     },
     {
       "id": "10",
@@ -88,7 +149,8 @@
       "domain": "Voltas",
       "status": "Present",
       "machineStatus": "ON",
-      "role": "Robotic Welding Specialist"
+      "role": "Robotic Welding Specialist",
+      "clientId": 101
     },
     {
       "id": "11",
@@ -97,7 +159,8 @@
       "domain": "Sms",
       "status": "Absent",
       "machineStatus": "OFF",
-      "role": "CNC Machine Operator"
+      "role": "CNC Machine Operator",
+      "clientId": 101
     },
     {
       "id": "12",
@@ -106,7 +169,8 @@
       "domain": "Tvs",
       "status": "Absent",
       "machineStatus": "OFF",
-      "role": "Robotic Welding Specialist"
+      "role": "Robotic Welding Specialist",
+      "clientId": 101
     },
     {
       "id": "13",
@@ -115,7 +179,8 @@
       "domain": "Voltas",
       "status": "Present",
       "machineStatus": "ON",
-      "role": "CNC Machine Operator"
+      "role": "CNC Machine Operator",
+      "clientId": 102
     },
     {
       "id": "14",
@@ -124,7 +189,8 @@
       "domain": "Sms",
       "status": "Absent",
       "machineStatus": "OFF",
-      "role": "CNC Machine Operator"
+      "role": "CNC Machine Operator",
+      "clientId": 102
     },
     {
       "id": "15",
@@ -133,7 +199,8 @@
       "domain": "Tvs",
       "status": "Absent",
       "machineStatus": "OFF",
-      "role": "Robotic Welding Specialist"
+      "role": "Robotic Welding Specialist",
+      "clientId": 102
     },
     {
       "id": "16",
@@ -142,7 +209,8 @@
       "domain": "Voltas",
       "status": "Absent",
       "machineStatus": "OFF",
-      "role": "Robotic Welding Specialist"
+      "role": "Robotic Welding Specialist",
+      "clientId": 103
     },
     {
       "id": "17",
@@ -151,7 +219,8 @@
       "domain": "Sms",
       "status": "Absent",
       "machineStatus": "OFF",
-      "role": "CNC Machine Operator"
+      "role": "CNC Machine Operator",
+      "clientId": 103
     },
     {
       "id": "18",
@@ -160,7 +229,8 @@
       "domain": "Tvs",
       "status": "Absent",
       "machineStatus": "OFF",
-      "role": "Robotic Welding Specialist"
+      "role": "Robotic Welding Specialist",
+      "clientId": 103
     },
     {
       "id": "19",
@@ -169,7 +239,8 @@
       "domain": "Voltas",
       "status": "Absent",
       "machineStatus": "OFF",
-      "role": "CNC Machine Operator"
+      "role": "CNC Machine Operator",
+      "clientId": 101
     },
     {
       "id": "20",
@@ -178,7 +249,8 @@
       "domain": "Sms",
       "status": "Absent",
       "machineStatus": "OFF",
-      "role": "CNC Machine Operator"
+      "role": "CNC Machine Operator",
+      "clientId": 101
     },
     {
       "id": "21",
@@ -187,7 +259,8 @@
       "domain": "Tvs",
       "status": "Absent",
       "machineStatus": "OFF",
-      "role": "Robotic Welding Specialist"
+      "role": "Robotic Welding Specialist",
+      "clientId": 101
     },
     {
       "id": "22",
@@ -196,7 +269,8 @@
       "domain": "Voltas",
       "status": "Absent",
       "machineStatus": "OFF",
-      "role": "Robotic Welding Specialist"
+      "role": "Robotic Welding Specialist",
+      "clientId": 102
     },
     {
       "id": "23",
@@ -205,7 +279,8 @@
       "domain": "Sms",
       "status": "Absent",
       "machineStatus": "OFF",
-      "role": "CNC Machine Operator"
+      "role": "CNC Machine Operator",
+      "clientId": 102
     },
     {
       "id": "24",
@@ -214,7 +289,8 @@
       "domain": "Tvs",
       "status": "Absent",
       "machineStatus": "OFF",
-      "role": "Robotic Welding Specialist"
+      "role": "Robotic Welding Specialist",
+      "clientId": 102
     },
     {
       "id": "25",
@@ -223,7 +299,8 @@
       "domain": "Voltas",
       "status": "Present",
       "machineStatus": "ON",
-      "role": "CNC Machine Operator"
+      "role": "CNC Machine Operator",
+      "clientId": 103
     },
     {
       "id": "26",
@@ -232,7 +309,8 @@
       "domain": "Sms",
       "status": "Absent",
       "machineStatus": "OFF",
-      "role": "CNC Machine Operator"
+      "role": "CNC Machine Operator",
+      "clientId": 103
     },
     {
       "id": "27",
@@ -241,7 +319,8 @@
       "domain": "Tvs",
       "status": "Present",
       "machineStatus": "ON",
-      "role": "Robotic Welding Specialist"
+      "role": "Robotic Welding Specialist",
+      "clientId": 103
     },
     {
       "id": "28",
@@ -250,7 +329,8 @@
       "domain": "Voltas",
       "status": "Present",
       "machineStatus": "ON",
-      "role": "Robotic Welding Specialist"
+      "role": "Robotic Welding Specialist",
+      "clientId": 101
     },
     {
       "id": "29",
@@ -259,7 +339,8 @@
       "domain": "Sms",
       "status": "Present",
       "machineStatus": "ON",
-      "role": "CNC Machine Operator"
+      "role": "CNC Machine Operator",
+      "clientId": 101
     },
     {
       "id": "30",
@@ -268,7 +349,8 @@
       "domain": "Tvs",
       "status": "Absent",
       "machineStatus": "OFF",
-      "role": "Robotic Welding Specialist"
+      "role": "Robotic Welding Specialist",
+      "clientId": 101
     },
     {
       "id": "31",
@@ -277,7 +359,8 @@
       "domain": "Voltas",
       "status": "Present",
       "machineStatus": "ON",
-      "role": "CNC Machine Operator"
+      "role": "CNC Machine Operator",
+      "clientId": 102
     },
     {
       "id": "32",
@@ -286,7 +369,8 @@
       "domain": "Sms",
       "status": "Absent",
       "machineStatus": "OFF",
-      "role": "CNC Machine Operator"
+      "role": "CNC Machine Operator",
+      "clientId": 102
     },
     {
       "id": "33",
@@ -295,7 +379,8 @@
       "domain": "Voltas",
       "status": "Absent",
       "machineStatus": "OFF",
-      "role": "Press Brake Operator"
+      "role": "Press Brake Operator",
+      "clientId": 101
     },
     {
       "id": "34",
@@ -304,7 +389,8 @@
       "domain": "Sms",
       "status": "Present",
       "machineStatus": "ON",
-      "role": "Pneumatics Maintenance Technician"
+      "role": "Pneumatics Maintenance Technician",
+      "clientId": 101
     },
     {
       "id": "35",
@@ -313,7 +399,8 @@
       "domain": "Tvs",
       "status": "Absent",
       "machineStatus": "OFF",
-      "role": "Press Brake Operator"
+      "role": "Press Brake Operator",
+      "clientId": 101
     },
     {
       "id": "36",
@@ -322,7 +409,8 @@
       "domain": "Voltas",
       "status": "Present",
       "machineStatus": "ON",
-      "role": "Press Brake Operator"
+      "role": "Press Brake Operator",
+      "clientId": 102
     },
     {
       "id": "37",
@@ -331,7 +419,8 @@
       "domain": "Sms",
       "status": "Absent",
       "machineStatus": "OFF",
-      "role": "Pneumatics Maintenance Technician"
+      "role": "Pneumatics Maintenance Technician",
+      "clientId": 102
     },
     {
       "id": "38",
@@ -340,7 +429,8 @@
       "domain": "Tvs",
       "status": "Present",
       "machineStatus": "ON",
-      "role": "Pneumatics Maintenance Technician"
+      "role": "Pneumatics Maintenance Technician",
+      "clientId": 102
     },
     {
       "id": "39",
@@ -349,7 +439,8 @@
       "domain": "Voltas",
       "status": "Absent",
       "machineStatus": "OFF",
-      "role": "Press Brake Operator"
+      "role": "Press Brake Operator",
+      "clientId": 103
     },
     {
       "id": "40",
@@ -358,7 +449,8 @@
       "domain": "Sms",
       "status": "Present",
       "machineStatus": "ON",
-      "role": "Pneumatics Maintenance Technician"
+      "role": "Pneumatics Maintenance Technician",
+      "clientId": 103
     },
     {
       "id": "41",
@@ -367,7 +459,8 @@
       "domain": "Tvs",
       "status": "Present",
       "machineStatus": "ON",
-      "role": "Press Brake Operator"
+      "role": "Press Brake Operator",
+      "clientId": 103
     },
     {
       "id": "42",
@@ -376,7 +469,8 @@
       "domain": "Voltas",
       "status": "Present",
       "machineStatus": "ON",
-      "role": "Press Brake Operator"
+      "role": "Press Brake Operator",
+      "clientId": 101
     },
     {
       "id": "43",
@@ -385,7 +479,8 @@
       "domain": "Sms",
       "status": "Absent",
       "machineStatus": "OFF",
-      "role": "Pneumatics Maintenance Technician"
+      "role": "Pneumatics Maintenance Technician",
+      "clientId": 101
     },
     {
       "id": "44",
@@ -394,7 +489,8 @@
       "domain": "Tvs",
       "status": "Present",
       "machineStatus": "ON",
-      "role": "Pneumatics Maintenance Technician"
+      "role": "Pneumatics Maintenance Technician",
+      "clientId": 101
     },
     {
       "id": "45",
@@ -403,7 +499,8 @@
       "domain": "Voltas",
       "status": "Present",
       "machineStatus": "ON",
-      "role": "Press Brake Operator"
+      "role": "Press Brake Operator",
+      "clientId": 102
     },
     {
       "id": "46",
@@ -412,7 +509,8 @@
       "domain": "Sms",
       "status": "Absent",
       "machineStatus": "OFF",
-      "role": "Pneumatics Maintenance Technician"
+      "role": "Pneumatics Maintenance Technician",
+      "clientId": 102
     },
     {
       "id": "47",
@@ -421,7 +519,8 @@
       "domain": "Tvs",
       "status": "Present",
       "machineStatus": "ON",
-      "role": "Press Brake Operator"
+      "role": "Press Brake Operator",
+      "clientId": 102
     },
     {
       "id": "48",
@@ -430,7 +529,8 @@
       "domain": "Voltas",
       "status": "Present",
       "machineStatus": "ON",
-      "role": "Press Brake Operator"
+      "role": "Press Brake Operator",
+      "clientId": 103
     },
     {
       "id": "49",
@@ -439,7 +539,8 @@
       "domain": "Sms",
       "status": "Present",
       "machineStatus": "ON",
-      "role": "Pneumatics Maintenance Technician"
+      "role": "Pneumatics Maintenance Technician",
+      "clientId": 103
     },
     {
       "id": "50",
@@ -448,7 +549,8 @@
       "domain": "Tvs",
       "status": "Present",
       "machineStatus": "ON",
-      "role": "Pneumatics Maintenance Technician"
+      "role": "Pneumatics Maintenance Technician",
+      "clientId": 103
     },
     {
       "id": "51",
@@ -457,7 +559,8 @@
       "domain": "Voltas",
       "status": "Present",
       "machineStatus": "ON",
-      "role": "Press Brake Operator"
+      "role": "Press Brake Operator",
+      "clientId": 101
     },
     {
       "id": "52",
@@ -466,7 +569,8 @@
       "domain": "Sms",
       "status": "Present",
       "machineStatus": "ON",
-      "role": "Pneumatics Maintenance Technician"
+      "role": "Pneumatics Maintenance Technician",
+      "clientId": 101
     },
     {
       "id": "53",
@@ -475,7 +579,8 @@
       "domain": "Tvs",
       "status": "Present",
       "machineStatus": "ON",
-      "role": "Press Brake Operator"
+      "role": "Press Brake Operator",
+      "clientId": 101
     },
     {
       "id": "54",
@@ -484,7 +589,8 @@
       "domain": "Voltas",
       "status": "Absent",
       "machineStatus": "OFF",
-      "role": "Press Brake Operator"
+      "role": "Press Brake Operator",
+      "clientId": 102
     },
     {
       "id": "55",
@@ -493,7 +599,8 @@
       "domain": "Sms",
       "status": "Absent",
       "machineStatus": "OFF",
-      "role": "Pneumatics Maintenance Technician"
+      "role": "Pneumatics Maintenance Technician",
+      "clientId": 102
     },
     {
       "id": "56",
@@ -502,7 +609,8 @@
       "domain": "Tvs",
       "status": "Present",
       "machineStatus": "ON",
-      "role": "Pneumatics Maintenance Technician"
+      "role": "Pneumatics Maintenance Technician",
+      "clientId": 102
     },
     {
       "id": "57",
@@ -511,7 +619,8 @@
       "domain": "Voltas",
       "status": "Absent",
       "machineStatus": "OFF",
-      "role": "Press Brake Operator"
+      "role": "Press Brake Operator",
+      "clientId": 103
     },
     {
       "id": "58",
@@ -520,7 +629,8 @@
       "domain": "Sms",
       "status": "Absent",
       "machineStatus": "OFF",
-      "role": "Pneumatics Maintenance Technician"
+      "role": "Pneumatics Maintenance Technician",
+      "clientId": 103
     },
     {
       "id": "59",
@@ -529,7 +639,8 @@
       "domain": "Tvs",
       "status": "Present",
       "machineStatus": "ON",
-      "role": "Press Brake Operator"
+      "role": "Press Brake Operator",
+      "clientId": 103
     },
     {
       "id": "60",
@@ -538,7 +649,8 @@
       "domain": "Voltas",
       "status": "Absent",
       "machineStatus": "OFF",
-      "role": "Press Brake Operator"
+      "role": "Press Brake Operator",
+      "clientId": 101
     },
     {
       "id": "61",
@@ -547,7 +659,8 @@
       "domain": "Sms",
       "status": "Present",
       "machineStatus": "ON",
-      "role": "Pneumatics Maintenance Technician"
+      "role": "Pneumatics Maintenance Technician",
+      "clientId": 101
     },
     {
       "id": "62",
@@ -556,7 +669,8 @@
       "domain": "Tvs",
       "status": "Absent",
       "machineStatus": "OFF",
-      "role": "Pneumatics Maintenance Technician"
+      "role": "Pneumatics Maintenance Technician",
+      "clientId": 101
     },
     {
       "id": "63",
@@ -565,7 +679,8 @@
       "domain": "Voltas",
       "status": "Present",
       "machineStatus": "ON",
-      "role": "Press Brake Operator"
+      "role": "Press Brake Operator",
+      "clientId": 102
     },
     {
       "id": "64",
@@ -574,7 +689,8 @@
       "domain": "Sms",
       "status": "Present",
       "machineStatus": "ON",
-      "role": "Pneumatics Maintenance Technician"
+      "role": "Pneumatics Maintenance Technician",
+      "clientId": 102
     },
     {
       "id": "65",
@@ -583,7 +699,8 @@
       "domain": "Voltas",
       "status": "Absent",
       "machineStatus": "OFF",
-      "role": "Laser Cutting Operator"
+      "role": "Laser Cutting Operator",
+      "clientId": 101
     },
     {
       "id": "66",
@@ -592,7 +709,8 @@
       "domain": "Sms",
       "status": "Absent",
       "machineStatus": "OFF",
-      "role": "Laser Cutting Operator"
+      "role": "Laser Cutting Operator",
+      "clientId": 101
     },
     {
       "id": "67",
@@ -601,7 +719,8 @@
       "domain": "Tvs",
       "status": "Absent",
       "machineStatus": "OFF",
-      "role": "Laser Cutting Operator"
+      "role": "Laser Cutting Operator",
+      "clientId": 101
     },
     {
       "id": "68",
@@ -610,7 +729,8 @@
       "domain": "Voltas",
       "status": "Absent",
       "machineStatus": "OFF",
-      "role": "Laser Cutting Operator"
+      "role": "Laser Cutting Operator",
+      "clientId": 102
     },
     {
       "id": "69",
@@ -619,7 +739,8 @@
       "domain": "Sms",
       "status": "Absent",
       "machineStatus": "OFF",
-      "role": "Laser Cutting Operator"
+      "role": "Laser Cutting Operator",
+      "clientId": 102
     },
     {
       "id": "70",
@@ -628,7 +749,8 @@
       "domain": "Tvs",
       "status": "Present",
       "machineStatus": "ON",
-      "role": "Laser Cutting Operator"
+      "role": "Laser Cutting Operator",
+      "clientId": 102
     },
     {
       "id": "71",
@@ -637,7 +759,8 @@
       "domain": "Voltas",
       "status": "Absent",
       "machineStatus": "OFF",
-      "role": "Laser Cutting Operator"
+      "role": "Laser Cutting Operator",
+      "clientId": 103
     },
     {
       "id": "72",
@@ -646,7 +769,8 @@
       "domain": "Sms",
       "status": "Absent",
       "machineStatus": "OFF",
-      "role": "Laser Cutting Operator"
+      "role": "Laser Cutting Operator",
+      "clientId": 103
     },
     {
       "id": "73",
@@ -655,7 +779,8 @@
       "domain": "Tvs",
       "status": "Present",
       "machineStatus": "ON",
-      "role": "Laser Cutting Operator"
+      "role": "Laser Cutting Operator",
+      "clientId": 103
     },
     {
       "id": "74",
@@ -664,7 +789,8 @@
       "domain": "Voltas",
       "status": "Present",
       "machineStatus": "ON",
-      "role": "Laser Cutting Operator"
+      "role": "Laser Cutting Operator",
+      "clientId": 101
     },
     {
       "id": "75",
@@ -673,7 +799,8 @@
       "domain": "Sms",
       "status": "Present",
       "machineStatus": "ON",
-      "role": "Laser Cutting Operator"
+      "role": "Laser Cutting Operator",
+      "clientId": 101
     },
     {
       "id": "76",
@@ -682,7 +809,8 @@
       "domain": "Tvs",
       "status": "Present",
       "machineStatus": "ON",
-      "role": "Laser Cutting Operator"
+      "role": "Laser Cutting Operator",
+      "clientId": 101
     },
     {
       "id": "77",
@@ -691,7 +819,8 @@
       "domain": "Voltas",
       "status": "Absent",
       "machineStatus": "OFF",
-      "role": "Laser Cutting Operator"
+      "role": "Laser Cutting Operator",
+      "clientId": 102
     },
     {
       "id": "78",
@@ -700,7 +829,8 @@
       "domain": "Sms",
       "status": "Present",
       "machineStatus": "ON",
-      "role": "Laser Cutting Operator"
+      "role": "Laser Cutting Operator",
+      "clientId": 102
     },
     {
       "id": "79",
@@ -709,7 +839,8 @@
       "domain": "Tvs",
       "status": "Present",
       "machineStatus": "ON",
-      "role": "Laser Cutting Operator"
+      "role": "Laser Cutting Operator",
+      "clientId": 102
     },
     {
       "id": "80",
@@ -718,7 +849,8 @@
       "domain": "Voltas",
       "status": "Absent",
       "machineStatus": "OFF",
-      "role": "Laser Cutting Operator"
+      "role": "Laser Cutting Operator",
+      "clientId": 103
     },
     {
       "id": "81",
@@ -727,7 +859,8 @@
       "domain": "Sms",
       "status": "Present",
       "machineStatus": "ON",
-      "role": "Laser Cutting Operator"
+      "role": "Laser Cutting Operator",
+      "clientId": 103
     },
     {
       "id": "82",
@@ -736,7 +869,8 @@
       "domain": "Tvs",
       "status": "Present",
       "machineStatus": "ON",
-      "role": "Laser Cutting Operator"
+      "role": "Laser Cutting Operator",
+      "clientId": 103
     },
     {
       "id": "83",
@@ -745,7 +879,8 @@
       "domain": "Voltas",
       "status": "Absent",
       "machineStatus": "OFF",
-      "role": "Laser Cutting Operator"
+      "role": "Laser Cutting Operator",
+      "clientId": 101
     },
     {
       "id": "84",
@@ -754,7 +889,8 @@
       "domain": "Sms",
       "status": "Absent",
       "machineStatus": "OFF",
-      "role": "Laser Cutting Operator"
+      "role": "Laser Cutting Operator",
+      "clientId": 101
     },
     {
       "id": "85",
@@ -763,7 +899,8 @@
       "domain": "Tvs",
       "status": "Present",
       "machineStatus": "ON",
-      "role": "Laser Cutting Operator"
+      "role": "Laser Cutting Operator",
+      "clientId": 101
     },
     {
       "id": "86",
@@ -772,7 +909,8 @@
       "domain": "Voltas",
       "status": "Absent",
       "machineStatus": "OFF",
-      "role": "Laser Cutting Operator"
+      "role": "Laser Cutting Operator",
+      "clientId": 102
     },
     {
       "id": "87",
@@ -781,7 +919,8 @@
       "domain": "Sms",
       "status": "Present",
       "machineStatus": "ON",
-      "role": "Laser Cutting Operator"
+      "role": "Laser Cutting Operator",
+      "clientId": 102
     },
     {
       "id": "88",
@@ -790,7 +929,8 @@
       "domain": "Tvs",
       "status": "Present",
       "machineStatus": "ON",
-      "role": "Laser Cutting Operator"
+      "role": "Laser Cutting Operator",
+      "clientId": 102
     },
     {
       "id": "89",
@@ -799,7 +939,8 @@
       "domain": "Voltas",
       "status": "Present",
       "machineStatus": "ON",
-      "role": "Laser Cutting Operator"
+      "role": "Laser Cutting Operator",
+      "clientId": 103
     },
     {
       "id": "90",
@@ -808,7 +949,8 @@
       "domain": "Sms",
       "status": "Absent",
       "machineStatus": "OFF",
-      "role": "Laser Cutting Operator"
+      "role": "Laser Cutting Operator",
+      "clientId": 103
     },
     {
       "id": "91",
@@ -817,7 +959,8 @@
       "domain": "Tvs",
       "status": "Present",
       "machineStatus": "ON",
-      "role": "Laser Cutting Operator"
+      "role": "Laser Cutting Operator",
+      "clientId": 103
     },
     {
       "id": "92",
@@ -826,7 +969,8 @@
       "domain": "Voltas",
       "status": "Absent",
       "machineStatus": "OFF",
-      "role": "Surface Grinding Operator"
+      "role": "Surface Grinding Operator",
+      "clientId": 101
     },
     {
       "id": "93",
@@ -835,7 +979,8 @@
       "domain": "Sms",
       "status": "Absent",
       "machineStatus": "OFF",
-      "role": "Surface Grinding Operator"
+      "role": "Surface Grinding Operator",
+      "clientId": 101
     },
     {
       "id": "94",
@@ -844,7 +989,8 @@
       "domain": "Tvs",
       "status": "Present",
       "machineStatus": "ON",
-      "role": "Surface Grinding Operator"
+      "role": "Surface Grinding Operator",
+      "clientId": 101
     },
     {
       "id": "95",
@@ -853,7 +999,8 @@
       "domain": "Voltas",
       "status": "Absent",
       "machineStatus": "OFF",
-      "role": "Surface Grinding Operator"
+      "role": "Surface Grinding Operator",
+      "clientId": 102
     },
     {
       "id": "96",
@@ -862,7 +1009,8 @@
       "domain": "Sms",
       "status": "Present",
       "machineStatus": "ON",
-      "role": "Surface Grinding Operator"
+      "role": "Surface Grinding Operator",
+      "clientId": 102
     },
     {
       "id": "97",
@@ -871,7 +1019,8 @@
       "domain": "Tvs",
       "status": "Absent",
       "machineStatus": "OFF",
-      "role": "Surface Grinding Operator"
+      "role": "Surface Grinding Operator",
+      "clientId": 102
     },
     {
       "id": "98",
@@ -880,7 +1029,8 @@
       "domain": "Voltas",
       "status": "Absent",
       "machineStatus": "OFF",
-      "role": "Surface Grinding Operator"
+      "role": "Surface Grinding Operator",
+      "clientId": 103
     },
     {
       "id": "99",
@@ -889,7 +1039,8 @@
       "domain": "Sms",
       "status": "Present",
       "machineStatus": "ON",
-      "role": "Surface Grinding Operator"
+      "role": "Surface Grinding Operator",
+      "clientId": 103
     },
     {
       "id": "100",
@@ -898,7 +1049,8 @@
       "domain": "Tvs",
       "status": "Present",
       "machineStatus": "ON",
-      "role": "Surface Grinding Operator"
+      "role": "Surface Grinding Operator",
+      "clientId": 103
     },
     {
       "id": "101",
@@ -907,7 +1059,8 @@
       "domain": "Voltas",
       "status": "Absent",
       "machineStatus": "OFF",
-      "role": "Surface Grinding Operator"
+      "role": "Surface Grinding Operator",
+      "clientId": 101
     },
     {
       "id": "102",
@@ -916,7 +1069,8 @@
       "domain": "Sms",
       "status": "Present",
       "machineStatus": "ON",
-      "role": "Surface Grinding Operator"
+      "role": "Surface Grinding Operator",
+      "clientId": 101
     },
     {
       "id": "103",
@@ -925,7 +1079,8 @@
       "domain": "Tvs",
       "status": "Absent",
       "machineStatus": "OFF",
-      "role": "Surface Grinding Operator"
+      "role": "Surface Grinding Operator",
+      "clientId": 101
     },
     {
       "id": "104",
@@ -934,7 +1089,8 @@
       "domain": "Voltas",
       "status": "Absent",
       "machineStatus": "OFF",
-      "role": "Surface Grinding Operator"
+      "role": "Surface Grinding Operator",
+      "clientId": 102
     },
     {
       "id": "105",
@@ -943,7 +1099,8 @@
       "domain": "Sms",
       "status": "Present",
       "machineStatus": "ON",
-      "role": "Surface Grinding Operator"
+      "role": "Surface Grinding Operator",
+      "clientId": 102
     },
     {
       "id": "106",
@@ -952,7 +1109,8 @@
       "domain": "Tvs",
       "status": "Present",
       "machineStatus": "ON",
-      "role": "Surface Grinding Operator"
+      "role": "Surface Grinding Operator",
+      "clientId": 102
     },
     {
       "id": "107",
@@ -961,7 +1119,8 @@
       "domain": "Voltas",
       "status": "Absent",
       "machineStatus": "OFF",
-      "role": "Surface Grinding Operator"
+      "role": "Surface Grinding Operator",
+      "clientId": 103
     },
     {
       "id": "108",
@@ -970,7 +1129,8 @@
       "domain": "Sms",
       "status": "Absent",
       "machineStatus": "OFF",
-      "role": "Surface Grinding Operator"
+      "role": "Surface Grinding Operator",
+      "clientId": 103
     },
     {
       "id": "109",
@@ -979,7 +1139,8 @@
       "domain": "Tvs",
       "status": "Present",
       "machineStatus": "ON",
-      "role": "Surface Grinding Operator"
+      "role": "Surface Grinding Operator",
+      "clientId": 103
     },
     {
       "id": "110",
@@ -988,7 +1149,8 @@
       "domain": "Voltas",
       "status": "Present",
       "machineStatus": "ON",
-      "role": "Surface Grinding Operator"
+      "role": "Surface Grinding Operator",
+      "clientId": 101
     },
     {
       "id": "111",
@@ -997,7 +1159,8 @@
       "domain": "Sms",
       "status": "Present",
       "machineStatus": "ON",
-      "role": "Surface Grinding Operator"
+      "role": "Surface Grinding Operator",
+      "clientId": 101
     },
     {
       "id": "112",
@@ -1006,7 +1169,8 @@
       "domain": "Tvs",
       "status": "Absent",
       "machineStatus": "OFF",
-      "role": "Surface Grinding Operator"
+      "role": "Surface Grinding Operator",
+      "clientId": 101
     },
     {
       "id": "113",
@@ -1015,7 +1179,8 @@
       "domain": "Voltas",
       "status": "Absent",
       "machineStatus": "OFF",
-      "role": "Surface Grinding Operator"
+      "role": "Surface Grinding Operator",
+      "clientId": 102
     },
     {
       "id": "114",
@@ -1024,7 +1189,8 @@
       "domain": "Sms",
       "status": "Absent",
       "machineStatus": "OFF",
-      "role": "Surface Grinding Operator"
+      "role": "Surface Grinding Operator",
+      "clientId": 102
     },
     {
       "id": "115",
@@ -1033,7 +1199,8 @@
       "domain": "Voltas",
       "status": "Present",
       "machineStatus": "ON",
-      "role": "Radial Drilling Operator"
+      "role": "Radial Drilling Operator",
+      "clientId": 101
     },
     {
       "id": "116",
@@ -1042,7 +1209,8 @@
       "domain": "Sms",
       "status": "Absent",
       "machineStatus": "OFF",
-      "role": "Injection Molding Operator"
+      "role": "Injection Molding Operator",
+      "clientId": 101
     },
     {
       "id": "117",
@@ -1051,7 +1219,8 @@
       "domain": "Tvs",
       "status": "Absent",
       "machineStatus": "OFF",
-      "role": "Injection Molding Operator"
+      "role": "Injection Molding Operator",
+      "clientId": 101
     },
     {
       "id": "118",
@@ -1060,7 +1229,8 @@
       "domain": "Voltas",
       "status": "Present",
       "machineStatus": "ON",
-      "role": "Radial Drilling Operator"
+      "role": "Radial Drilling Operator",
+      "clientId": 102
     },
     {
       "id": "119",
@@ -1069,7 +1239,8 @@
       "domain": "Sms",
       "status": "Present",
       "machineStatus": "ON",
-      "role": "Injection Molding Operator"
+      "role": "Injection Molding Operator",
+      "clientId": 102
     },
     {
       "id": "120",
@@ -1078,7 +1249,8 @@
       "domain": "Tvs",
       "status": "Absent",
       "machineStatus": "OFF",
-      "role": "Radial Drilling Operator"
+      "role": "Radial Drilling Operator",
+      "clientId": 102
     },
     {
       "id": "121",
@@ -1087,7 +1259,8 @@
       "domain": "Voltas",
       "status": "Absent",
       "machineStatus": "OFF",
-      "role": "Radial Drilling Operator"
+      "role": "Radial Drilling Operator",
+      "clientId": 103
     },
     {
       "id": "122",
@@ -1096,7 +1269,8 @@
       "domain": "Sms",
       "status": "Absent",
       "machineStatus": "OFF",
-      "role": "Injection Molding Operator"
+      "role": "Injection Molding Operator",
+      "clientId": 103
     },
     {
       "id": "123",
@@ -1105,7 +1279,8 @@
       "domain": "Tvs",
       "status": "Absent",
       "machineStatus": "OFF",
-      "role": "Injection Molding Operator"
+      "role": "Injection Molding Operator",
+      "clientId": 103
     },
     {
       "id": "124",
@@ -1114,7 +1289,8 @@
       "domain": "Voltas",
       "status": "Present",
       "machineStatus": "ON",
-      "role": "Radial Drilling Operator"
+      "role": "Radial Drilling Operator",
+      "clientId": 101
     },
     {
       "id": "125",
@@ -1123,7 +1299,8 @@
       "domain": "Sms",
       "status": "Present",
       "machineStatus": "ON",
-      "role": "Injection Molding Operator"
+      "role": "Injection Molding Operator",
+      "clientId": 101
     },
     {
       "id": "126",
@@ -1132,7 +1309,8 @@
       "domain": "Tvs",
       "status": "Present",
       "machineStatus": "ON",
-      "role": "Radial Drilling Operator"
+      "role": "Radial Drilling Operator",
+      "clientId": 101
     },
     {
       "id": "127",
@@ -1141,7 +1319,8 @@
       "domain": "Voltas",
       "status": "Present",
       "machineStatus": "ON",
-      "role": "Radial Drilling Operator"
+      "role": "Radial Drilling Operator",
+      "clientId": 102
     },
     {
       "id": "128",
@@ -1150,7 +1329,8 @@
       "domain": "Sms",
       "status": "Absent",
       "machineStatus": "OFF",
-      "role": "Injection Molding Operator"
+      "role": "Injection Molding Operator",
+      "clientId": 102
     },
     {
       "id": "129",
@@ -1159,7 +1339,8 @@
       "domain": "Tvs",
       "status": "Present",
       "machineStatus": "ON",
-      "role": "Injection Molding Operator"
+      "role": "Injection Molding Operator",
+      "clientId": 102
     },
     {
       "id": "130",
@@ -1168,7 +1349,8 @@
       "domain": "Voltas",
       "status": "Present",
       "machineStatus": "ON",
-      "role": "Radial Drilling Operator"
+      "role": "Radial Drilling Operator",
+      "clientId": 103
     },
     {
       "id": "131",
@@ -1177,7 +1359,8 @@
       "domain": "Sms",
       "status": "Present",
       "machineStatus": "ON",
-      "role": "Injection Molding Operator"
+      "role": "Injection Molding Operator",
+      "clientId": 103
     },
     {
       "id": "132",
@@ -1186,7 +1369,8 @@
       "domain": "Tvs",
       "status": "Present",
       "machineStatus": "ON",
-      "role": "Radial Drilling Operator"
+      "role": "Radial Drilling Operator",
+      "clientId": 103
     },
     {
       "id": "133",
@@ -1195,7 +1379,8 @@
       "domain": "Voltas",
       "status": "Absent",
       "machineStatus": "OFF",
-      "role": "Radial Drilling Operator"
+      "role": "Radial Drilling Operator",
+      "clientId": 101
     },
     {
       "id": "134",
@@ -1204,7 +1389,8 @@
       "domain": "Sms",
       "status": "Absent",
       "machineStatus": "OFF",
-      "role": "Injection Molding Operator"
+      "role": "Injection Molding Operator",
+      "clientId": 101
     },
     {
       "id": "135",
@@ -1213,7 +1399,8 @@
       "domain": "Tvs",
       "status": "Present",
       "machineStatus": "ON",
-      "role": "Injection Molding Operator"
+      "role": "Injection Molding Operator",
+      "clientId": 101
     },
     {
       "id": "136",
@@ -1222,7 +1409,8 @@
       "domain": "Voltas",
       "status": "Present",
       "machineStatus": "ON",
-      "role": "Radial Drilling Operator"
+      "role": "Radial Drilling Operator",
+      "clientId": 102
     },
     {
       "id": "137",
@@ -1231,7 +1419,8 @@
       "domain": "Sms",
       "status": "Present",
       "machineStatus": "ON",
-      "role": "Injection Molding Operator"
+      "role": "Injection Molding Operator",
+      "clientId": 102
     },
     {
       "id": "138",
@@ -1240,7 +1429,8 @@
       "domain": "Tvs",
       "status": "Absent",
       "machineStatus": "OFF",
-      "role": "Radial Drilling Operator"
+      "role": "Radial Drilling Operator",
+      "clientId": 102
     },
     {
       "id": "139",
@@ -1249,7 +1439,8 @@
       "domain": "Voltas",
       "status": "Absent",
       "machineStatus": "OFF",
-      "role": "Radial Drilling Operator"
+      "role": "Radial Drilling Operator",
+      "clientId": 103
     },
     {
       "id": "140",
@@ -1258,7 +1449,8 @@
       "domain": "Voltas",
       "status": "Present",
       "machineStatus": "ON",
-      "role": "Lathe Machine Operator"
+      "role": "Lathe Machine Operator",
+      "clientId": 101
     },
     {
       "id": "141",
@@ -1267,7 +1459,8 @@
       "domain": "Sms",
       "status": "Present",
       "machineStatus": "ON",
-      "role": "Quality Control Inspector"
+      "role": "Quality Control Inspector",
+      "clientId": 101
     },
     {
       "id": "142",
@@ -1276,7 +1469,8 @@
       "domain": "Tvs",
       "status": "Absent",
       "machineStatus": "OFF",
-      "role": "Lathe Machine Operator"
+      "role": "Lathe Machine Operator",
+      "clientId": 101
     },
     {
       "id": "143",
@@ -1285,7 +1479,8 @@
       "domain": "Voltas",
       "status": "Present",
       "machineStatus": "ON",
-      "role": "Lathe Machine Operator"
+      "role": "Lathe Machine Operator",
+      "clientId": 102
     },
     {
       "id": "144",
@@ -1294,7 +1489,8 @@
       "domain": "Sms",
       "status": "Absent",
       "machineStatus": "OFF",
-      "role": "Quality Control Inspector"
+      "role": "Quality Control Inspector",
+      "clientId": 102
     },
     {
       "id": "145",
@@ -1303,7 +1499,8 @@
       "domain": "Tvs",
       "status": "Absent",
       "machineStatus": "OFF",
-      "role": "Quality Control Inspector"
+      "role": "Quality Control Inspector",
+      "clientId": 102
     },
     {
       "id": "146",
@@ -1312,7 +1509,8 @@
       "domain": "Voltas",
       "status": "Present",
       "machineStatus": "ON",
-      "role": "Lathe Machine Operator"
+      "role": "Lathe Machine Operator",
+      "clientId": 103
     },
     {
       "id": "147",
@@ -1321,7 +1519,8 @@
       "domain": "Sms",
       "status": "Present",
       "machineStatus": "ON",
-      "role": "Quality Control Inspector"
+      "role": "Quality Control Inspector",
+      "clientId": 103
     },
     {
       "id": "148",
@@ -1330,7 +1529,8 @@
       "domain": "Tvs",
       "status": "Absent",
       "machineStatus": "OFF",
-      "role": "Lathe Machine Operator"
+      "role": "Lathe Machine Operator",
+      "clientId": 103
     },
     {
       "id": "149",
@@ -1339,7 +1539,8 @@
       "domain": "Voltas",
       "status": "Absent",
       "machineStatus": "OFF",
-      "role": "Lathe Machine Operator"
+      "role": "Lathe Machine Operator",
+      "clientId": 101
     },
     {
       "id": "150",
@@ -1348,7 +1549,8 @@
       "domain": "Sms",
       "status": "Absent",
       "machineStatus": "OFF",
-      "role": "Quality Control Inspector"
+      "role": "Quality Control Inspector",
+      "clientId": 101
     },
     {
       "id": "151",
@@ -1357,7 +1559,8 @@
       "domain": "Tvs",
       "status": "Present",
       "machineStatus": "ON",
-      "role": "Quality Control Inspector"
+      "role": "Quality Control Inspector",
+      "clientId": 101
     },
     {
       "id": "152",
@@ -1366,7 +1569,8 @@
       "domain": "Voltas",
       "status": "Absent",
       "machineStatus": "OFF",
-      "role": "Lathe Machine Operator"
+      "role": "Lathe Machine Operator",
+      "clientId": 102
     },
     {
       "id": "153",
@@ -1375,7 +1579,8 @@
       "domain": "Sms",
       "status": "Present",
       "machineStatus": "ON",
-      "role": "Quality Control Inspector"
+      "role": "Quality Control Inspector",
+      "clientId": 102
     },
     {
       "id": "154",
@@ -1384,7 +1589,8 @@
       "domain": "Tvs",
       "status": "Present",
       "machineStatus": "ON",
-      "role": "Lathe Machine Operator"
+      "role": "Lathe Machine Operator",
+      "clientId": 102
     },
     {
       "id": "155",
@@ -1393,7 +1599,8 @@
       "domain": "Voltas",
       "status": "Present",
       "machineStatus": "ON",
-      "role": "Lathe Machine Operator"
+      "role": "Lathe Machine Operator",
+      "clientId": 103
     },
     {
       "id": "156",
@@ -1402,7 +1609,8 @@
       "domain": "Sms",
       "status": "Absent",
       "machineStatus": "OFF",
-      "role": "Quality Control Inspector"
+      "role": "Quality Control Inspector",
+      "clientId": 103
     },
     {
       "id": "157",
@@ -1411,7 +1619,8 @@
       "domain": "Tvs",
       "status": "Absent",
       "machineStatus": "OFF",
-      "role": "Quality Control Inspector"
+      "role": "Quality Control Inspector",
+      "clientId": 103
     },
     {
       "id": "158",
@@ -1420,7 +1629,8 @@
       "domain": "Voltas",
       "status": "Present",
       "machineStatus": "ON",
-      "role": "Lathe Machine Operator"
+      "role": "Lathe Machine Operator",
+      "clientId": 101
     },
     {
       "id": "159",
@@ -1429,7 +1639,8 @@
       "domain": "Sms",
       "status": "Absent",
       "machineStatus": "OFF",
-      "role": "Quality Control Inspector"
+      "role": "Quality Control Inspector",
+      "clientId": 101
     },
     {
       "id": "160",
@@ -1438,7 +1649,8 @@
       "domain": "Tvs",
       "status": "Absent",
       "machineStatus": "OFF",
-      "role": "Lathe Machine Operator"
+      "role": "Lathe Machine Operator",
+      "clientId": 101
     },
     {
       "id": "161",
@@ -1447,7 +1659,8 @@
       "domain": "Voltas",
       "status": "Present",
       "machineStatus": "ON",
-      "role": "Lathe Machine Operator"
+      "role": "Lathe Machine Operator",
+      "clientId": 102
     },
     {
       "id": "162",
@@ -1456,7 +1669,8 @@
       "domain": "Sms",
       "status": "Present",
       "machineStatus": "ON",
-      "role": "Quality Control Inspector"
+      "role": "Quality Control Inspector",
+      "clientId": 102
     },
     {
       "id": "163",
@@ -1465,7 +1679,8 @@
       "domain": "Tvs",
       "status": "Present",
       "machineStatus": "ON",
-      "role": "Quality Control Inspector"
+      "role": "Quality Control Inspector",
+      "clientId": 102
     },
     {
       "id": "164",
@@ -1474,7 +1689,8 @@
       "domain": "Voltas",
       "status": "Absent",
       "machineStatus": "OFF",
-      "role": "Lathe Machine Operator"
+      "role": "Lathe Machine Operator",
+      "clientId": 103
     },
     {
       "id": "165",
@@ -1483,7 +1699,8 @@
       "domain": "Sms",
       "status": "Present",
       "machineStatus": "ON",
-      "role": "Quality Control Inspector"
+      "role": "Quality Control Inspector",
+      "clientId": 103
     },
     {
       "id": "166",
@@ -1492,7 +1709,8 @@
       "domain": "Tvs",
       "status": "Present",
       "machineStatus": "ON",
-      "role": "Lathe Machine Operator"
+      "role": "Lathe Machine Operator",
+      "clientId": 103
     },
     {
       "id": "167",
@@ -1501,7 +1719,8 @@
       "domain": "Voltas",
       "status": "Present",
       "machineStatus": "ON",
-      "role": "Lathe Machine Operator"
+      "role": "Lathe Machine Operator",
+      "clientId": 101
     },
     {
       "id": "168",
@@ -1510,7 +1729,8 @@
       "domain": "Sms",
       "status": "Present",
       "machineStatus": "ON",
-      "role": "Quality Control Inspector"
+      "role": "Quality Control Inspector",
+      "clientId": 101
     },
     {
       "id": "169",
@@ -1519,7 +1739,8 @@
       "domain": "Tvs",
       "status": "Absent",
       "machineStatus": "OFF",
-      "role": "Quality Control Inspector"
+      "role": "Quality Control Inspector",
+      "clientId": 101
     },
     {
       "id": "170",
@@ -1528,7 +1749,8 @@
       "domain": "Voltas",
       "status": "Absent",
       "machineStatus": "OFF",
-      "role": "Lathe Machine Operator"
+      "role": "Lathe Machine Operator",
+      "clientId": 102
     }
   ],
   "inventory": [
@@ -1537,77 +1759,112 @@
       "name": "CNC Vertical Machining Center",
       "description": "High-precision 3-axis vertical CNC milling machine designed for rapid prototyping.",
       "employee": "Naveen",
-      "role": "CNC Machine Operator"
+      "role": "CNC Machine Operator",
+      "clientId": 101
     },
     {
       "id": "2",
       "name": "Hydraulic Press Brake 100T",
       "description": "Heavy-duty 100-ton hydraulic sheet metal bending machine..",
       "employee": "Fazil",
-      "role": "Laser Cutting Operator"
+      "role": "Laser Cutting Operator",
+      "clientId": 102
     },
     {
       "id": "3",
       "name": "Fiber Laser Cutting System 4kW",
       "description": "Industrial-grade high-power fiber laser cutting system engineered for fast....",
       "employee": "Vimal",
-      "role": "Robotic Welding Specialist"
+      "role": "Robotic Welding Specialist",
+      "clientId": 103
     },
     {
       "id": "4",
       "name": "Horizontal Precision Lathe Machine",
       "description": "Heavy-duty geared-head engine lathe for cylindrical turning..",
       "employee": "Ajith",
-      "role": "Robotic Welding Specialist"
+      "role": "Robotic Welding Specialist",
+      "clientId": 101
     },
     {
       "id": "5",
       "name": "Automated Surface Grinding Machine",
       "description": "Hydraulic surface grinder with digital readout system.",
       "employee": "Lingaraj",
-      "role": "Radial Drilling Operator"
+      "role": "Radial Drilling Operator",
+      "clientId": 102
     },
     {
       "id": "6",
       "name": "Plastic Injection Molding Machine 180T",
       "description": "Servo-hydraulic thermoplastic injection molding unit.",
       "employee": "Balaji",
-      "role": "Robotic Welding Specialist"
+      "role": "Robotic Welding Specialist",
+      "clientId": 103
     },
     {
       "id": "7",
       "name": "Robotic Arc Welding Station",
       "description": "6-axis industrial articulated robotic arm integrated with MIG/MAG power source for automated.",
       "employee": "Kishore",
-      "role": "Robotic Welding Specialist"
+      "role": "Robotic Welding Specialist",
+      "clientId": 101
     },
     {
       "id": "8",
       "name": "Rotary Screw Air Compressor 50HP",
       "description": "Variable speed direct-drive industrial screw compressor providing constant.",
       "employee": "Bharathi",
-      "role": "Press Brake Operator"
+      "role": "Press Brake Operator",
+      "clientId": 102
     },
     {
       "id": "9",
       "name": "Coordinate Measuring Machine (CMM)",
       "description": "High-precision bridge-type 3D coordinate measuring system for metrology inspection, quality verification.",
       "employee": "Anand",
-      "role": "CNC Machine Operator"
+      "role": "CNC Machine Operator",
+      "clientId": 103
     },
     {
       "id": "10",
       "name": "Heavy-Duty Radial Drilling Machine",
       "description": "Geared universal radial arm drill press engineered for drilling, reaming, counterboring.",
       "employee": "Elango",
-      "role": "Pneumatics Maintenance Technician"
+      "role": "Pneumatics Maintenance Technician",
+      "clientId": 101
     },
     {
+      "id": "11",
       "name": "ncc",
+      "description": "test desc",
       "employee": "kumar",
       "role": "admin",
-      "description": "test desc",
-      "id": "11"
+      "clientId": 102
+    },
+    {
+      "name": "test 1",
+      "employee": "sharukh",
+      "role": "test role 1",
+      "description": "nothing more...",
+      "id": "aca27683-448e-4f87-b76a-35b2de80547e",
+      "clientId": 101
+    },
+    {
+      "name": "test 2",
+      "employee": "salman",
+      "role": "test role 2",
+      "description": "test dec 2",
+      "id": "640b2cb6-5eae-485c-b8d9-d1472183445d",
+      "clientId": 102
+    },
+    {
+      "name": "test 3",
+      "employee": "ranbir",
+      "role": "test role 3",
+      "description": "test desc 3",
+      "id": "4e74b55a-7eed-4c53-b624-b538f7d5d419",
+      "clientId": 103
     }
   ],
   "$schema": "./node_modules/json-server/schema.json"

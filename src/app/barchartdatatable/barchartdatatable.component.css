@@ -29,9 +29,6 @@
     flex-shrink: 0;
 }
 
-
-/* ================= HEADER ================= */
-
 .header {
     display: flex;
     flex-direction: column;
@@ -45,8 +42,6 @@
     font-size: 30px;
     font-weight: 700;
 }
-
-/* ================= SUMMARY ================= */
 
 .summary-cards {
     display: grid;
@@ -96,8 +91,6 @@
     color: #ff0000;
 }
 
-/* ================= TABLE ================= */
-
 .table-layout {
 
     background: white;
@@ -109,8 +102,6 @@
     box-shadow: 0 5px 15px rgba(0, 0, 0, .08);
 
 }
-
-/* ================= TOOLBAR ================= */
 
 .toolbar {
 
@@ -164,8 +155,6 @@
 
 }
 
-/* ================= BUTTONS ================= */
-
 .action-buttons {
 
     display: flex;
@@ -202,13 +191,13 @@
 
 }
 
-.search-input:focus {
+/* .search-input:focus {
 
     border-color: #3a3f58;
 
     box-shadow: 0 0 0 2px rgba(58, 63, 88, 0.15);
 
-}
+} */
 
 .action-buttons button {
 
@@ -226,8 +215,6 @@
     flex-shrink: 0;
 }
 
-/* ================= TABLE ================= */
-
 .attendance-table {
 
     width: 100%;
@@ -235,8 +222,6 @@
     overflow: auto;
 
 }
-
-/* ================= PRIMENG ================= */
 
 :host ::ng-deep .p-datatable {
 
@@ -246,7 +231,7 @@
 
 :host ::ng-deep .p-datatable-thead>tr>th {
 
-    background: #3a3f58 !important;
+    background: #880a6ffa !important;
 
     color: white !important;
 
@@ -272,10 +257,6 @@
 
 }
 
-
-
-/* ================= STATUS ================= */
-
 .text-success {
 
     color: #00a000;
@@ -291,8 +272,6 @@
     font-weight: bold;
 
 }
-
-/* ================= RESPONSIVE ================= */
 
 @media(max-width:1200px) {
 

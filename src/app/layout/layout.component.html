@@ -1,23 +1,19 @@
 <div class="dashboard-shell" [class.sidebar-expanded]="sidebar">
 
-  <!-- Left sidebar -->
   <aside class="sidebar" [class.expanded]="sidebar">
 
-    <!-- Sidebar heading -->
     <div class="sidebar-header">
       <button type="button" class="sidebar-toggle-button" (click)="expand()">
-        <!-- [class.bi-bluesky]="!sidebar" -->
-        <!-- <i class="bi" [class.bi-bluesky]="!sidebar"></i> -->
+        <i class="bi" [class.bi-hurricane]="sidebar"></i>
+        <i class="bi" [class.bi-hurricane]="!sidebar"></i>
       </button>
 
       <span class="sidebar-title">APP</span>
     </div>
 
-    <!-- Pure CSS menu -->
     <nav class="pure-menu" aria-label="Main navigation">
       <ul class="pure-menu-list">
 
-        <!-- Reports menu -->
         <li
           class="pure-menu-item
                  pure-menu-has-children
@@ -30,7 +26,6 @@
           </div>
 
 
-          <!-- Reports children -->
           <ul class="pure-menu-children">
 
             <li class="pure-menu-item">
@@ -45,7 +40,6 @@
               </a>
             </li>
 
-            <!-- Report 3 menu -->
             <li
               class="pure-menu-item
                      pure-menu-has-children
@@ -56,7 +50,6 @@
                 <i class="bi bi-chevron-right menu-arrow"></i>
               </div>
 
-              <!-- Report 3.1 child -->
               <ul class="pure-menu-children">
                 <li class="pure-menu-item">
                   <a href="#" class="pure-menu-link" (click)="onHrefClick($event)">
@@ -66,7 +59,6 @@
               </ul>
             </li>
 
-            <!-- Domain menus -->
             <li class="pure-menu-item" *ngIf="showdomainreport('All')">
               <a (click)="openReport('All')" class="pure-menu-link">
                 All
@@ -103,19 +95,14 @@
       </ul>
     </nav>
 
-    <!-- Fixed bottom logout -->
-    <!-- <button type="button"><i class="bi bi-gear-fill"></i></button> -->
-    <button type="button" class="logout-button" (click)="logout()">
-      <i class="bi bi-box-arrow-right"></i>
-      <span class="menu-text">Logout</span>
-    </button>
+    
 
   </aside>
 
   <main class="main-content">
     <header class="user-header" *ngIf="currentUser">
       <div class="header-left">
-        <a class="home-link" aria-current="page" (click)="Home()"><i class="bi bi-house"></i> Home </a>
+        <a class="home-link" aria-current="page" (click)="Home(101)"><i class="bi bi-house"></i> Home </a>
         <!-- <a class="route-link" aria-current="page" href="#">{{ router.url }}</a> -->
       </div>
 
@@ -129,21 +116,69 @@
         </select> -->
 
         <nz-select
-          [(ngModel)]="selectedArea"
-          (ngModelChange)="placeChange($event)"
-          nzPlaceHolder="Select Area"
+          [(ngModel)]="selectClient"
+          (ngModelChange)="changeClient($event)"
+          nzPlaceHolder="Select Client"
           class="nz-select-option"
           nzDropdownClassName="area-dropdown"
         >
-          <nz-option nzValue="Voltas" nzLabel="Voltas"/>
-          <nz-option nzValue="Area1" nzLabel="Area1"/>
-          <nz-option nzValue="Area2" nzLabel="Area2"/>
+          <nz-option
+            *ngFor="let client of usersList"
+            [nzValue]="client.id"
+            [nzLabel]="client.name"
+          >
+          </nz-option>
         </nz-select>
         
         <div class="user-details">
           <p class="user-name">{{ currentUser.name }}</p>
           <p class="user-role">{{ currentUser.role }}</p>
         </div>
+        <div
+          class="profile-pic"
+          nz-dropdown
+          [nzDropdownMenu]="profileMenu"
+          nzTrigger="click"
+          nzPlacement="bottomRight"
+        >
+          <img [src]="profilePicUrl" alt="Profile">
+        </div>
+
+        <nz-dropdown-menu #profileMenu="nzDropdownMenu">
+          <ul nz-menu class="profile-dropdown-menu">
+            <li nz-menu-item (click)="profile()">
+              <i class="bi bi-person me-2"></i> My Profile
+            </li>
+            <li nz-menu-divider></li>
+            <li nz-menu-item nzDanger (click)="confirmLogout()">
+              <i class="bi bi-box-arrow-right me-2"></i> Logout
+            </li>
+          </ul>
+        </nz-dropdown-menu>
+
+        <nz-modal
+          [nzVisible]="isLogout"
+          nzTitle="Confirm Logout"
+          [nzCentered]="true"
+          [nzMaskClosable]="true"
+          [nzFooter]="null"
+          nzClassName="confirmModal"
+          (nzOnCancel)="closePopUp()"
+        >
+          <ng-container *nzModalContent>
+            <div *ngIf="isLogout">
+              <p>Are you sure you want to Logout? </p>
+              <div class="lm-buttons">
+                <button nz-button nzType="primary" (click)="logout()">
+                  Yes
+                </button>
+                <button nz-button nzType="default" (click)="closePopUp()">
+                  No
+                </button>
+              </div>
+            </div>
+          </ng-container>
+        </nz-modal>
       </div>
     </header>
 

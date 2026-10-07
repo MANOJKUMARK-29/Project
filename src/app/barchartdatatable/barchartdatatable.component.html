@@ -64,10 +64,17 @@
           <p-multiSelect [options]="locationOptions" [(ngModel)]="selectedLocations" placeholder="Select Locations" ...>
             <ng-template pTemplate="selectedItems" let-values>
               <div class="d-flex align-items-center gap-1 flex-wrap">
-                <p-chip *ngFor="let item of values?.slice(0, 2)" [label]="item.label || item" [removable]="true"
-                  (onRemove)="removeLocation(item.value || item, $event)"></p-chip>
-                <p-chip *ngIf="values?.length > 2" [label]="'+' + (values.length - 2)"
-                  styleClass="counter-chip"></p-chip>
+                <p-chip
+                  *ngFor="let item of values?.slice(0, 2)"
+                  [label]="item.label || item"
+                  [removable]="true"
+                  (onRemove)="removeLocation(item.value || item, $event)"
+                ></p-chip>
+                <p-chip
+                  *ngIf="values?.length > 2"
+                  [label]="'+' + (values.length - 2)"
+                  styleClass="counter-chip"
+                ></p-chip>
                 <span style="color: black;" *ngIf="!values || values.length === 0">Select Locations</span>
               </div>
             </ng-template>
@@ -88,113 +95,194 @@
       </div>
 
       <div class="action-buttons">
-        <input pInputText type="text" [(ngModel)]="searchTerm" placeholder="Search employees..."
-          (input)="filterEmployees()" class="search-input" />
-        <button type="button" class="btn btn-danger export-chart-btn" title="Download PDF" id="barchart"
-          (click)="downloadPdf()">
+        <input
+          pInputText
+          type="text"
+          [(ngModel)]="searchTerm"
+          placeholder="Search employees..."
+          (input)="filterEmployees()"
+          class="form-control"
+        />
+        <button
+          type="button"
+          class="btn btn-danger export-chart-btn"
+          title="Download PDF"
+          id="barchart"
+          (click)="downloadPdf()"
+        >
           <i class="bi bi-file-earmark-pdf"></i>
         </button>
 
-        <button type="button" class="btn btn-success export-chart-btn" title="Download xls"
-          (click)="downloadExcel()">
+        <button
+          type="button"
+          class="btn btn-success export-chart-btn"
+          title="Download xls"
+          (click)="downloadExcel()"
+        >
           <i class="bi bi-file-earmark-excel"></i>
         </button>
 
-        <button class="btn btn-secondary" (click)="back()">Back<i style="font-size: 20px;"
-            class="bi bi-arrow-left-short"></i></button>
+        <button class="btn btn-secondary" (click)="back()">Back<i
+            style="font-size: 20px;"
+            class="bi bi-arrow-left-short"
+          ></i></button>
       </div>
     </div>
 
     <div id="AttendanceTable" class="attendance-table">
-      <p-table #dt [value]="filteredEmployees" [tableStyle]="{ 'min-width': '70rem' }" responsiveLayout="scroll"
-        stripedRows="true" showGridlines="true" sortMode="multiple" [paginator]="true" [rows]="20">
+      <p-table
+        #dt
+        [value]="filteredEmployees"
+        [tableStyle]="{ 'min-width': '70rem' }"
+        responsiveLayout="scroll"
+        stripedRows="true"
+        showGridlines="true"
+        sortMode="multiple"
+        [paginator]="true"
+        [rows]="20"
+      >
         <ng-template pTemplate="header">
           <tr>
             <th pSortableColumn="id">
-              ID
+              <div class="d-flex fw-bold fs-6 justify-content-between">
+                ID
 
-              <p-sortIcon field="id"></p-sortIcon>
+                <p-sortIcon field="id"></p-sortIcon>
+              </div>
             </th>
 
             <th pSortableColumn="name">
-              Name
+              <div class="d-flex fw-bold fs-6 justify-content-between">
+                Name
 
-              <p-sortIcon field="name"></p-sortIcon>
+                <p-sortIcon field="name"></p-sortIcon>
+              </div>
             </th>
 
             <th pSortableColumn="role">
-              Role
+              <div class="d-flex fw-bold fs-6 justify-content-between">
+                Role
 
-              <p-sortIcon field="role"></p-sortIcon>
+                <p-sortIcon field="role"></p-sortIcon>
+              </div>
             </th>
 
             <th pSortableColumn="domain">
-              Domain
+              <div class="d-flex fw-bold fs-6 justify-content-between">
+                Domain
 
-              <p-sortIcon field="domain"></p-sortIcon>
+                <p-sortIcon field="domain"></p-sortIcon>
+              </div>
             </th>
 
             <th pSortableColumn="location">
-              Location
+              <div class="d-flex fw-bold fs-6 justify-content-between">
+                Location
 
-              <p-sortIcon field="location"></p-sortIcon>
+                <p-sortIcon field="location"></p-sortIcon>
+              </div>
             </th>
 
             <th pSortableColumn="machineStatus">
-              Machine
+              <div class="d-flex fw-bold fs-6 justify-content-between">
+                Machine
 
-              <p-sortIcon field="machineStatus"></p-sortIcon>
+                <p-sortIcon field="machineStatus"></p-sortIcon>
+              </div>
             </th>
 
             <th pSortableColumn="status">
-              Attendance
+              <div class="d-flex fw-bold fs-6 justify-content-between">
+                Attendance
 
-              <p-sortIcon field="status"></p-sortIcon>
+                <p-sortIcon field="status"></p-sortIcon>
+              </div>
             </th>
           </tr>
 
           <tr>
             <td>
-              <input pInputText type="text" placeholder="Search ID"
-                (input)="dt.filter($any($event.target).value, 'id', 'contains')" />
+              <input
+                pInputText
+                type="text"
+                placeholder="Search ID"
+                class="form-control"
+                (input)="dt.filter($any($event.target).value, 'id', 'contains')"
+              />
             </td>
 
             <td>
-              <input pInputText type="text" placeholder="Search Name" (input)="
+              <input
+                pInputText
+                type="text"
+                placeholder="Search Name"
+                class="form-control"
+                (input)="
                   dt.filter($any($event.target).value, 'name', 'contains')
-                " />
+                "
+              />
             </td>
             <td>
-              <input pInputText type="text" placeholder="Search Role" (input)="
+              <input
+                pInputText
+                type="text"
+                placeholder="Search Role"
+                class="form-control"
+                (input)="
                   dt.filter($any($event.target).value, 'role', 'contains')
-                " />
+                "
+              />
             </td>
             <td>
-              <input pInputText type="text" placeholder="Search Domain" (input)="
+              <input
+                pInputText
+                type="text"
+                placeholder="Search Domain"
+                class="form-control"
+                (input)="
                   dt.filter($any($event.target).value, 'domain', 'contains')
-                " />
+                "
+              />
             </td>
 
             <td>
-              <input pInputText type="text" placeholder="Search Location" (input)="
+              <input
+                pInputText
+                type="text"
+                placeholder="Search Location"
+                class="form-control"
+                (input)="
                   dt.filter($any($event.target).value, 'location', 'contains')
-                " />
+                "
+              />
+              
             </td>
 
             <td>
-              <input pInputText type="text" placeholder="Search Machine" (input)="
+              <input
+                pInputText
+                type="text"
+                placeholder="Search Machine"
+                class="form-control"
+                (input)="
                   dt.filter(
                     $any($event.target).value,
                     'machineStatus',
                     'contains'
                   )
-                " />
+                "
+              />
             </td>
 
             <td>
-              <input pInputText type="text" placeholder="Search Status" (input)="
+              <input
+                pInputText
+                type="text"
+                placeholder="Search Status"
+                (input)="
                   dt.filter($any($event.target).value, 'status', 'contains')
-                " />
+                "
+              />
             </td>
           </tr>
         </ng-template>
@@ -222,15 +310,19 @@
             </td>
 
             <td>
-              <span [class.text-success]="employee.machineStatus === 'ON'"
-                [class.text-danger]="employee.machineStatus === 'OFF'">
+              <span
+                [class.text-success]="employee.machineStatus === 'ON'"
+                [class.text-danger]="employee.machineStatus === 'OFF'"
+              >
                 {{ employee.machineStatus }}
               </span>
             </td>
 
             <td>
-              <span [class.text-success]="employee.status === 'Present'"
-                [class.text-danger]="employee.status === 'Absent'">
+              <span
+                [class.text-success]="employee.status === 'Present'"
+                [class.text-danger]="employee.status === 'Absent'"
+              >
                 {{ employee.status }}
               </span>
             </td>
